@@ -102,6 +102,9 @@
       textarea {
         overflow:auto;
       }
+      input[type=range] {
+        display: inline-block;
+      }
       input[type=text]:focus, select:focus, textarea:focus {
         border: 3px solid #ffe100;
       }
@@ -126,11 +129,15 @@
           <span class="etext">Message</span>
         </div>
       </div>
-      <textarea id="station_list" style="height: 330px; width: 250px;"></textarea>
+      <textarea id="station_list" onchange="update()" style="height: 330px; width: 250px;"></textarea>
+      <input type="range" id="stage" min="0" max="26">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
           .then(y => document.getElementById("station_list").innerHTML = y);
+        function update() {
+          document.getElementById("stage").max = document.getElementById("station_list").rows;
+        }
       </script>
     </body>
 </html>
