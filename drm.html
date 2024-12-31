@@ -160,7 +160,7 @@
         </div>
       </div>
       <textarea id="station_list" oninput="update()" style="height: 330px; width: 250px;"></textarea>
-      <input type="range" id="stage" value="0" min="0" max="26">
+      <input type="range" id="stage" style="width: 250px;" value="0" min="0" max="26">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
