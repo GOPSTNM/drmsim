@@ -202,7 +202,8 @@
           document.getElementById("stage").max = stn_no - 1;
         }
         function update_drm(status) {
-          cont = "<div class="line_grey hide"><div class="line_color"></div></div>
+          cont = `
+        <div class="line_grey hide"><div class="line_color"></div></div>
         <div class="circ hide"></div>
         <div class="in_stn">
           <span class="ctext">屯門</span>
@@ -218,7 +219,7 @@
         <div class="blue_bar hide">
           <span class="ctext">訊息</span>
           <span class="etext">Message</span>
-        </div>";
+        </div>`;
           document.getElementById("drm").value = cont;
         }
       </script>
