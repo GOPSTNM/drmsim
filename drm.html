@@ -125,6 +125,15 @@
       input[type=text]:focus, select:focus, textarea:focus {
         border: 3px solid #ffe100;
       }
+      input[type=button] {
+        background-color: #9B2E08;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
       .line_grey {
         position: absolute;
         left: 50%;
@@ -178,6 +187,10 @@
       </div>
       <textarea id="station_list" oninput="update()" style="height: 330px; width: 250px;"></textarea>
       <input type="range" id="stage" style="width: 250px;" value="0" min="0" max="26">
+      <input type="button" value="Open Doors">
+      <input type="button" value="Close Doors">
+      <input type="button" value="Depart">
+      <input type="button" value="Reverse">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
