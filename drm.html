@@ -104,7 +104,21 @@
       }
       input[type=range] {
         display: inline-block;
+        -webkit-appearance: none;
+        height: 8px;
+        border-radius: 7px;
+        background: #C0C0C0;
+        outline: none;
       }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background: #9B2E08;
+        cursor: pointer;
+}
       input[type=text]:focus, select:focus, textarea:focus {
         border: 3px solid #ffe100;
       }
