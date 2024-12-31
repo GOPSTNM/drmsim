@@ -189,10 +189,10 @@
       </div>
       <textarea id="station_list" oninput="update()" style="height: 330px; width: 250px;"></textarea>
       <input type="range" id="stage" style="width: 250px;" value="0" min="0" max="26">
-      <input type="button" onclick="update_drm();" value="Open Doors">
-      <input type="button" onclick="update_drm();" value="Close Doors">
-      <input type="button" onclick="document.getElementById('stage').value += 1; update_drm();" value="Depart">
-      <input type="button" onclick="document.getElementById('stage').value -= 1; update_drm();" value="Reverse">
+      <input type="button" onclick="update_drm(1);" value="Open Doors">
+      <input type="button" onclick="update_drm(2);" value="Close Doors">
+      <input type="button" onclick="document.getElementById('stage').value += 1; update_drm(3);" value="Depart">
+      <input type="button" onclick="document.getElementById('stage').value -= 1; update_drm(3);" value="Reverse">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
@@ -201,7 +201,7 @@
           stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2)
           document.getElementById("stage").max = stn_no - 1;
         }
-        function update_drm(door_status) {
+        function update_drm(status) {
         }
       </script>
     </body>
