@@ -137,7 +137,7 @@
           .then(y => document.getElementById("station_list").innerHTML = y);
         function update() {
           alert("1");
-          document.getElementById("stage").max = 2;
+          document.getElementById("stage").max = document.getElementById("station_list").rows;
         }
       </script>
     </body>
