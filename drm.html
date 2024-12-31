@@ -128,10 +128,10 @@
       </div>
       <textarea id="station_list" style="height: 330px; width: 250px;"></textarea>
       <script>
-        let x = await fetch('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt');
-        let y = await x.text();
-        alert(y);
-        document.getElementById("station_list").value = await (await fetch('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')).text();
+        //let x = await fetch('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt');
+        //let y = await x.text();
+        //alert(y);
+        document.getElementById("station_list").innerHTML = await (await fetch('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')).text();
       </script>
     </body>
 </html>
