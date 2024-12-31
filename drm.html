@@ -108,13 +108,21 @@
       input[type=text]:focus, select:focus, textarea:focus {
         border: 3px solid #ffe100;
       }
+      .line_grey {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        background-color: #C0C0C0;
+        height: 25px;
+        width: calc(100%/28);
+      }
       </style>
     </head>
     <body>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <div class="drm_base" id="drm">
-        <div class="line_grey"></div>
-        <div class="line_color"></div>
+        <div class="line_grey"><div class="line_color"></div></div>
         <div class="in_stn">
           <span class="ctext">屯門</span>
           <div class="in_stn_circ"></div>
