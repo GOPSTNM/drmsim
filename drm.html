@@ -136,8 +136,7 @@
           .then(x => x.text())
           .then(y => document.getElementById("station_list").innerHTML = y);
         function update() {
-          alert(document.getElementById("station_list").rows);
-          document.getElementById("stage").max = document.getElementById("station_list").rows;
+          document.getElementById("stage").max = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
         }
       </script>
     </body>
