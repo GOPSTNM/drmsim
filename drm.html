@@ -129,7 +129,7 @@
       <textarea id="station_list" style="height: 330px; width: 250px;"></textarea>
       <script>
         alert(await fetch('data/tml_stn_list.txt'));
-        document.getElementById("station_list").value = await (await fetch('data/tml_stn_list.txt')).text();
+        document.getElementById("station_list").value = await (await fetch('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')).text();
       </script>
     </body>
 </html>
