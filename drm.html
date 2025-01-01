@@ -205,9 +205,9 @@
           let stage = document.getElementById('stage').value;
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
-          let door_rel = "hide";
-          let close_rel = "hide";
-          let route_rel = "hide";
+          let door_rel = "";
+          let close_rel = "";
+          let route_rel = "";
           if (status == 1) {
             let door_rel = "";
             let door_bar_mes = ["請小心月台空隙", "Please mind the gap"];
