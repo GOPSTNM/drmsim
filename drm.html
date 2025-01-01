@@ -198,17 +198,20 @@
           .then(x => x.text())
           .then(y => document.getElementById("station_list").innerHTML = y);
         function update() {
-          stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2)
+          stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           document.getElementById("stage").max = stn_no - 1;
         }
         function update_drm(status) {
+          let stage = document.getElementById('stage').value;
+          let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
+          let station_list = document.getElementById("station_list").value.split('\n');
           let cont = `
         <div class="line_grey hide"><div class="line_color"></div></div>
         <div class="circ hide"></div>
         <div class="in_stn">
-          <span class="ctext">天水圍</span>
+          <span class="ctext">${station_list[stage * 2 - 1]}</span>
           <div class="in_stn_circ"></div>
-          <span class="etext">TSW</span>
+          <span class="etext">${station_list[stage * 2]}</span>
         </div>
         <div class="door_bar">
           <span class="ctext">請小心月台空隙</span>
