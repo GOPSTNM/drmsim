@@ -205,20 +205,32 @@
           let stage = document.getElementById('stage').value;
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
+          let door_rel = "hide";
+          let close_rel = "hide";
+          let route_rel = "hide";
+          if (status == 1) {
+            let door_rel = "";
+            let door_bar_mes = ["請小心月台空隙", "Please mind the gap"];
+          } else if (status == 2) {
+            let close_rel = "";
+            let door_bar_mes = ["請勿靠近車門", "Please stnd back from the train doors"];
+          } else if (status == 3) {
+            let route_rel = "";
+          }
           let cont = `
         <div class="line_grey hide"><div class="line_color"></div></div>
         <div class="circ hide"></div>
-        <div class="in_stn">
+        <div class="in_stn ${door_rel + close_rel}">
           <span class="ctext">${station_list[stage * 2]}</span>
           <div class="in_stn_circ"></div>
           <span class="etext">${station_list[stage * 2 + 1]}</span>
         </div>
-        <div class="door_bar">
-          <span class="ctext">請小心月台空隙</span>
-          <span class="etext">Please mind the gap</span>
+        <div class="door_bar ${door_rel + close_rel}">
+          <span class="ctext">${door_bar_mes[0]}</span>
+          <span class="etext">${door_bar_mes[1]}</span>
         </div>
-        <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="70px" height="70px">
-        <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="70px" height="70px">
+        <img class="door_mtg_left ${door_rel}" src="logo/mind_the_gap_left.svg" width="70px" height="70px">
+        <img class="door_mtg_right ${door_rel}" src="logo/mind_the_gap_right.svg" width="70px" height="70px">
         <div class="blue_bar hide">
           <span class="ctext">訊息</span>
           <span class="etext">Message</span>
