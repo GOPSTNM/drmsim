@@ -227,7 +227,7 @@
             </div>`;
           } else {
             cont = `<div class="line_grey" style="width: ${1000*stn_no/(stn_no+2)}px;">
-            <div class="line_color" style="width: ${(1000*stn_no/(stn_no+2))*(1-((stage+1)/stn_no))}px; right: 0%;">
+            <div class="line_color" style="width: ${(1000*stn_no/(stn_no+2))*(1-(stage/stn_no-1))}px; right: 0%;">
             </div>
             </div>`;
             for (let i = 0; i < stn_no; i++) {
