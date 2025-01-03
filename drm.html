@@ -206,7 +206,8 @@
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
           let cont = "hi";
-          alert("hi");
+          alert(stage);
+          alert(station_list);
           if (drm_mode == 1) {
             let cont = `<div class="in_stn">
             <span class="ctext">${station_list[stage * 2]}</span>
