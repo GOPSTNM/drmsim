@@ -170,6 +170,14 @@
         font-size: 16px;
         text-align: center;
       }
+      .stn_ename {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 8px;
+        font-size: 8px;
+        text-align: center;
+      }
       </style>
     </head>
     <body>
@@ -247,7 +255,8 @@
                 circ_colour = "ffe100; animation: blinker 2s step-start infinite;";
               }
               cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
-              cont += `<div class="stn_cname ctext" style="top: ${50-20*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
+              cont += `<div class="stn_cname ctext" style="top: ${50-15*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
+              cont += `<div class="stn_ename ctext" style="top: ${60-15*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
             }
             cont += `<div class="blue_bar hide">
             <span class="ctext">訊息</span>
