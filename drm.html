@@ -229,14 +229,15 @@
             cont = `<div class="line_grey" style="width: ${1000*stn_no/(stn_no+2)}px;">
             <div class="line_color" style="width: ${1000*(stn_no - stage)/(stn_no+2)}px; right: 0%;">
             </div>
-            </div>
-            <div class="circ"></div>
-            <div class="blue_bar hide">
+            </div>`;
+            for (let i = 0; i < stn_no; i++) {
+              cont += `<div class="circ" style="left: ${((stage+1)/stn_no)1000*stn_no/(stn_no+2)}px;"></div>`;
+            }
+            cont += `<div class="blue_bar hide">
             <span class="ctext">訊息</span>
             <span class="etext">Message</span>
             </div>`;
           }
-          alert(cont);
           document.getElementById("drm").innerHTML = cont;
         }
       </script>
