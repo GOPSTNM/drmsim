@@ -226,8 +226,8 @@
             <span class="etext">Please stand back from the train doors</span>
             </div>`;
           } else {
-            cont = `<div class="line_grey" style="width: ${1000*stn_no/(stn_no+1)}px;">
-            <div class="line_color" style="width: ${(1000*stn_no/(stn_no+1))*((stn_no-stage)/(stn_no-1))}px; right: 0%;">
+            cont = `<div class="line_grey" style="width: ${1000*(stn_no-1)/(stn_no+1)}px;">
+            <div class="line_color" style="width: ${1000*(stn_no-1)/(stn_no+1)*((stn_no-stage)/(stn_no-1))}px; right: 0%;">
             </div>
             </div>`;
             for (let i = 0; i < stn_no; i++) {
