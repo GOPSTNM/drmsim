@@ -231,7 +231,7 @@
             </div>
             </div>`;
             for (let i = 0; i < stn_no; i++) {
-              cont += `<div class="circ" style="left: ${1/(stn_no+2)+(i/(stn_no-1))*1000*stn_no/(stn_no+2)}px;"></div>`;
+              cont += `<div class="circ" style="left: ${(1000*i+1)/(stn_no+2)}px;"></div>`;
             }
             cont += `<div class="blue_bar hide">
             <span class="ctext">訊息</span>
