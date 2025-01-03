@@ -205,11 +205,8 @@
           let stage = document.getElementById('stage').value;
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
-          let cont = "hi";
-          alert(stage);
-          alert(station_list);
           if (drm_mode == 1) {
-            let cont = `<div class="in_stn">
+            cont = `<div class="in_stn">
             <span class="ctext">${station_list[stage * 2]}</span>
             <div class="in_stn_circ"></div>
             <span class="etext">${station_list[stage * 2 + 1]}</span>
@@ -221,7 +218,7 @@
             <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="70px" height="70px">
             <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="70px" height="70px">`;
           } else if (drm_mode == 2) {
-            let cont = `<div class="in_stn">
+            cont = `<div class="in_stn">
             <span class="ctext">${station_list[stage * 2]}</span>
             <div class="in_stn_circ"></div>
             <span class="etext">${station_list[stage * 2 + 1]}</span>
@@ -249,7 +246,6 @@
             <span class="etext">Message</span>
             </div>`;
           }
-          alert(cont);
           document.getElementById("drm").innerHTML = cont;
         }
       </script>
