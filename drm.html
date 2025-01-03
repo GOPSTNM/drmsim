@@ -205,6 +205,7 @@
           let stage = document.getElementById('stage').value;
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
+          alert("hi");
           if (drm_mode == 1) {
             let cont = `
             <div class="in_stn">
@@ -249,6 +250,7 @@
             <span class="etext">Message</span>
             </div>`;
           }
+          alert("hi");
           document.getElementById("drm").innerHTML = cont;
         }
       </script>
