@@ -231,7 +231,14 @@
             </div>
             </div>`;
             for (let i = 0; i < stn_no; i++) {
-              cont += `<div class="circ" style="left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
+              if (i < stage) {
+                circ_colour = "ffe100;";
+              } else if (i > stage) {
+                circ_colour = "ffffff;";
+              } else {
+                circ_colour = "ffe100; animation: blinker 2s step-start infinite;";
+              }
+              cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
             }
             cont += `<div class="blue_bar hide">
             <span class="ctext">訊息</span>
