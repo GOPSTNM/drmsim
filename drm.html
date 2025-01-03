@@ -231,9 +231,9 @@
             </div>
             </div>`;
             for (let i = 0; i < stn_no; i++) {
-              if (i < stage) {
+              if (i > stage) {
                 circ_colour = "ffe100;";
-              } else if (i > stage) {
+              } else if (i < stage) {
                 circ_colour = "ffffff;";
               } else {
                 circ_colour = "ffe100; animation: blinker 2s step-start infinite;";
