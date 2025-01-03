@@ -162,6 +162,12 @@
         border: 2.5px solid #000000;
         background-color: #ffe100;
       }
+      .stn_cname {
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 16px;
+        font-size: 16px;
+      }
       </style>
     </head>
     <body>
@@ -239,6 +245,7 @@
                 circ_colour = "ffe100; animation: blinker 2s step-start infinite;";
               }
               cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
+              cont += `<div class="stn_cname" style="left: ${(1000*(i+1))/(stn_no+1)}px;">${station_list[stage * 2]}</div>`;
             }
             cont += `<div class="blue_bar hide">
             <span class="ctext">訊息</span>
