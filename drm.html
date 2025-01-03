@@ -201,11 +201,11 @@
           stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           document.getElementById("stage").max = stn_no - 1;
         }
-        function update_drm(status) {
+        function update_drm(drm_mode) {
           let stage = document.getElementById('stage').value;
           let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
           let station_list = document.getElementById("station_list").value.split('\n');
-          if (status == 1) {
+          if (drm_mode == 1) {
             let cont = `
         <div class="in_stn">
           <span class="ctext">${station_list[stage * 2]}</span>
@@ -218,7 +218,7 @@
         </div>
         <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="70px" height="70px">
         <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="70px" height="70px">`;
-          } else if (status == 2) {
+          } else if (drm_mode == 2) {
             let cont = `
         <div class="in_stn">
           <span class="ctext">${station_list[stage * 2]}</span>
@@ -229,7 +229,7 @@
           <span class="ctext">請勿靠近車門</span>
           <span class="etext">Please stand back from the train doors</span>
         </div>`;
-          } else if (status == 3) {
+          } else if (drm_mode == 3) {
             let cont = `
             <div class="line_grey hide"><div class="line_color"></div></div>
             <div class="circ hide"></div>
