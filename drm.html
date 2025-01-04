@@ -178,6 +178,12 @@
         font-size: 8px;
         text-align: center;
       }
+      .arrow {
+        position: absolute;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        height: 12px;
+      }
       </style>
     </head>
     <body>
@@ -261,7 +267,8 @@
               cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${50-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
               cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${55-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
             }
-            cont += `<div class="blue_bar hide">
+            cont += `<img class="arrow" src="logo/arrow_right.svg" style="left: ${(1000*(i+1)+0.5)/(stn_no+1)}px;">
+            <div class="blue_bar hide">
             <span class="ctext">訊息</span>
             <span class="etext">Message</span>
             </div>`;
