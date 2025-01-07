@@ -165,24 +165,24 @@
       .stn_cname {
         position: absolute;
         transform: translate(-50%, -50%);
-        width: 160px;
-        height: 16px;
-        font-size: 16px;
+        width: 100px;
+        height: 10px;
+        font-size: 10px;
         text-align: center;
       }
       .stn_ename {
         position: absolute;
         transform: translate(-50%, -50%);
-        width: 160px;
-        height: 8px;
-        font-size: 8px;
+        width: 100px;
+        height: 5px;
+        font-size: 5px;
         text-align: center;
       }
       .arrow {
         position: absolute;
-        top: 45%;
+        top: 43%;
         transform: translate(-50%, -50%);
-        height: 13px;
+        height: 9px;
       }
       </style>
     </head>
@@ -264,8 +264,8 @@
                 text_colour = "000000;"
               }
               cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
-              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${50-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
-              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${55-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
+              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${48-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
+              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${53-16*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
             }
             cont += `<img class="arrow" src="logo/arrow_right.svg" style="left: ${(1000*stage)/(stn_no+1)+(1000*0.5)/(stn_no+1)}px;">
             <div class="blue_bar hide">
