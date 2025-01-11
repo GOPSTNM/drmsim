@@ -175,8 +175,8 @@
         position: absolute;
         transform: translate(-50%, -50%);
         width: 100px;
-        height: 7px;
-        font-size: 7px;
+        height: 7.5px;
+        font-size: 7.5px;
         text-align: center;
       }
       .arrow {
@@ -265,8 +265,8 @@
                 text_colour = "000000;"
               }
               cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
-              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${47-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
-              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${52-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
+              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${48-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
+              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${53-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
             }
             cont += `<img class="arrow" src="logo/arrow_right.svg" style="left: ${(1000*stage)/(stn_no+1)+(1000*0.5)/(stn_no+1)}px;">
             <div class="blue_bar hide">
