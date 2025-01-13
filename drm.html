@@ -218,6 +218,8 @@
       <input type="button" onclick="update_drm(2);" value="Close Doors">
       <input type="button" onclick="document.getElementById('stage').value -= -1; update_drm(3);" value="Depart">
       <input type="button" onclick="document.getElementById('stage').value -= 1; update_drm(3);" value="Reverse">
+      <input type="button" onclick="document.getElementsByClassName("blue_bar").style.display = 'initial';" value="Message">
+      <input type="button" onclick="document.getElementsByClassName("blue_bar").style.display = 'none';" value="Hide">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
@@ -241,7 +243,11 @@
             <span class="etext">Please mind the gap</span>
             </div>
             <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="60px" height="60px">
-            <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="60px" height="60px">`;
+            <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="60px" height="60px">
+            <div class="blue_bar hide">
+            <span class="ctext">訊息</span>
+            <span class="etext">Message</span>
+            </div>`;
           } else if (drm_mode == 2) {
             cont = `<div class="in_stn">
             <span class="ctext">${station_list[stage * 2]}</span>
@@ -251,6 +257,10 @@
             <div class="door_bar">
             <span class="ctext">請勿靠近車門</span>
             <span class="etext">Please stand back from the train doors</span>
+            </div>
+            <div class="blue_bar hide">
+            <span class="ctext">訊息</span>
+            <span class="etext">Message</span>
             </div>`;
           } else {
             cont = `<div class="line_grey" style="width: ${1000*(stn_no-1)/(stn_no+1)}px;">
