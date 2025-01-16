@@ -1,54 +1,81 @@
 屯門
 Tuen Mun
+N
 兆康
 Siu Hong
+R
 天水圍
 Tin Shui Wai
+R
 朗屏
 Long Ping
+R
 元朗
 Yuen Long
+R
 錦上路
 Kam Sheung Road
+R
 荃灣西
 Tsuen Wan West
+L
 美孚
 Mei Foo
+L
 南昌
 Nam Cheong
+L
 柯士甸
 Austin
+R
 尖東
 East Tsim Sha Tsui
+R
 紅磡
 Hung Hom
+R
 何文田
 Ho Man Tin
+R
 土瓜灣
 To Kwa Wan
+R
 宋皇臺
 Sung Wong Toi
+L
 啟德
 Kai Tak
+L
 鑽石山
 Diamond Hill
+L
 顯徑
 Hin Keng
+R
 大圍
 Tai Wai
+R
 車公廟
 Che Kung Temple
+R
 沙田圍
 Sha Tin Wai
+L
 第一城
 City One
+L
 石門
 Shek Mun
+L
 大水坑
 Tai Shui Hang
+L
 恆安
 Heng On
+L
 馬鞍山
 Ma On Shan
+L
 烏溪沙
 Wu Kai Sha
+N
