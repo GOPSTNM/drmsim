@@ -226,12 +226,12 @@
           .then(x => x.text())
           .then(y => document.getElementById("station_list").innerHTML = y);
         function update() {
-          stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
+          stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/3);
           document.getElementById("stage").max = stn_no - 1;
         }
         function update_drm(drm_mode) {
           let stage = document.getElementById('stage').value;
-          let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/2);
+          let stn_no = Math.floor((document.getElementById("station_list").value.split('\n').length)/3);
           let station_list = document.getElementById("station_list").value.split('\n');
           if (drm_mode == 1) {
             cont = `<div class="in_stn">
@@ -251,9 +251,9 @@
             </div>`;
           } else if (drm_mode == 2) {
             cont = `<div class="in_stn">
-            <span class="ctext">${station_list[stage * 2]}</span>
+            <span class="ctext">${station_list[stage * 3]}</span>
             <div class="in_stn_circ"></div>
-            <span class="etext">${station_list[stage * 2 + 1]}</span>
+            <span class="etext">${station_list[stage * 3 + 1]}</span>
             </div>
             <div class="door_bar">
             <span class="ctext">請勿靠近車門</span>
@@ -280,8 +280,8 @@
                 text_colour = "000000;"
               }
               cont += `<div class="circ" style="background-color: #${circ_colour} left: ${(1000*(i+1))/(stn_no+1)}px;"></div>`;
-              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${47.5-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2]}</div>`;
-              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${52-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 2 + 1]}</div>`;
+              cont += `<div class="stn_cname ctext" style="color: #${text_colour} top: ${47.5-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 3]}</div>`;
+              cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${52-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 3 + 1]}</div>`;
             }
             cont += `<img class="arrow" src="logo/arrow_right.svg" style="left: ${(1000*stage)/(stn_no+1)+(1000*0.5)/(stn_no+1)}px;">
             <div class="blue_bar hide">
