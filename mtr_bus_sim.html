@@ -4,24 +4,25 @@
     <title>MTR Bus Stop Reporter</title>
     <style>
       .dot {
-        
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        display: inline-block;
       }
     </style>
   </head>
   <body>
     <div id="display"></div>
     <script>
-      const display = document.getElementById('led-display');
-
-        // Create a 19x143 grid of orange circles
-        for (let row = 0; row < 19; row++) {
-            for (let col = 0; col < 143; col++) {
-                const led = document.createElement('div');
-                led.classList.add('led');
-                led.id = `led-${row}-${col}`; // Unique ID for each LED
-                display.appendChild(led);
-            }
+      const display = document.getElementById('display');
+      for (let row = 0; row < 14; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          dot.id = `dot-${row}-${col}`;
+          display.appendChild(dot);
         }
+      }
 
         // Example: Function to turn on a specific LED
         function turnOnLED(row, col) {
@@ -38,10 +39,6 @@
                 led.style.backgroundColor = '#f0f0f0'; // Turn off
             }
         }
-
-        // Example usage
-        turnOnLED(0, 0); // Turn on the LED at row 0, column 0
-        turnOffLED(0, 0); // Turn off the LED at row 0, column 0
     </script>
   </body>
 </html>
