@@ -3,33 +3,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTR Bus Stop Reporter</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        #led-display {
-            display: grid;
-            grid-template-columns: repeat(143, 6px); /* Adjusted width */
-            grid-template-rows: repeat(19, 6px);    /* Adjusted height */
-            gap: 1px;                               /* Adjusted gap */
-        }
-        .led {
-            width: 6px;                            /* Adjusted size */
-            height: 6px;                           /* Adjusted size */
-            border-radius: 50%;
-            background-color: orange;
-        }
+      .dot {
+        
+      }
     </style>
-</head>
-<body>
-    <div id="led-display"></div>
-
+  </head>
+  <body>
+    <div id="display"></div>
     <script>
-        const display = document.getElementById('led-display');
+      const display = document.getElementById('led-display');
 
         // Create a 19x143 grid of orange circles
         for (let row = 0; row < 19; row++) {
@@ -61,5 +43,5 @@
         turnOnLED(0, 0); // Turn on the LED at row 0, column 0
         turnOffLED(0, 0); // Turn off the LED at row 0, column 0
     </script>
-</body>
+  </body>
 </html>
