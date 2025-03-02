@@ -44,7 +44,6 @@
         const br = document.createElement('br');
         display.appendChild(br);
       }
-      document.getElementById("1-1").style.backgroundColor = "#FFC002";
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
@@ -60,10 +59,20 @@
             }
           }
         }
-        alert(to_display_data.toString())
+        to_display(to_display_data)
       }
       function to_display(data) {
-        
+        clear_display()
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] = 1) {
+              add(k, i);
+            }
+          }
+        }
+      }
+      function add(x, y) {
+        document.getElementById(x + "-" + y).style.backgroundColor = "#FFC002";
       }
     </script>
   </body>
