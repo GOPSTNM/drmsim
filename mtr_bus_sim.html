@@ -22,13 +22,15 @@
     <input type="button" value="Clear" onclick="clear_display()">
     <script>
       const display = document.getElementById('display');
-      let cdata;
+      let font1;
+      let font2;
+      let font3;
       fetch("mtr_bus_cdata.json")
         .then(response => {
           return response.json();
         })
         .then(data => {
-          cdata = data;
+          font1 = data;
         })
       for (let row = 0; row < 14; row++) {
         for (let col = 0; col < 143; col++) {
@@ -43,7 +45,7 @@
       document.getElementById("1-1").style.backgroundColor = "#FFC002";
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
-        alert(cdata["歡"][0]);
+        alert(font1["歡"][0]);
       }
     </script>
   </body>
