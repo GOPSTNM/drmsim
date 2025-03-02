@@ -72,7 +72,7 @@
         }
       }
       function add(row, col) {
-        if (typeof document.getElementById(row + "-" + col).style.backgroundColor !== "undefined") {
+        if (col >= 0 && col < 143) {
           document.getElementById(row + "-" + col).style.backgroundColor = "#FFC002";
         }
       }
