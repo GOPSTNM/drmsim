@@ -49,6 +49,21 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
       function show() {
+        let input = document.getElementById("text_input").value;
+        let to_display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        for (let i = 0; i < input.length; i++) {
+          let character = font1[input[i]];
+          if (character === undefined) {
+          } else {
+            for (let k = 0; k < character.length; k++) {
+              to_display_data[k] += character[k];
+            }
+          }
+        }
+        alert(to_display_data.toString())
+      }
+      function to_display(data) {
+        
       }
     </script>
   </body>
