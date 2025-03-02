@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="display" id="display"></div>
-    <input type="button" value="Click me" onclick="clear()">
+    <input type="button" value="Click me" onclick="clear_display()">
     <script>
       const display = document.getElementById('display');
       for (let row = 0; row < 14; row++) {
@@ -33,7 +33,7 @@
         display.appendChild(br);
       }
       document.getElementById("1-1").style.backgroundColor = "blue";
-      function clear() {
+      function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
     </script>
