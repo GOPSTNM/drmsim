@@ -19,17 +19,22 @@
   </head>
   <body>
     <div class="display" id="display"></div>
+    <input type="button" value="Click me" onclick="clear()">
     <script>
       const display = document.getElementById('display');
       for (let row = 0; row < 14; row++) {
         for (let col = 0; col < 143; col++) {
           const dot = document.createElement('div');
           dot.classList.add('dot');
-          dot.id = `dot-${row}-${col}`;
+          dot.id = `${row}-${col}`;
           display.appendChild(dot);
         }
         const br = document.createElement('br');
         display.appendChild(br);
+      }
+      document.getElementById("1-1").style.color = "blue";
+      function clear() {
+        document.getElementsByClassName("dot").style.background-color = "#696969";
       }
 
         // Example: Function to turn on a specific LED
