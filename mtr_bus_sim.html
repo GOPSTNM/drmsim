@@ -22,13 +22,13 @@
     <input type="button" value="Clear" onclick="clear_display()">
     <script>
       const display = document.getElementById('display');
+      let cdata;
       fetch("mtr_bus_cdata.json")
         .then(response => {
           return response.json();
         })
         .then(data => {
-          const cdata = data;
-          alert(cdata["歡"][0]);
+          cdata = data;
         })
       for (let row = 0; row < 14; row++) {
         for (let col = 0; col < 143; col++) {
