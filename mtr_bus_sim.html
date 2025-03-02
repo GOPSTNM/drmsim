@@ -3,6 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTR Bus Stop Reporter</title>
     <style>
+      .display {
+        background-color: #5C5C5C;
+      }
       .dot {
         height: 8px;
         width: 8px;
@@ -13,7 +16,7 @@
     </style>
   </head>
   <body>
-    <div id="display"></div>
+    <div class="display" id="display"></div>
     <script>
       const display = document.getElementById('display');
       for (let row = 0; row < 14; row++) {
