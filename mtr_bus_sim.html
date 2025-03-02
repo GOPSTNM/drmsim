@@ -34,24 +34,8 @@
       }
       document.getElementById("1-1").style.backgroundColor = "blue";
       function clear() {
-        document.getElementsByClassName("dot").forEach(i => i.style.backgroundColor = "#696969");
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
-
-        // Example: Function to turn on a specific LED
-        function turnOnLED(row, col) {
-            const led = document.getElementById(`led-${row}-${col}`);
-            if (led) {
-                led.style.backgroundColor = 'orange'; // Turn on
-            }
-        }
-
-        // Example: Function to turn off a specific LED
-        function turnOffLED(row, col) {
-            const led = document.getElementById(`led-${row}-${col}`);
-            if (led) {
-                led.style.backgroundColor = '#f0f0f0'; // Turn off
-            }
-        }
     </script>
   </body>
 </html>
