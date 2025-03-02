@@ -72,7 +72,9 @@
         }
       }
       function add(row, col) {
-        document.getElementById(row + "-" + col).style.backgroundColor = "#FFC002";
+        if (typeof document.getElementById(row + "-" + col) !== "undefined") {
+          document.getElementById(row + "-" + col).style.backgroundColor = "#FFC002";
+        }
       }
     </script>
   </body>
