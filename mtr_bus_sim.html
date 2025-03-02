@@ -19,6 +19,8 @@
   </head>
   <body>
     <div class="display" id="display"></div>
+    <input type="text" id="text_input">
+    <input type="button" value="Show" onclick="show()">
     <input type="button" value="Clear" onclick="clear_display()">
     <script>
       const display = document.getElementById('display');
@@ -45,7 +47,8 @@
       document.getElementById("1-1").style.backgroundColor = "#FFC002";
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
-        alert(font1["歡"][0]);
+      }
+      function show() {
       }
     </script>
   </body>
