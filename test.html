@@ -39,6 +39,7 @@
           const dot = document.createElement('div');
           dot.classList.add('dot');
           dot.id = `${row}-${col}`;
+          dot.addEventListener("click", click());
           display.appendChild(dot);
         }
         const br = document.createElement('br');
