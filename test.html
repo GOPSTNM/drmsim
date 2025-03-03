@@ -67,7 +67,11 @@
       }
       function show() {
         update_json();
-        navigator.clipboard.writeText(document.getElementById("output").value);
+        let text = "Confirm?";
+        if (confirm(text) == true) {
+          navigator.clipboard.writeText(document.getElementById("output").value);
+          clear_display();
+        }
       }
       function update_json() {
         let out = "";
