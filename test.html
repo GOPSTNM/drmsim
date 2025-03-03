@@ -68,7 +68,7 @@
       }
       function show() {
         update_json();
-        //copy
+        navigator.clipboard.writeText(document.getElementById("output").value);
       }
       function update_json() {
         let out = "";
