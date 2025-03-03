@@ -40,7 +40,12 @@
           dot.classList.add('dot');
           dot.id = `${row}-${col}`;
           dot.addEventListener("click", function() {
-            alert("hi");
+            dot_onclick_colour = this.style.backgroundColor;
+            if (dot_onclick_colour == "#FFC002") {
+              dot_onclick_colour = "#696969";
+            } else {
+              dot_onclick_colour = "#FFC002";
+            }
           });
           display.appendChild(dot);
         }
