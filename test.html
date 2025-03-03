@@ -75,8 +75,8 @@
       }
       function update_text() {
         alert("hi");
-        alert(typeof font1[document.getElementById("text_input").value][0]);
-        if (typeof font1[document.getElementById("text_input").value][0] === "undefined") {
+        alert(typeof font1[document.getElementById("text_input").value]);
+        if (typeof font1[document.getElementById("text_input").value] === "undefined") {
           alert("Character already inputted");
         }
         update_json();
