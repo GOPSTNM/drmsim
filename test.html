@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        margin: 2px;
+        display: inline-block;
+        background-color: #696969;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div>
+    <input type="text" id="text_input">
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Clear" onclick="clear_display()">
+    <script>
+      const display = document.getElementById('display');
+      let font1;
+      let font2;
+      let font3;
+      fetch("mtr_bus_cdata.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font1 = data;
+        })
+      for (let row = 0; row < 14; row++) {
+        for (let col = 0; col < 15; col++) {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement('br');
+        display.appendChild(br);
+      }
+      function clear_display() {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
+      }
+    </script>
+  </body>
+</html>
