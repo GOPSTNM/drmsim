@@ -81,7 +81,7 @@
         }
       }
       function update_json() {
-        let out = '"' + document.getElementById("text_input").value + '": [\n';
+        let out = '"' + document.getElementById("text_input").value + '": [\n    ';
         for (let row = 0; row < 14; row++) {
           out += '"';
           for (let col = 0; col < 15; col++) {
@@ -97,7 +97,7 @@
             out += ", ";
           }
         }
-        out += "\n], ";
+        out += "\n  ], ";
         document.getElementById("output").value = out;
       }
     </script>
