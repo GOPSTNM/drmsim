@@ -62,6 +62,7 @@
       function update_json() {
         let out = "";
         for (let row = 0; row < 14; row++) {
+          out += '"';
           for (let col = 0; col < 15; col++) {
             const dot = document.getElementById(`${row}-${col}`);
             if (dot.style.backgroundColor == "rgb(255, 192, 2)") {
@@ -70,6 +71,7 @@
               out += "0";
             }
           }
+          out += '"';
         }
         document.getElementById("output").value = out;
       }
