@@ -55,6 +55,19 @@
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
+      function update_json() {
+        let out = "";
+        for (let row = 0; row < 14; row++) {
+          for (let col = 0; col < 15; col++) {
+            const dot = document.getElementById(`${row}-${col}`);
+            if (dot.style.backgroundColor == "rgb(255, 192, 2)") {
+              out += "1";
+            } else {
+              out += "0";
+            }
+          });
+          document.getElementById("output").value = out;
+      }
     </script>
   </body>
 </html>
