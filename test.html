@@ -39,7 +39,9 @@
           const dot = document.createElement('div');
           dot.classList.add('dot');
           dot.id = `${row}-${col}`;
-          dot.addEventListener("click", click());
+          dot.addEventListener("click", function() {
+            alert("hi");
+          });
           display.appendChild(dot);
         }
         const br = document.createElement('br');
