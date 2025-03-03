@@ -37,8 +37,6 @@
     <script>
       const display = document.getElementById('display');
       let font1;
-      let font2;
-      let font3;
       fetch("mtr_bus_cdata.json")
         .then(response => {
           return response.json();
@@ -83,6 +81,9 @@
             }
           }
           out += '"';
+          if (row != 13) {
+            out += ", ";
+          }
         }
         document.getElementById("output").value = out;
       }
