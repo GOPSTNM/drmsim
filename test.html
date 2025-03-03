@@ -71,6 +71,7 @@
         if (confirm(text) == true) {
           navigator.clipboard.writeText(document.getElementById("output").value);
           clear_display();
+          document.getElementById("text_input").value = "";
         }
       }
       function update_text() {
