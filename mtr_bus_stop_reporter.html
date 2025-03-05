@@ -42,6 +42,7 @@
       let display_data;
       let time = 0;
       let time_needed = 0;
+      let scroll;
       let c_font;
       let e_font;
       let e_font_bold;
@@ -93,10 +94,9 @@
           to_display(display_data);
         } else if (display_mode == "scroll") {
           time_needed = 143 + display_data[0].length;
-          alert(time_needed);
           display_data = display_data.map(display_data => "0".repeat(143) + display_data);
           time = 0;
-          let scroll = setInterval(scroll_move, 50);
+          scroll = setInterval(scroll_move, 50);
         }
       }
       function scroll_move(data) {
