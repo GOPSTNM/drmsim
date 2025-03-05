@@ -36,8 +36,9 @@
     <input type="button" value="Confirm and Copy" onclick="show()">
     <input type="range" onchange="update_range()" id="width_range" min="1" max="15">
     <script>
-      setup();
+      
       let width_range = 15;
+      setup();
       function update_range() {
         width_range = document.getElementById('width_range').value;
         setup();
