@@ -39,6 +39,9 @@
         const br = document.createElement("br");
         display.appendChild(br);
       }
+      let display_data;
+      let time = 0;
+      let time_needed = 0;
       let c_font;
       let e_font;
       let e_font_bold;
@@ -69,7 +72,7 @@
       function show() {
         let display_mode = document.getElementById("display_mode").value;
         let input = document.getElementById("text_input").value;
-        let display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (let i = 0; i < input.length; i++) {
           let character = c_font[input[i]];
           if (character === undefined) {
@@ -88,8 +91,18 @@
           }
           to_display(display_data);
         } else if (display_mode == "scroll") {
+          time_needed = 143 + display_data[0].length;
           display_data = display_data.map(display_data => "0".repeat(143) + display_data);
-          // to be done
+          time = 0;
+          let scroll = setInterval(scroll_move, 30);
+        }
+      }
+      function scroll_move(data) {
+        display_data = display_data.map(display_data => display_data.slice(1));
+        to_display(display_data);
+        time += 1;
+        if (time > time_needed) {
+          clearInterval(scroll);
         }
       }
       function to_display(data) {
