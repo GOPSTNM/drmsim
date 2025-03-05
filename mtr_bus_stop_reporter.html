@@ -40,6 +40,7 @@
         display.appendChild(br);
       }
       let display_data;
+      let display_space = 0;
       let time = 0;
       let time_needed = 0;
       let scroll;
@@ -85,22 +86,20 @@
           }
         }
         if (display_mode == "left") {
+          display_space = 0;
           to_display(display_data);
         } else if (display_mode == "centre") {
-          let remain_space = Math.floor((143 - display_data[0].length)/2);
-          if (remain_space > 0) {
-            display_data = display_data.map(display_data => "0".repeat(remain_space) + display_data);
-          }
+          display_space = Math.floor((143 - display_data[0].length)/2);  
           to_display(display_data);
         } else if (display_mode == "scroll") {
           time_needed = 143 + display_data[0].length;
-          display_data = display_data.map(display_data => "0".repeat(143) + display_data);
+          display_space = 143;
           time = 0;
           scroll = setInterval(scroll_move, 50);
         }
       }
       function scroll_move(data) {
-        display_data = display_data.map(display_data => display_data.slice(1));
+        display_space -= 1;
         to_display(display_data);
         time += 1;
         if (time > time_needed) {
@@ -111,8 +110,8 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
-            if (data[i][k] == "1" && k >= 0 && k < 143) {
-              document.getElementById(i + "-" + k).style.backgroundColor = "#FFC002";
+            if (data[i][k] == "1" && (k+display_space) >= 0 && (k+display_space) < 143) {
+              document.getElementById(i + "-" + (k+display_space)).style.backgroundColor = "#FFC002";
             }
           }
         }
