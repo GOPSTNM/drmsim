@@ -42,12 +42,26 @@
       let c_font;
       let e_font;
       let e_font_bold;
-      fetch("mtr_bus_cdata.json")
+      fetch("mtr_bus_font/mtr_bus_c_font.json")
         .then(response => {
           return response.json();
         })
         .then(data => {
           c_font = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_e_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          e_font = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_e_font_bold.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          e_font_bold = data;
         })
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
