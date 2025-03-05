@@ -73,6 +73,7 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
       function show() {
+        clear_display();
         let display_mode = document.getElementById("display_mode").value;
         let input = document.getElementById("text_input").value;
         display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
