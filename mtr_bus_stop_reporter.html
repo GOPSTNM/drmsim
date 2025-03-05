@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        margin: 0.5px;
+        display: inline-block;
+        background-color: #696969;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div>
+    <input type="text" id="text_input">
+    <select id="display_mode">
+      <option value="left">Left</option>
+      <option value="centre">Centre</option>
+      <option value="scroll">Scroll</option>
+    </select>
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Clear" onclick="clear_display()">
+    <script>
+      const display = document.getElementById('display');
+      for (let row = -2; row < 17; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement('br');
+        display.appendChild(br);
+      }
+      let c_font;
+      let e_font;
+      let e_font_bold;
+      fetch("mtr_bus_cdata.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          c_font = data;
+        })
+      function clear_display() {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
+      }
+      function show() {
+        let input = document.getElementById("text_input").value;
+        let to_display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        for (let i = 0; i < input.length; i++) {
+          let character = font1[input[i]];
+          if (character === undefined) {
+          } else {
+            for (let k = 0; k < character.length; k++) {
+              to_display_data[k] += character[k];
+            }
+          }
+        }
+        to_display(to_display_data)
+      }
+      function to_display(data) {
+        clear_display()
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1") {
+              add(i, k);
+            }
+          }
+        }
+      }
+      function add(row, col) {
+        if (col >= 0 && col < 143) {
+          document.getElementById(row + "-" + col).style.backgroundColor = "#FFC002";
+        }
+      }
+    </script>
+  </body>
+</html>
