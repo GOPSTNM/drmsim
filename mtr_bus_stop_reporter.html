@@ -79,7 +79,17 @@
             }
           }
         }
-        to_display(display_data);
+        if (display_mode == "left") {
+          to_display(display_data);
+        } else if (display_mode == "centre") {
+          let remain_space = Math.floor((143 - display_data[0].length)/2);
+          if (remain_space > 0) {
+            display_data = display_data.map(display_data => "0".repeat(remain_space) + display_data);
+          }
+          to_display(display_data);
+        } else if (display_mode == "scroll") {
+          // to be done
+        }
       }
       function to_display(data) {
         clear_display()
