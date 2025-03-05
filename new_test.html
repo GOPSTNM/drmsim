@@ -37,7 +37,7 @@
     <input type="range" onchange="update_range()" id="width_range" min="1" max="15">
     <script>
       let width_range = 15;
-      setup();
+      document.getElementById('width_range').value = 15;
       function update_range() {
         width_range = document.getElementById('width_range').value;
         setup();
