@@ -47,9 +47,7 @@
       
       function setup() {
 
-        while (display.hasChildNodes()) {
-          display.removeChild(display.firstChild);
-        }
+      display.replaceChildren();
         
       for (let row = 0; row < 14; row++) {
         for (let col = 0; col < width_range; col++) {
