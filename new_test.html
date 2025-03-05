@@ -35,40 +35,33 @@
     <textarea id="output" disabled></textarea>
     <input type="button" value="Confirm and Copy" onclick="show()">
     <input type="range" onchange="update_range()" id="width_range" min="1" max="15">
-    <script>
-      
+    <script>  
       let width_range = 15;
       function update_range() {
         width_range = document.getElementById('width_range').value;
       }
       const display = document.getElementById('display');
-
-      
       function setup() {
-
-      display.replaceChildren();
-        
-      for (let row = 0; row < 14; row++) {
-        for (let col = 0; col < width_range; col++) {
-          const dot = document.createElement('div');
-          dot.classList.add('dot');
-          dot.id = `${row}-${col}`;
-          dot.addEventListener("click", function() {
-            if (this.style.backgroundColor == "rgb(255, 192, 2)") {
-              this.style.backgroundColor = "#696969";
-            } else {
-              this.style.backgroundColor = "#FFC002";
-            }
-            update_json();
-          });
-          display.appendChild(dot);
+        display.replaceChildren();   
+        for (let row = 0; row < 14; row++) {
+          for (let col = 0; col < width_range; col++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.id = `${row}-${col}`;
+            dot.addEventListener("click", function() {
+              if (this.style.backgroundColor == "rgb(255, 192, 2)") {
+                this.style.backgroundColor = "#696969";
+              } else {
+                this.style.backgroundColor = "#FFC002";
+              }
+              update_json();
+            });
+            display.appendChild(dot);
+          }
+          const br = document.createElement('br');
+          display.appendChild(br);
         }
-        const br = document.createElement('br');
-        display.appendChild(br);
       }
-
-      }
-      
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
