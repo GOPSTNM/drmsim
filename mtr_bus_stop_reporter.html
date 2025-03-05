@@ -67,6 +67,7 @@
           e_font_bold = data;
         })
       function clear_display() {
+        clearInterval(scroll);
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
       function show() {
@@ -94,7 +95,7 @@
           time_needed = 143 + display_data[0].length;
           display_data = display_data.map(display_data => "0".repeat(143) + display_data);
           time = 0;
-          let scroll = setInterval(scroll_move, 30);
+          let scroll = setInterval(scroll_move, 50);
         }
       }
       function scroll_move(data) {
