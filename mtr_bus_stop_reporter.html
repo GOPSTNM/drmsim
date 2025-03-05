@@ -68,17 +68,17 @@
       }
       function show() {
         let input = document.getElementById("text_input").value;
-        let to_display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        let display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (let i = 0; i < input.length; i++) {
-          let character = font1[input[i]];
+          let character = c_font[input[i]];
           if (character === undefined) {
           } else {
             for (let k = 0; k < character.length; k++) {
-              to_display_data[k] += character[k];
+              display_data[k] += character[k];
             }
           }
         }
-        to_display(to_display_data)
+        alert(display_data);
       }
       function to_display(data) {
         clear_display()
