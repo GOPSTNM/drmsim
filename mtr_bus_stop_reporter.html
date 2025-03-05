@@ -28,15 +28,15 @@
     <input type="button" value="Show" onclick="show()">
     <input type="button" value="Clear" onclick="clear_display()">
     <script>
-      const display = document.getElementById('display');
+      const display = document.getElementById("display");
       for (let row = -2; row < 17; row++) {
         for (let col = 0; col < 143; col++) {
-          const dot = document.createElement('div');
+          const dot = document.createElement("div");
           dot.classList.add('dot');
           dot.id = `${row}-${col}`;
           display.appendChild(dot);
         }
-        const br = document.createElement('br');
+        const br = document.createElement("br");
         display.appendChild(br);
       }
       let c_font;
@@ -67,6 +67,7 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
       }
       function show() {
+        let display_mode = document.getElementById("display_mode").value;
         let input = document.getElementById("text_input").value;
         let display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (let i = 0; i < input.length; i++) {
@@ -78,21 +79,16 @@
             }
           }
         }
-        alert(display_data);
+        to_display(display_data);
       }
       function to_display(data) {
         clear_display()
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
-            if (data[i][k] == "1") {
-              add(i, k);
+            if (data[i][k] == "1" && k >= 0 && k < 143) {
+              document.getElementById(i + "-" + k).style.backgroundColor = "#FFC002";
             }
           }
-        }
-      }
-      function add(row, col) {
-        if (col >= 0 && col < 143) {
-          document.getElementById(row + "-" + col).style.backgroundColor = "#FFC002";
         }
       }
     </script>
