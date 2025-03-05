@@ -39,6 +39,7 @@
       let width_range = 15;
       function update_range() {
         width_range = document.getElementById('width_range').value;
+        setup();
       }
       const display = document.getElementById('display');
       function setup() {
@@ -100,6 +101,7 @@
         out += "\n  ], ";
         document.getElementById("output").value = out;
       }
+      setup();
     </script>
   </body>
 </html>
