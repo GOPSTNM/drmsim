@@ -88,6 +88,7 @@
           }
           to_display(display_data);
         } else if (display_mode == "scroll") {
+          display_data = display_data.map(display_data => "0".repeat(143) + display_data);
           // to be done
         }
       }
