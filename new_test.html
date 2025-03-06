@@ -82,7 +82,7 @@
         }
       }
       function update_json() {
-        let out = '"' + document.getElementById("text_input").value + '": [\n    ';
+        let out = "";
         for (let row = 0; row < 14; row++) {
           out += '"';
           for (let col = 0; col < width_range; col++) {
@@ -98,7 +98,6 @@
             out += ", ";
           }
         }
-        out += "\n  ], ";
         document.getElementById("output").value = out;
       }
       setup();
