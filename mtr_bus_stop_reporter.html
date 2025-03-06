@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="display" id="display"></div>
-    <input type="text" id="text_input" value="請 勿 在 上 層 及 梯 級 站 立">
+    <input type="text" id="text_input" value="請勿在上層及梯級站立">
     <select id="display_mode">
       <option value="left">Left</option>
       <option value="centre">Centre</option>
@@ -76,6 +76,8 @@
         clear_display();
         let display_mode = document.getElementById("display_mode").value;
         let input = document.getElementById("text_input").value;
+        let display_input = input.replace(" ", "  ").split('').join(' ');
+        alert(display_input);
         display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (let i = 0; i < input.length; i++) {
           let character = c_font[input[i]];
