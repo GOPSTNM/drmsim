@@ -76,6 +76,7 @@
         clear_display();
         let display_mode = document.getElementById("display_mode").value;
         let input = document.getElementById("text_input").value.replace(" ", "  ").split('').join(' ');
+        alert(input);
         display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (let i = 0; i < input.length; i++) {
           let character = c_font[input[i]];
