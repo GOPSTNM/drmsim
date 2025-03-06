@@ -80,6 +80,10 @@
         for (let i = 0; i < input.length; i++) {
           let character = c_font[input[i]];
           if (character === undefined) {
+            character = e_font[input[i]];
+            for (let k = 0; k < character.length; k++) {
+              display_data[k] += character[k];
+            }
           } else {
             for (let k = 0; k < character.length; k++) {
               display_data[k] += character[k];
