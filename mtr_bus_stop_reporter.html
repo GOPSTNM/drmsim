@@ -63,13 +63,6 @@
           e_font = data;
           alert("done");
         })
-      fetch("mtr_bus_font/mtr_bus_e_font_bold.json")
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          e_font_bold = data;
-        })
       function clear_display() {
         clearInterval(scroll);
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
