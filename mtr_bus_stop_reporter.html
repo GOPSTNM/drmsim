@@ -5,7 +5,7 @@
     <style>
       .display {
         width: 858px;
-        background-color: #4D4D4D;
+        background-color: #5C5C5C;
       }
       .dot {
         height: 5px;
@@ -13,7 +13,7 @@
         border-radius: 100%;
         margin: 0.5px;
         display: inline-block;
-        background-color: #5C5C5C;
+        background-color: #6E6E6E;
       }
     </style>
   </head>
@@ -63,7 +63,7 @@
         })
       function clear_display() {
         clearInterval(scroll);
-        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#5C5C5C");
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
       }
       function show() {
         clear_display();
@@ -104,7 +104,7 @@
         }
       }
       function to_display(data) {
-        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#5C5C5C");
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
             if (data[i][k] == "1" && (k+display_space) >= 0 && (k+display_space) < 143) {
