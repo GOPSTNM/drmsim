@@ -208,7 +208,7 @@
         </div>
         <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="60px" height="60px">
         <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="60px" height="60px">
-        <div class="blue_bar">
+        <div id="blue_bar" class="blue_bar">
           <span class="ctext">本班列車以第一城為終點站</span>
           <span class="etext">Train stops service at City One</span>
         </div>
@@ -219,8 +219,8 @@
       <input type="button" onclick="update_drm(2);" value="Close Doors">
       <input type="button" onclick="document.getElementById('stage').value -= -1; update_drm(3);" value="Depart">
       <input type="button" onclick="document.getElementById('stage').value -= 1; update_drm(3);" value="Reverse">
-      <input type="button" onclick="document.getElementsByClassName('blue_bar').style.display = 'block';" value="Message">
-      <input type="button" onclick="document.getElementsByClassName('blue_bar').style.display = 'none';" value="Hide">
+      <input type="button" onclick="document.getElementById('blue_bar').style.display = 'block';" value="Message">
+      <input type="button" onclick="document.getElementById('blue_bar').style.display = 'none';" value="Hide">
       <script>
         fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
           .then(x => x.text())
@@ -245,7 +245,7 @@
             </div>
             <img class="door_mtg_left" src="logo/mind_the_gap_left.svg" width="60px" height="60px">
             <img class="door_mtg_right" src="logo/mind_the_gap_right.svg" width="60px" height="60px">
-            <div class="blue_bar hide">
+            <div id="blue_bar" class="blue_bar hide">
             <span class="ctext">訊息</span>
             <span class="etext">Message</span>
             </div>`;
@@ -259,7 +259,7 @@
             <span class="ctext">請勿靠近車門</span>
             <span class="etext">Please stand back from the train doors</span>
             </div>
-            <div class="blue_bar hide">
+            <div id="blue_bar" class="blue_bar hide">
             <span class="ctext">訊息</span>
             <span class="etext">Message</span>
             </div>`;
@@ -284,7 +284,7 @@
               cont += `<div class="stn_ename etext" style="color: #${text_colour} top: ${52-14*(i%2)}%; left: ${((1000*(i+1))/(stn_no+1))}px;">${station_list[i * 3 + 1]}</div>`;
             }
             cont += `<img class="arrow" src="logo/arrow_right.svg" style="left: ${(1000*stage)/(stn_no+1)+(1000*0.5)/(stn_no+1)}px;">
-            <div class="blue_bar hide">
+            <div id="blue_bar" class="blue_bar hide">
             <span class="ctext">訊息</span>
             <span class="etext">Message</span>
             </div>`;
