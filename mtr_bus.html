@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="display" id="display"></div><br>
-    <select id="route"> 
+    <select id="route" onchange="input_route_change()"> 
       <option value="K12">K12大埔墟站至八號花園</option>
       <option value="K14">K14大埔超級城至大埔墟站</option>
       <option value="K17">K17大埔墟站至富善</option>
@@ -82,6 +82,16 @@
         .then(data => {
           font_s = data;
         })
+
+      
+      function input_route_change() {
+        let option_list = "";
+        for (let i in route_data[document.getElementById("route").value]) {
+          option_list += i;
+        }
+        alert(option_list);
+        document.getElementById("dest").innerHTML = option_list;
+      }
     </script>
   </body>
 </html>
