@@ -59,6 +59,7 @@
       let route_stage;
       let display_xspace;
       let display_yspace;
+      let display_yhide_space;
       let ymove;
       let ymove_time_needed;
       let ymove_time;
@@ -109,6 +110,7 @@
           display_data = font_c["乘"];
           display_xspace = 10;
           display_yspace = 19;
+          display_yhide_space = 2;
           ymove_time_needed = 16;
           ymove_time = 0;
           ymove = setInterval(ymove_act, 34);
@@ -128,7 +130,7 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
-            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_yspace) < 19) {
+            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_yspace) < (19 + display_yhide_space)) {
               document.getElementById((i+display_yspace) + "-" + (k+display_xspace)).style.backgroundColor = "#FFBC02";
             }
           }
