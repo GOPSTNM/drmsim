@@ -115,7 +115,7 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
-            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_ypace) < 19) {
+            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_yspace) < 19) {
               document.getElementById((i+display_yspace) + "-" + (k+display_space)).style.backgroundColor = "#FFBC02";
             }
           }
