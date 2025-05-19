@@ -50,9 +50,17 @@
         S: "請勿在上層或梯級站立      Please do not stand on the staircase or upper level",
         E: "乘客可在該站轉乘東鐵綫      Passengers may change here for the East Rail Line"
       };
+      let route_data;
       let font_c;
       let font_e;
       let font_s;
+      fetch("mtr_bus_font/stop_reporter_data.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          route_data = data;
+        })
       fetch("mtr_bus_font/mtr_bus_c_font.json")
         .then(response => {
           return response.json();
