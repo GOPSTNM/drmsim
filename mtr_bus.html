@@ -28,7 +28,7 @@
     </select>
     <select id="dest" onchange="input_dest_change()"> 
     </select>
-    <input type="button" value="Start Route" onclick=""><br>
+    <input type="button" value="Start Route" onclick="start_route()"><br>
     <input type="button" value="Arrive / Depart" onclick=""><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
@@ -56,6 +56,7 @@
       let font_e;
       let font_s;
       let curr_route_data;
+      let route_stage;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -95,6 +96,10 @@
       }
       function input_dest_change() {
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
+      }
+
+      function start_route() {
+        route_stage = 0;
       }
     </script>
   </body>
