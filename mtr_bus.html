@@ -57,6 +57,8 @@
       let font_s;
       let curr_route_data;
       let route_stage;
+      let display_xspace;
+      let display_yspace;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -100,6 +102,24 @@
 
       function start_route() {
         route_stage = 0;
+        display_xspace = 10;
+        display_yspace = 2;
+        to_display(font_s["#BS"]);
+        while (route_stage = 0) {
+          route_stae = 1;
+        }
+      }
+
+      
+      function to_display(data) {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_ypace) < 19) {
+              document.getElementById((i+display_yspace) + "-" + (k+display_space)).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
       }
     </script>
   </body>
