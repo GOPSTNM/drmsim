@@ -102,12 +102,14 @@
 
       function start_route() {
         route_stage = 0;
-        display_xspace = 10;
-        display_yspace = 2;
-        to_display(font_c["乘"]);
         while (route_stage = 0) {
-          route_stae = 1;
-        }
+          display_xspace = 10;
+          display_yspace = 18;
+          for (let i = 0; i < 17; i++) {
+            to_display(font_c["乘"]);
+            display_yspace -= 1;
+          }
+          route_stage = 1;
       }
 
       
