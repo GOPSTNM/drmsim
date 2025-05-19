@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        margin: 0.5px;
+        display: inline-block;
+        background-color: #6E6E6E;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div>
+    <input type="text" id="text_input" value="乘客可在該站轉乘屯馬綫      Passengers may change here for the Tuen Ma Line">
+    <select id="display_mode">
+      <option value="left">Left</option>
+      <option value="centre">Centre</option>
+      <option value="scroll">Scroll</option>
+    </select>
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Clear" onclick="clear_display()">
+    <script>
+      const display = document.getElementById("display");
+      for (let row = -2; row < 17; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        display.appendChild(br);
+      }
+      let display_data;
+      let display_space = 0;
+      let time = 0;
+      let time_needed = 0;
+      let scroll;
+      let c_font;
+      let e_font;
+      let e_font_bold;
+      fetch("mtr_bus_font/mtr_bus_c_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          c_font = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_e_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          e_font = data;
+        })
+      function clear_display() {
+        clearInterval(scroll);
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+      }
+      function show() {
+        clear_display();
+        let display_mode = document.getElementById("display_mode").value;
+        let input = document.getElementById("text_input").value.replace(/ /g, "  ").split("").join(" ");
+        display_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        for (let i = 0; i < input.length; i++) {
+          let character = c_font[input[i]];
+          if (character === undefined) {
+            character = e_font[input[i]];
+          }
+          if (character === undefined) {
+          } else {
+            for (let k = 0; k < character.length; k++) {
+              display_data[k] += character[k];
+            }
+          }
+        }
+        if (display_mode == "left") {
+          display_space = 0;
+          to_display(display_data);
+        } else if (display_mode == "centre") {
+          display_space = Math.floor((143 - display_data[0].length)/2);  
+          to_display(display_data);
+        } else if (display_mode == "scroll") {
+          time_needed = 143 + display_data[0].length;
+          display_space = 143;
+          time = 0;
+          scroll = setInterval(scroll_move, 17);
+        }
+      }
+      function scroll_move(data) {
+        display_space -= 1;
+        to_display(display_data);
+        time += 1;
+        if (time > time_needed) {
+          clearInterval(scroll);
+        }
+      }
+      function to_display(data) {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1" && (k+display_space) >= 0 && (k+display_space) < 143) {
+              document.getElementById(i + "-" + (k+display_space)).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
