@@ -119,7 +119,7 @@
         display_yspace -= 1;
         to_display(display_data);
         ymove_time += 1;
-        if (ymove_time > time_needed) {
+        if (ymove_time > ymove_time_needed) {
           clearInterval(ymove);
         }
       }
