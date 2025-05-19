@@ -89,6 +89,7 @@
         let option_list = "";
         for (let i in route_data[document.getElementById("route").value]) {
           option_list += `<option value="${i}">${i}</option>`;
+        }
         document.getElementById("dest").innerHTML = option_list;
       }
     </script>
