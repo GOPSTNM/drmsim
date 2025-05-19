@@ -109,7 +109,7 @@
           display_data = font_c["乘"];
           display_xspace = 10;
           display_yspace = 18;
-          ymove_time_needed = 1;
+          ymove_time_needed = 17;
           ymove_time = 0;
           ymove = setInterval(ymove_act, 17);
           route_stage = 1;
@@ -118,7 +118,7 @@
       function ymove_act() {
         display_yspace -= 1;
         to_display(display_data);
-        time += 1;
+        ymove_time += 1;
         if (time > time_needed) {
           clearInterval(ymove);
         }
