@@ -59,6 +59,9 @@
       let route_stage;
       let display_xspace;
       let display_yspace;
+      let ymove;
+      let ymove_time_needed;
+      let ymove_time;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -103,16 +106,26 @@
       function start_route() {
         route_stage = 0;
         while (route_stage = 0) {
+          display_data = font_c["乘"];
           display_xspace = 10;
           display_yspace = 18;
           for (let i = 0; i < 17; i++) {
-            to_display(font_c["乘"]);
-            display_yspace -= 1;
+            time_needed = 143 + display_data.length;
+            display_space = 18;
+            ymove_time = 0;
+            ymove = setInterval(scroll_move, 17);
           }
           route_stage = 1;
         }
       }
-
+      function ymove() {
+        display_yspace -= 1;
+        to_display(display_data);
+        time += 1;
+        if (time > time_needed) {
+          clearInterval(ymove);
+        }
+      }
       
       function to_display(data) {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
