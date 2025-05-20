@@ -123,12 +123,22 @@
           clearInterval(ymove);
         }
       }
-      function font_c_todata(text) {
-        let font_c_data = "";
+      function font_todata(text) {
+        let font_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (const c of text) {
-          font_c_data += !font_c[c] ? font_e[c] : font_c[c];
+          let character_data;
+          if (font_c[c]) {
+            character_data = font_c[c];
+          } else if (font_e[c]) {
+            character_data = font_e[c];
+          } else {
+            character_data = font_e["0"]
+          }
+          for (let k = 0; k < character_data.length; k++) {
+            font_data[k] += character_data[k];
+          }
         }
-        return font_c_data;
+        return font_data;
       }
       function to_display(data) {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
