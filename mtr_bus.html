@@ -129,8 +129,8 @@
           let character_data;
           if (font_c[c]) {
             character_data = font_c[c];
-            character_data.unshift("000000000000000", "000000000000000", "000000000000000");
-            character_data.push("000000000000000", "000000000000000");
+            character_data.unshift("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
+            character_data.push("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
           } else if (font_e[c]) {
             character_data = font_e[c];
           } else {
