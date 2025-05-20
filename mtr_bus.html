@@ -119,8 +119,6 @@
         }
       }
       function ymove_act() {
-        console.log(ymove_time);
-        console.log(display_yspace);
         to_display(display_data);
         display_yspace -= 1;
         ymove_time += 1;
@@ -129,20 +127,19 @@
         }
       }
       function font_todata(text) {
-        let font_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        let font_data = Array(19);
         for (const c of text) {
           let character_data;
           if (font_c[c]) {
             let margin = "0".repeat(font_c[c][0].length);
-            character_data = font_c[c];
+            character_data = font_c[c].slice();
             character_data.push(margin, margin);
             character_data.unshift(margin, margin, margin);
           } else if (font_e[c]) {
-            character_data = font_e[c];
+            //character_data = font_e[c];
           } else {
-            character_data = font_e["0"]
+            //character_data = font_e["0"]
           }
-          console.log(character_data.length);
           for (let k = 0; k < 19; k++) {
             font_data[k] += character_data[k];
           }
