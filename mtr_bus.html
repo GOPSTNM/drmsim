@@ -103,8 +103,7 @@
       function start_route() {
         route_stage = 0;
         while (route_stage == 0) {
-          display_data = font_todata("歡     迎     乘     搭");
-          console.log(display_data);
+          display_data = font_todata("歡     迎     乘     搭 MTR Bus 你");
           display_xspace = 36;
           display_yspace = 15;
           display_yhide_space = 2;
@@ -135,9 +134,12 @@
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
           } else if (font_e[c]) {
-            //character_data = font_e[c];
+            let margin = "0".repeat(font_e[c][0].length);
+            character_data = font_e[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
           } else {
-            //character_data = font_e["0"]
+            character_data = Array(19).fill("1".repeat(15))
           }
           for (let k = 0; k < 19; k++) {
             font_data[k] += character_data[k];
