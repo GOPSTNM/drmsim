@@ -124,11 +124,13 @@
         }
       }
       function font_todata(text) {
-        let font_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+        let font_data = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         for (const c of text) {
           let character_data;
           if (font_c[c]) {
             character_data = font_c[c];
+            character_data.unshift("000000000000000", "000000000000000", "000000000000000");
+            character_data.push("000000000000000", "000000000000000");
           } else if (font_e[c]) {
             character_data = font_e[c];
           } else {
