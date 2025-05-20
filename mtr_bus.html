@@ -42,8 +42,6 @@
         const br = document.createElement("br");
         display.appendChild(br);
       }
-      
-
       let special_message = {
         M: "乘客請行入車廂裏面      Please move further into bus compartment",
         H: "請緊握扶手     Please hold the handrail",
@@ -90,9 +88,7 @@
         })
         .then(data => {
           font_s = data;
-        })
-
-      
+        })   
       function input_route_change() {
         let option_list = "";
         for (let i in route_data[document.getElementById("route").value]) {
@@ -103,11 +99,10 @@
       function input_dest_change() {
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
-
       function start_route() {
         route_stage = 0;
         while (route_stage == 0) {
-          display_data = font_c["乘"];
+          display_data = font_c_todata("歡     迎     乘     搭");
           display_xspace = 10;
           display_yspace = 19;
           display_yhide_space = 2;
@@ -128,7 +123,12 @@
           clearInterval(ymove);
         }
       }
-      
+      function font_c_todata(text) {
+        let font_c_data = "";
+        for (const c of text) {
+          font_c_data += font_c[c];
+        }
+      }
       function to_display(data) {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < data.length; i++) {
