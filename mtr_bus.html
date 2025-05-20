@@ -126,8 +126,9 @@
       function font_c_todata(text) {
         let font_c_data = "";
         for (const c of text) {
-          font_c_data += font_c[c];
+          font_c_data += !font_c[c] ? font_e[c] : font_c[c];
         }
+        return font_c_data;
       }
       function to_display(data) {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
