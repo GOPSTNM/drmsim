@@ -106,7 +106,7 @@
           display_xspace = 36;
           display_yspace = 14;
           display_yhide_space = 2;
-          ymove_time_needed = 13;
+          ymove_time_needed = 10;
           ymove_time = 0;
           if (ymove) {
             clearInterval(ymove);
@@ -129,8 +129,8 @@
           let character_data;
           if (font_c[c]) {
             character_data = font_c[c];
-            character_data.unshift("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
-            character_data.push("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
+            character_data.push("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
+            character_data.unshift("0".repeat(font_c[c][0].length), "0".repeat(font_c[c][0].length));
           } else if (font_e[c]) {
             character_data = font_e[c];
           } else {
