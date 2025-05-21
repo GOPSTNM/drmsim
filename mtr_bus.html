@@ -108,11 +108,9 @@
       }
       function start_route() {
         route_stage = 0;
+        clearTimeout(welcome_loop);
         display_welcome();
         function display_welcome() {
-          clearInterval(xmove);
-          clearInterval(ymove);
-          clearTimeout(todisplay_wait);
           clearTimeout(welcome_loop);
           reset_move();
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
