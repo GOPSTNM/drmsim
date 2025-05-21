@@ -111,6 +111,9 @@
         let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 4800;
         display_welcome();
         function display_welcome() {
+          if (welcome_loop) {
+            clearTimeout(welcome_loop);
+          }
           display_data = font_todata("歡 迎 乘 搭");
           display_xspace = 36;
           display_yspace = 15;
