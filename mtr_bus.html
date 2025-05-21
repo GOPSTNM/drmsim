@@ -65,9 +65,9 @@
       let xmove;
       let xmove_time_needed;
       let xmove_time;
-      let todisplay_wait;
       let welcome_loop;
-      let welcome_terminate;
+      let welcome_engmsg_terminate;
+      let welcome_routemsg_terminate;;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -110,8 +110,8 @@
       function start_route() {
         route_stage = 0;
         clearTimeout(welcome_loop);
-        clearTimeout(todisplay_wait);
-        clearTimeout(welcome_terminate);
+        clearTimeout(welcome_engmsg_terminate);
+        clearTimeout(welcome_routemsg_terminate);
         clearInterval(ymove);
         clearInterval(xmove);
         display_welcome();
@@ -125,14 +125,14 @@
           ymove_time_needed = 15;
           ymove_time = 0;
           ymove = setInterval(ymove_act, 50);
-          todisplay_wait = setTimeout(function(){
+          welcome_engmsg_terminate = setTimeout(function(){
             display_data = font_todata("Welcome aboard");
             display_xspace = Math.round((143-display_data[0].length)/2);
             display_yspace = 0;
             display_yhide_space = 0;
             to_display(display_data);
           }, 2800);
-          welcome_terminate = setTimeout(function(){
+          welcome_routemsg_terminate = setTimeout(function(){
             display_data = font_todata(route_welcome);
             display_xspace = 142;
             display_yspace = 0;
