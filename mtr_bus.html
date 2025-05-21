@@ -111,8 +111,6 @@
         clearTimeout(welcome_loop);
         display_welcome();
         function display_welcome() {
-          clearTimeout(welcome_loop);
-          reset_move();
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
           let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
           display_data = font_todata("歡 迎 乘 搭");
@@ -140,9 +138,8 @@
           }, 4800);
           welcome_loop = setTimeout(display_welcome, route_welcome_duration);
         }
-      }
-      function reset_move() {
-        [display_xspace, display_yspace, display_yhide_space, ymove, ymove_time_needed, ymove_time, xmove, xmove_time_needed, xmove_time] = Array(9).fill(0);
+        while (route_stage == 0) {}
+        alert("hi");
       }
       function ymove_act() {
         to_display(display_data);
