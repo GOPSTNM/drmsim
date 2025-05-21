@@ -99,6 +99,7 @@
           option_list += `<option value="${i}">${i}</option>`;
         }
         document.getElementById("dest").innerHTML = option_list;
+        input_dest_change();
       }
       function input_dest_change() {
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
