@@ -120,6 +120,13 @@
             display_yhide_space = 0;
             to_display(display_data);
           }, 4000);
+          setTimeout(function(){
+            display_data = font_todata("Welcome aboard");
+            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_yspace = 0;
+            display_yhide_space = 0;
+            to_display(display_data);
+          }, 8000);
           route_stage = 1;
         }
       }
