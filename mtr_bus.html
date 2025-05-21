@@ -104,7 +104,7 @@
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function start_route() {
-        let route_welcome = route_data[document.getElementById("route").value][document.getElementById("dest").value][0];
+        let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
         route_stage = 0;
         while (route_stage == 0) {
           display_data = font_todata("歡 迎 乘 搭");
