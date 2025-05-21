@@ -115,8 +115,7 @@
           ymove = setInterval(ymove_act, 45);
           setTimeout(function(){
             display_data = font_todata("Welcome aboard");
-            alert(display_data);
-            display_xspace = (143-display_data)/2;
+            display_xspace = (143-display_data[0].length)/2;
             display_yspace = 0;
             display_yhide_space = 0;
             to_display();
