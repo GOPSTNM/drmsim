@@ -115,14 +115,14 @@
           if (ymove) {
             clearInterval(ymove);
           }
-          ymove = setInterval(ymove_act, 45);
+          ymove = setInterval(ymove_act, 50);
           setTimeout(function(){
             display_data = font_todata("Welcome aboard");
             display_xspace = Math.round((143-display_data[0].length)/2);
             display_yspace = 0;
             display_yhide_space = 0;
             to_display(display_data);
-          }, 4000);
+          }, 2800);
           setTimeout(function(){
             display_data = font_todata("路綫 K75A 前往港鐵天水圍站     Route K75A towards MTR Tin Shui Wai Station");
             display_xspace = 142;
@@ -131,7 +131,7 @@
             xmove_time_needed = display_data[0].length + 142;
             xmove_time = 0;
             xmove = setInterval(xmove_act, 17);
-          }, 8000);
+          }, 4800);
           route_stage = 1;
         }
       }
