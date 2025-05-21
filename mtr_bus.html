@@ -104,6 +104,7 @@
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function start_route() {
+        let route_welcome = route_data[document.getElementById("route").value][document.getElementById("dest").value][0];
         route_stage = 0;
         while (route_stage == 0) {
           display_data = font_todata("歡 迎 乘 搭");
@@ -112,9 +113,6 @@
           display_yhide_space = 2;
           ymove_time_needed = 15;
           ymove_time = 0;
-          if (ymove) {
-            clearInterval(ymove);
-          }
           ymove = setInterval(ymove_act, 50);
           setTimeout(function(){
             display_data = font_todata("Welcome aboard");
@@ -124,7 +122,7 @@
             to_display(display_data);
           }, 2800);
           setTimeout(function(){
-            display_data = font_todata("路綫 K75A 前往港鐵天水圍站     Route K75A towards MTR Tin Shui Wai Station");
+            display_data = font_todata(route_welcome);
             display_xspace = 142;
             display_yspace = 0;
             display_yhide_space = 0;
