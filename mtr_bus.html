@@ -110,6 +110,7 @@
         route_stage = 0;
         clearTimeout(welcome_loop);
         clearTimeout(todisplay_wait);
+        clearTimeout(welcome_terminate);
         clearInterval(ymove);
         clearInterval(xmove);
         display_welcome();
@@ -130,7 +131,7 @@
             display_yhide_space = 0;
             to_display(display_data);
           }, 2800);
-          setTimeout(function(){
+          welcome_terminate = setTimeout(function(){
             display_data = font_todata(route_welcome);
             display_xspace = 142;
             display_yspace = 0;
