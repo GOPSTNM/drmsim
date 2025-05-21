@@ -65,6 +65,7 @@
       let xmove;
       let xmove_time_needed;
       let xmove_time;
+      let todisplay_wait;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -106,8 +107,14 @@
       }
       function start_route() {
         route_stage = 0;
+        let welcome_loop;
         display_welcome();
         function display_welcome() {
+          if (true) {
+            clearInterval(xmove);
+            clearInterval(ymove);
+            clearTimeout(todisplay_wait);
+          }
           reset_move();
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
           let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
@@ -118,7 +125,7 @@
           ymove_time_needed = 15;
           ymove_time = 0;
           ymove = setInterval(ymove_act, 50);
-          setTimeout(function(){
+          todisplay_wait = setTimeout(function(){
             display_data = font_todata("Welcome aboard");
             display_xspace = Math.round((143-display_data[0].length)/2);
             display_yspace = 0;
@@ -134,7 +141,7 @@
             xmove_time = 0;
             xmove = setInterval(xmove_act, 18);
           }, 4800);
-          setTimeout(display_welcome, route_welcome_duration);
+          welcome_loop = setTimeout(display_welcome, route_welcome_duration);
         }
       }
       function reset_move() {
