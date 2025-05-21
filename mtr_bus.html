@@ -113,7 +113,9 @@
           clearInterval(xmove);
           clearInterval(ymove);
           clearTimeout(todisplay_wait);
-          clearTimeout(welcome_loop);
+          if (welcome_loop) {
+            return;
+          }
           reset_move();
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
           let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
