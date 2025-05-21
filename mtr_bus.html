@@ -103,7 +103,7 @@
       function start_route() {
         route_stage = 0;
         while (route_stage == 0) {
-          display_data = font_todata("歡     迎     乘     搭");
+          display_data = font_todata("歡 迎 乘 搭");
           display_xspace = 36;
           display_yspace = 15;
           display_yhide_space = 2;
@@ -114,10 +114,11 @@
           }
           ymove = setInterval(ymove_act, 45);
           setTimeout(function(){
-            display_xspace = 0;
+            display_data = font_todata("Welcome aboard");
+            display_xspace = (143-display_data)/2;
             display_yspace = 0;
             display_yhide_space = 0;
-            to_display(font_todata("W e l c o m e     a b o a r d"));
+            to_display();
           }, 2000);
           route_stage = 1;
         }
