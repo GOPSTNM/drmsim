@@ -62,6 +62,9 @@
       let ymove;
       let ymove_time_needed;
       let ymove_time;
+      let xmove;
+      let xmove_time_needed;
+      let xmove_time;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -122,10 +125,10 @@
           }, 4000);
           setTimeout(function(){
             display_data = font_todata("Welcome aboard");
-            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_xspace = display_data[0].length + 143;
             display_yspace = 0;
             display_yhide_space = 0;
-            to_display(display_data);
+            xmove = setInterval(xmove_act, 17
           }, 8000);
           route_stage = 1;
         }
@@ -136,6 +139,13 @@
         ymove_time += 1;
         if (ymove_time > ymove_time_needed) {
           clearInterval(ymove);
+        }
+      }function xmove_act() {
+        to_display(display_data);
+        display_xspace -= 1;
+        xmove_time += 1;
+        if (xmove_time > xmove_time_needed) {
+          clearInterval(xmove);
         }
       }
       function font_todata(text) {
