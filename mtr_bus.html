@@ -66,6 +66,7 @@
       let xmove_time_needed;
       let xmove_time;
       let todisplay_wait;
+      let welcome_loop;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -107,15 +108,12 @@
       }
       function start_route() {
         route_stage = 0;
-        let welcome_loop;
+        clearInterval(xmove);
+        clearInterval(ymove);
+        clearTimeout(todisplay_wait);
+        clearTimeout(welcome_loop);
         display_welcome();
         function display_welcome() {
-          clearInterval(xmove);
-          clearInterval(ymove);
-          clearTimeout(todisplay_wait);
-          if (welcome_loop) {
-            return;
-          }
           reset_move();
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
           let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
