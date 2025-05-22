@@ -117,28 +117,22 @@
         display_welcome();
         function display_welcome() {
           let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
-          let ifdisplaywelcome = 0;
-          if (route_welcome.includes("+")) {
-            route_welcome = route_welcome.replace("+", "");
-            ifdisplaywelcome = 7600;
-          }
-          let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + ifdisplaywelcome;
-          if (ifdisplaywelcome != 0) {
-            display_data = font_todata("歡 迎 乘 搭");
-            display_xspace = 36;
-            display_yspace = 15;
-            display_yhide_space = 2;
-            ymove_time_needed = 15;
-            ymove_time = 0;
-            ymove = setInterval(ymove_act, 50);
-            welcome_engmsg_terminate = setTimeout(function(){
-              display_data = font_todata("Welcome aboard");
-              display_xspace = Math.round((143-display_data[0].length)/2);
-              display_yspace = 0;
-              display_yhide_space = 0;
-              to_display(display_data);
-            }, 2800);
-          }
+          route_welcome = route_welcome.replace("+", "");
+          let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
+          display_data = font_todata("歡 迎 乘 搭");
+          display_xspace = 36;
+          display_yspace = 15;
+          display_yhide_space = 2;
+          ymove_time_needed = 15;
+          ymove_time = 0;
+          ymove = setInterval(ymove_act, 50);
+          welcome_engmsg_terminate = setTimeout(function(){
+            display_data = font_todata("Welcome aboard");
+            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_yspace = 0;
+            display_yhide_space = 0;
+            to_display(display_data);
+          }, 2800);
           welcome_routemsg_terminate = setTimeout(function(){
             display_data = font_todata(route_welcome);
             display_xspace = 142;
