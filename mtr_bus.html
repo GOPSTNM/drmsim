@@ -108,7 +108,6 @@
         curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function start_route() {
-        await new Promise(resolve => setTimeout(resolve, 5000));
         route_stage = 0;
         clearTimeout(welcome_loop);
         clearTimeout(welcome_engmsg_terminate);
