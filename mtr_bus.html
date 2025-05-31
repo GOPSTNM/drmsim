@@ -55,6 +55,7 @@
       let font_e;
       let font_s;
       let route_data;
+      let screen_update_ms;
       let route_stage;
       let route_sentence;
       let route_pixel;
@@ -101,6 +102,7 @@
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function start_route() {
+        screen_update_ms = 18;
         route_stage = 0;
         route_sentence = 0;
         route_pixel = 0;
