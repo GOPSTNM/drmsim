@@ -105,6 +105,16 @@
         route_sentence = 0;
         route_pixel = 0;
       }
+      function start_stage() {
+        route_stage = 0;
+        route_sentence = 0;
+        route_pixel = 0;
+      }
+      function start_sentence() {
+        route_stage = 0;
+        route_sentence = 0;
+        route_pixel = 0;
+      }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
