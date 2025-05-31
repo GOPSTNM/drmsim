@@ -30,7 +30,7 @@
       <option selected="true" disabled="true">Select Destination</option>
     </select>
     <input type="button" value="Start Route" onclick="start_route()"><input type="button" value="Stop" onclick="clearTimeout(screen_update_timeout);"><br>
-    <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
+    <input type="button" value="Arrive / Depart" onclick="route_stage += 1; update_stage();"><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -106,11 +106,15 @@
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function start_route() {
-        screen_update_ms = 50;
         route_stage = 0;
-        route_sentence = 0;
-        route_pixel = 0;
         route_stage_max = route_data.length;
+        update_stage();
+      }
+      function update_stage() {
+        clearTimeout(screen_update_timeout);
+        screen_update_ms = 50;
+        route_sentence = 0;
+        route_pixel = 0;  
         route_sentence_max = 3;
         route_pixel_max = 15;
         screen_update();
