@@ -29,8 +29,8 @@
     <select id="dest" onchange="input_dest_change()">
       <option selected="true" disabled="true">Select Destination</option>
     </select>
-    <input type="button" value="Start Route" onclick="start_route()"><input type="button" value="Stop" onclick="clearTimeout(screen_update_timeout);"><br>
-    <input type="button" value="Arrive / Depart" onclick="route_stage += 1; update_stage();"><input type="button" value="Open / Close Door" onclick="">
+    <input type="button" value="Start Route" onclick="start_route()"><br>
+    <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -55,14 +55,9 @@
       let font_e;
       let font_s;
       let route_data;
-      let screen_update_timeout;
-      let screen_update_ms;
       let route_stage;
       let route_sentence;
       let route_pixel;
-      let route_stage_max;
-      let route_sentence_max;
-      let route_pixel_max;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
@@ -107,37 +102,8 @@
       }
       function start_route() {
         route_stage = 0;
-        route_stage_max = route_data.length;
-        update_stage();
-      }
-      function update_stage() {
-        clearTimeout(screen_update_timeout);
-        screen_update_ms = 50;
         route_sentence = 0;
-        route_pixel = 0;  
-        route_sentence_max = 3;
-        route_pixel_max = 15;
-        screen_update();
-      }
-      function screen_update() {
-        let sentences_list;
-        let display_data;
-        if (route_stage == 0) {
-          sentences_list = ["歡 迎 乘 搭", "Welcome aboard", route_data[Object.keys(route_data)[0]].replace("+", "")];
-          display_data = font_todata(sentences_list[route_sentence]);
-        } else {
-        }
-
-        if (route_pixel < route_pixel_max) {
-          route_pixel += 1;
-        } else {
-          if (route_sentence < route_sentence_max) {
-            route_sentence += 1
-          } else {
-            route_sentence = 0;
-          }
-        }
-        screen_update_timeout = setTimeout(screen_update, screen_update_ms);
+        route_pixel = 0;
       }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
