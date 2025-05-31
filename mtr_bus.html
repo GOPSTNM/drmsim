@@ -60,6 +60,9 @@
       let route_stage;
       let route_sentence;
       let route_pixel;
+      let route_stage_max;
+      let route_sentence_max;
+      let route_pixel_max;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
@@ -107,6 +110,9 @@
         route_stage = 0;
         route_sentence = 0;
         route_pixel = 0;
+        route_stage_max = route_data.length;
+        route_sentence_max = 3;
+        route_pixel_max = 15;
         screen_update();
       }
       function screen_update() {
@@ -114,7 +120,7 @@
         let display_data;
         if (route_stage == 0) {
           sentences_list = ["歡 迎 乘 搭", "Welcome aboard", route_data[Object.keys(route_data)[0]].replace("+", "")];
-          alert(sentences_list.toString());
+          display_data = font_todata(sentences_list[route_sentence]);
         }
         //screen_update_timeout = setTimeout(screen_update, screen_update_ms);
       }
