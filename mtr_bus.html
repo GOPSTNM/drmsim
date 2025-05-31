@@ -56,6 +56,8 @@
       let font_s;
       let route_data;
       let route_stage;
+      let route_sentence;
+      let route_pixel;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
@@ -97,6 +99,11 @@
       }
       function input_dest_change() {
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
+      }
+      function start_route() {
+        route_stage = 0;
+        route_sentence = 0;
+        route_pixel = 0;
       }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
