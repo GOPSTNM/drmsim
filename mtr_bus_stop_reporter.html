@@ -116,3 +116,203 @@
     </script>
   </body>
 </html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        margin: 0.5px;
+        display: inline-block;
+        background-color: #6E6E6E;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div><br>
+    <select id="route" onchange="input_route_change()">
+      <option selected="true" disabled="true">Select Route</option>
+      <option value="K12">K12大埔墟站至八號花園</option>
+      <option value="K14">K14大埔超級城至大埔墟站</option>
+      <option value="K17">K17大埔墟站至富善</option>
+      <option value="K18">K18大埔墟站至廣福</option>
+    </select>
+    <select id="dest" onchange="input_dest_change()">
+      <option selected="true" disabled="true">Select Destination</option>
+    </select>
+    <input type="button" value="Start Route" onclick="start_route()"><br>
+    <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
+    <script>
+      const display = document.getElementById("display");
+      for (let row = 0; row < 19; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        display.appendChild(br);
+      }
+      let special_message = {
+        M: "乘客請行入車廂裏面      Please move further into bus compartment",
+        H: "請緊握扶手     Please hold the handrail",
+        T: "乘客可在該站轉乘屯馬綫      Passengers may change here for the Tuen Ma Line",
+        S: "請勿在上層或梯級站立      Please do not stand on the staircase or upper level",
+        E: "乘客可在該站轉乘東鐵綫      Passengers may change here for the East Rail Line"
+      };
+      let route_data;
+      let font_c;
+      let font_e;
+      let font_s;
+      let curr_route_data;
+      let route_stage;
+      let display_xspace;
+      let display_yspace;
+      let display_yhide_space;
+      let ymove;
+      let ymove_time_needed;
+      let ymove_time;
+      let xmove;
+      let xmove_time_needed;
+      let xmove_time;
+      let welcome_loop;
+      let welcome_engmsg_terminate;
+      let welcome_routemsg_terminate;;
+      fetch("mtr_bus_font/stop_reporter_data.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          route_data = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_c_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_c = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_e_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_e = data;
+        })
+      fetch("mtr_bus_font/special_characters.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_s = data;
+        })   
+      function input_route_change() {
+        let option_list = "";
+        for (let i in route_data[document.getElementById("route").value]) {
+          option_list += `<option value="${i}">${i}</option>`;
+        }
+        document.getElementById("dest").innerHTML = option_list;
+        input_dest_change();
+      }
+      function input_dest_change() {
+        curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
+      }
+      function start_route() {
+        route_stage = 0;
+        clearTimeout(welcome_loop);
+        clearTimeout(welcome_engmsg_terminate);
+        clearTimeout(welcome_routemsg_terminate);
+        clearInterval(ymove);
+        clearInterval(xmove);
+        display_welcome();
+        function display_welcome() {
+          let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
+          route_welcome = route_welcome.replace("+", "");
+          let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
+          display_data = font_todata("歡 迎 乘 搭");
+          display_xspace = 36;
+          display_yspace = 15;
+          display_yhide_space = 2;
+          ymove_time_needed = 15;
+          ymove_time = 0;
+          ymove = setInterval(ymove_act, 50);
+          welcome_engmsg_terminate = setTimeout(function(){
+            display_data = font_todata("Welcome aboard");
+            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_yspace = 0;
+            display_yhide_space = 0;
+            to_display(display_data);
+          }, 2800);
+          welcome_routemsg_terminate = setTimeout(function(){
+            display_data = font_todata(route_welcome);
+            display_xspace = 142;
+            display_yspace = 0;
+            display_yhide_space = 0;
+            xmove_time_needed = display_data[0].length + 142;
+            xmove_time = 0;
+            xmove = setInterval(xmove_act, 18);
+          }, 4800);
+          welcome_loop = setTimeout(display_welcome, route_welcome_duration);
+        }
+      }
+      function ymove_act() {
+        to_display(display_data);
+        display_yspace -= 1;
+        ymove_time += 1;
+        if (ymove_time > ymove_time_needed) {
+          clearInterval(ymove);
+        }
+      }
+      function xmove_act() {
+        to_display(display_data);
+        display_xspace -= 1;
+        xmove_time += 1;
+        if (xmove_time > xmove_time_needed) {
+          clearInterval(xmove);
+        }
+      }
+      function font_todata(text) {
+        text = text.replaceAll(" ","  ").split("").join(" ");
+        let font_data = Array(19).fill("");
+        for (const c of text) {
+          let character_data;
+          if (font_c[c]) {
+            let margin = "0".repeat(font_c[c][0].length);
+            character_data = font_c[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
+          } else if (font_e[c]) {
+            let margin = "0".repeat(font_e[c][0].length);
+            character_data = font_e[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
+          } else {
+            character_data = Array(19).fill("1".repeat(15))
+          }
+          for (let k = 0; k < 19; k++) {
+            font_data[k] += character_data[k];
+          }
+        }
+        return font_data;
+      }
+      function to_display(data) {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_yspace) < (19 - display_yhide_space)) {
+              document.getElementById((i+display_yspace) + "-" + (k+display_xspace)).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
