@@ -20,28 +20,28 @@
     }
   },
   "K17": {
-    "U": {
-      "U010": "大埔墟站 Tai Po Market Station",
-      "U020": "大埔中心第五期 Tai Po Centre Phase 5",
-      "U030": "怡雅苑 Yee Nga Court",
-      "U040": "富善 Fu Shin"
+    "往富善": {
+      "U010": "+路綫 K17 前往富善      Route K17 towards Fu Shin",
+      "U020": "大埔中心第五期/Tai Po Centre Phase 5",
+      "U030": "怡雅苑/Yee Nga Court",
+      "U040": "富善/Fu Shin"
     },
-    "D": {
-      "D010": "富善 Fu Shin",
-      "D020": "新達廣場 Uptown Plaza",
-      "D030": "大埔墟站 Tai Po Market Station"
+    "往新達廣場": {
+      "D010": "+路綫 K17 前往新達廣場, 大埔墟站     Route K17 towards Uptown Plaza, Tai Po Market Station",
+      "D020": "新達廣場/Uptown Plaza/*E",
+      "D030": "大埔墟站/Tai Po Market Station"
     }
   },
   "K18": {
-    "U": {
-      "U010": "大埔墟站 Tai Po Market Station",
-      "U020": "宏福苑 Wang Fuk Court",
-      "U030": "廣福 Kwong Fuk"
+    "往廣福": {
+      "U010": "+路綫 K18 前往廣福      Route K18 towards Kwong Fuk",
+      "U020": "宏福苑/Wang Fuk Court",
+      "U030": "廣福/Kwong Fuk"
     },
-    "D": {
-      "D010": "廣福 Kwong Fuk",
-      "D020": "新達廣場 Uptown Plaza",
-      "D030": "大埔墟站 Tai Po Market Station"
+    "往新達廣場": {
+      "D010": "+路綫 K18 前往新達廣場, 大埔墟站     Route K18 towards Uptown Plaza, Tai Po Market Station",
+      "D020": "新達廣場/Uptown Plaza/*E",
+      "D030": "大埔墟站/Tai Po Market Station"
     }
   }
 }
