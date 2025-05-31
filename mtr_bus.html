@@ -50,30 +50,21 @@
         S: "請勿在上層或梯級站立      Please do not stand on the staircase or upper level",
         E: "乘客可在該站轉乘東鐵綫      Passengers may change here for the East Rail Line"
       };
-      let route_data;
+      let all_routes_data;
       let font_c;
       let font_e;
       let font_s;
-      let curr_route_data;
+      let route_data;
       let route_stage;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
-      let ymove;
-      let ymove_time_needed;
-      let ymove_time;
-      let xmove;
-      let xmove_time_needed;
-      let xmove_time;
-      let welcome_loop;
-      let welcome_engmsg_terminate;
-      let welcome_routemsg_terminate;;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
         })
         .then(data => {
-          route_data = data;
+          all_routes_data = data;
         })
       fetch("mtr_bus_font/mtr_bus_c_font.json")
         .then(response => {
@@ -98,68 +89,14 @@
         })   
       function input_route_change() {
         let option_list = "";
-        for (let i in route_data[document.getElementById("route").value]) {
+        for (let i in all_routes_data[document.getElementById("route").value]) {
           option_list += `<option value="${i}">${i}</option>`;
         }
         document.getElementById("dest").innerHTML = option_list;
         input_dest_change();
       }
       function input_dest_change() {
-        curr_route_data = route_data[document.getElementById("route").value][document.getElementById("dest").value];
-      }
-      function start_route() {
-        route_stage = 0;
-        clearTimeout(welcome_loop);
-        clearTimeout(welcome_engmsg_terminate);
-        clearTimeout(welcome_routemsg_terminate);
-        clearInterval(ymove);
-        clearInterval(xmove);
-        display_welcome();
-        function display_welcome() {
-          let route_welcome = curr_route_data[Object.keys(curr_route_data)[0]];
-          route_welcome = route_welcome.replace("+", "");
-          let route_welcome_duration = (font_todata(route_welcome)[0].length + 142) * 18 + 2800 + 4800;
-          display_data = font_todata("歡 迎 乘 搭");
-          display_xspace = 36;
-          display_yspace = 15;
-          display_yhide_space = 2;
-          ymove_time_needed = 15;
-          ymove_time = 0;
-          ymove = setInterval(ymove_act, 50);
-          welcome_engmsg_terminate = setTimeout(function(){
-            display_data = font_todata("Welcome aboard");
-            display_xspace = Math.round((143-display_data[0].length)/2);
-            display_yspace = 0;
-            display_yhide_space = 0;
-            to_display(display_data);
-          }, 2800);
-          welcome_routemsg_terminate = setTimeout(function(){
-            display_data = font_todata(route_welcome);
-            display_xspace = 142;
-            display_yspace = 0;
-            display_yhide_space = 0;
-            xmove_time_needed = display_data[0].length + 142;
-            xmove_time = 0;
-            xmove = setInterval(xmove_act, 18);
-          }, 4800);
-          welcome_loop = setTimeout(display_welcome, route_welcome_duration);
-        }
-      }
-      function ymove_act() {
-        to_display(display_data);
-        display_yspace -= 1;
-        ymove_time += 1;
-        if (ymove_time > ymove_time_needed) {
-          clearInterval(ymove);
-        }
-      }
-      function xmove_act() {
-        to_display(display_data);
-        display_xspace -= 1;
-        xmove_time += 1;
-        if (xmove_time > xmove_time_needed) {
-          clearInterval(xmove);
-        }
+        route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
