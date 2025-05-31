@@ -29,7 +29,7 @@
     <select id="dest" onchange="input_dest_change()">
       <option selected="true" disabled="true">Select Destination</option>
     </select>
-    <input type="button" value="Start Route" onclick="start_route()"><br>
+    <input type="button" value="Start Route" onclick="start_route()"><input type="button" value="Stop" onclick="clearTimeout(screen_update);"><br>
     <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
@@ -55,6 +55,7 @@
       let font_e;
       let font_s;
       let route_data;
+      let screen_update;
       let screen_update_ms;
       let route_stage;
       let route_sentence;
@@ -115,7 +116,7 @@
           sentences_list = ["歡 迎 乘 搭", "Welcome aboard", route_data[0]];
           alert(sentences_list.toString());
         }
-        //setTimeout(screen_update, screen_update_ms);
+        //screen_update = setTimeout(screen_update, screen_update_ms);
       }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
