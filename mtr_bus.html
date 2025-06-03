@@ -100,10 +100,15 @@
       function input_dest_change() {
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
-      function start_route() {
+      function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      async function start_route() {
         route_stage = 0;
-        route_sentence = 0;
-        route_pixel = 0;
+        while (route_stage == 0) {
+          alert("hi");
+          await delay(5000);
+        }
       }
       function start_stage() {
         route_stage = 0;
