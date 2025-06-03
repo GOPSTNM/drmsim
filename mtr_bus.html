@@ -99,7 +99,7 @@
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
       async function start_route() {
-        throw new Error("Stop");
+        window.stop();
         let display_data;
         route_stage = 0;
         while (route_stage == 0) {
