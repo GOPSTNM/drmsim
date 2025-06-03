@@ -56,8 +56,6 @@
       let font_s;
       let route_data;
       let route_stage;
-      let route_sentence;
-      let route_pixel;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
@@ -100,25 +98,22 @@
       function input_dest_change() {
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
-      function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
       async function start_route() {
+        let display_data;
         route_stage = 0;
         while (route_stage == 0) {
-          alert("hi");
-          await delay(5000);
+          display_data = font_todata("歡迎乘搭");
+          display_xspace = Math.round((143-display_data[0].length)/2);
+          display_yspace = 13;
+          display_yhide_space = 2;
+          for (let i = 0; i < 15; i++) {
+            to_display(display_data);
+            await delay(5000);
+          }
         }
       }
-      function start_stage() {
-        route_stage = 0;
-        route_sentence = 0;
-        route_pixel = 0;
-      }
-      function start_sentence() {
-        route_stage = 0;
-        route_sentence = 0;
-        route_pixel = 0;
+      function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
       }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
