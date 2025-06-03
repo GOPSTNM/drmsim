@@ -104,12 +104,12 @@
         while (route_stage == 0) {
           display_data = font_todata("歡迎乘搭");
           display_xspace = Math.round((143-display_data[0].length)/2);
-          display_yspace = 13;
+          display_yspace = 14;
           display_yhide_space = 2;
           for (let i = 0; i < 15; i++) {
             to_display(display_data);
             display_yspace -= 1;
-            await delay(5000);
+            await delay(30);
           }
         }
       }
