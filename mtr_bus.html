@@ -140,6 +140,8 @@
       async function show_stop() {
         await stop_screen();
         while (route_stage < Object.keys(route_data).length) {
+          display_xspace = 0;
+          display_yspace = 0;
           to_display(font_todata("Test In Progress"));
           if (await delay(1000)) return;
         }
