@@ -100,11 +100,13 @@
       }
       let shouldStop = false;
       async function start_route() {
+        shouldStop = true;
         let display_data;
         display_xspace = 0;
         display_yspace = 0;
         display_yhide_space = 0;
         route_stage = 0;
+        shouldStop = false;
         while (route_stage == 0) {
           if (route_data[Object.keys(route_data)[0]].includes("+")){
             display_data = font_todata("歡 迎 乘 搭");
