@@ -150,10 +150,10 @@
         }
         while (route_stage < Object.keys(route_data).length) {
           if (await delay(1000)) return;
-          for (let i of stop_sentences) {
+          for (let i = 0; i < stop_sentences.length; i++) {
             display_xspace = 0;
             display_yspace = 0;
-            to_display(font_todata(i));
+            to_display(font_todata(stop_sentences[i]));
             if (await delay(1000)) return;
           }
         }
