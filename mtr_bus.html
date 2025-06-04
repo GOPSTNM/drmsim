@@ -144,16 +144,17 @@
           if (stop_sentences[i].includes("*")) {
             stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
           } else {
-            stop_sentences[i + 1] = stop_sentences[i] + stop_sentences[i + 1];
+            stop_sentences[i + 1] = `下一站：${stop_sentences[i]}      Next stop: ${stop_sentences[i + 1]}`;
             stop_sentences.splice(i, 1);
           }
         }
-        alert(stop_sentences.toString());
         while (route_stage < Object.keys(route_data).length) {
-          display_xspace = 0;
-          display_yspace = 0;
-          to_display(font_todata());
-          if (await delay(1000)) return;
+          for (let i of stop_sentences) {
+            display_xspace = 0;
+            display_yspace = 0;
+            to_display(font_todata(i));
+            if (await delay(1000)) return;
+          }
         }
         stop_screen();
         return;
