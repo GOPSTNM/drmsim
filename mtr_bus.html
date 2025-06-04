@@ -30,7 +30,7 @@
       <option selected="true" disabled="true">Select Destination</option>
     </select>
     <input type="button" value="Start Route" onclick="start_route()"><br>
-    <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
+    <input type="button" value="Arrive / Depart" onclick="route_stage += 1;"><input type="button" value="Open / Close Door" onclick="stop_screen();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -100,7 +100,6 @@
       }
       let shouldStop = false;
       async function start_route() {
-        await stop_screen();
         shouldStop = false;
         let display_data;
         display_xspace = 0;
