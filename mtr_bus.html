@@ -148,7 +148,6 @@
       function stop_screen() {
         shouldStop = true;
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
-        await delay(100);
       }
       function delay(ms) {
         return new Promise(resolve => {
