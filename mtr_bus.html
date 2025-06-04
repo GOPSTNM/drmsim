@@ -29,8 +29,8 @@
     <select id="dest" onchange="input_dest_change()">
       <option selected="true" disabled="true">Select Destination</option>
     </select>
-    <input type="button" value="Start Route" onclick="start_route()"><br>
-    <input type="button" value="Arrive / Depart" onclick="shouldStop = true; route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
+    <input type="button" value="Start Route" onclick="stop_screen(); start_route()"><br>
+    <input type="button" value="Arrive / Depart" onclick="stop_screen(); route_stage += 1;"><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -134,6 +134,10 @@
             if (await delay(16)) return;
           }
         }
+      }
+      function stop_screen() {
+        shouldStop = true;
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
       }
       function delay(ms) {
         return new Promise(resolve => {
