@@ -30,7 +30,7 @@
       <option selected="true" disabled="true">Select Destination</option>
     </select>
     <input type="button" value="Start Route" onclick="stop_screen(); start_route();"><br>
-    <input type="button" value="Arrive / Depart" onclick="stop_screen(); route_stage += 1;"><input type="button" value="Open / Close Door" onclick="stop_screen();">
+    <input type="button" value="Arrive / Depart" onclick="stop_screen(); route_stage += 1; show_stop();"><input type="button" value="Open / Close Door" onclick="stop_screen();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -134,7 +134,9 @@
             if (await delay(16)) return;
           }
         }
-        await fixed_delay(100);
+        return;
+      }
+      function show_stop() {
         alert(Object.keys(route_data).length);
         while (route_stage < Object.keys(route_data).length) {
           to_display(font_todata("Test In Progress"));
@@ -146,10 +148,7 @@
       async function stop_screen() {
         shouldStop = true;
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
-        await fixed_delay(100);
-      }
-      function fixed_delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        await delay(100);
       }
       function delay(ms) {
         return new Promise(resolve => {
