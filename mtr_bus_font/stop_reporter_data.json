@@ -14,7 +14,7 @@
   },
   "K14": {
     "往新達廣場": {
-      "D010": "路綫 K14 前往新達廣場, 大埔墟站     Route K14 towards Uptown Plaza, Tai Po Market Station",
+      "D010": "+路綫 K14 前往新達廣場, 大埔墟站     Route K14 towards Uptown Plaza, Tai Po Market Station",
       "D020": "新達廣場/Uptown Plaza/*E",
       "D030": "大埔墟站/Tai Po Market Station"
     }
