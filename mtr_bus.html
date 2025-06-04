@@ -136,7 +136,7 @@
           }
         }
       }
-      function stop_screen() {
+      async function stop_screen() {
         shouldStop = true;
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
       }
