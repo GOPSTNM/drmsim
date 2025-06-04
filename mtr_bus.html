@@ -141,9 +141,9 @@
         await stop_screen();
         let stop_sentences = route_data[Object.keys(route_data)[route_stage]].split("/");
         for (let i = 0; i < stop_sentences.length; i++) {
-          stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
-        } else {
           if (stop_sentences[i].includes("*")) {
+            stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+          } else {
             stop_sentences[i + 1] = stop_sentences[i] + stop_sentences[i + 1];
             stop_sentences.splice(i, 1);
             break;
