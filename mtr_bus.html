@@ -98,6 +98,7 @@
       function input_dest_change() {
         route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
       }
+      let shouldStop = false;
       async function start_route() {
         let display_data;
         display_xspace = 0;
