@@ -148,7 +148,7 @@
             } else if (Date.now() - start >= ms) {
               resolve(false);
             } else {
-              requestAnimationFrame(checkStop); // Use requestAnimationFrame for smooth checks
+              requestAnimationFrame(checkStop);
             }
           };
           requestAnimationFrame(checkStop);
