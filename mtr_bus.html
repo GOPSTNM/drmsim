@@ -136,6 +136,11 @@
             if (await delay(16)) return;
           }
         }
+        while (route_stage < Object.keys(route_data).length) {
+          to_display(font_todata("Test In Progress"));
+        }
+        stop_screen();
+        return;
       }
       async function stop_screen() {
         shouldStop = true;
