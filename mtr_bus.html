@@ -138,6 +138,7 @@
         }
         while (route_stage < Object.keys(route_data).length) {
           to_display(font_todata("Test In Progress"));
+          if (await delay(1000)) return;
         }
         stop_screen();
         return;
