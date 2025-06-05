@@ -148,7 +148,7 @@
             stop_sentences.splice(i, 1);
           }
         }
-        while (route_stage < Object.keys(route_data).length) {
+        if (route_stage < Object.keys(route_data).length) {
           for (let p = 0; p < stop_sentences.length; p++) {
             display_data = font_todata(stop_sentences[p]);
             display_xspace = 142;
