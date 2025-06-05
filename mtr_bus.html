@@ -30,7 +30,7 @@
       <option selected="true" disabled="true">Select Destination</option>
     </select>
     <input type="button" value="Start Route" onclick="start_route();"><br>
-    <input type="button" value="Arrive / Depart" onclick="route_stage += 1; show_stop();"><input type="button" value="Open / Close Door" onclick="">
+    <input type="button" value="Arrive / Depart" onclick="arrive_depart();"><input type="button" value="Open / Close Door" onclick="">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -56,6 +56,7 @@
       let font_s;
       let route_data;
       let route_stage;
+      let stopping_stage;
       let display_xspace;
       let display_yspace;
       let display_yhide_space;
@@ -107,6 +108,7 @@
         display_yspace = 0;
         display_yhide_space = 0;
         route_stage = 0;
+        stopping_stage = 2;
         while (route_stage == 0) {
           if (route_data[Object.keys(route_data)[0]].includes("+")){
             display_data = font_todata("歡 迎 乘 搭");
@@ -137,6 +139,14 @@
         }
         return;
       }
+      function arrive_depart() {
+        if (stopping_stage == 0) {
+          stop_screen();
+          stopping_stage = 1;
+        } else {
+          route_stage += 1;
+          show_stop();
+        }
       async function show_stop() {
         await stop_screen();
         shouldStop = false;
