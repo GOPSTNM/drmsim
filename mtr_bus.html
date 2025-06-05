@@ -139,6 +139,7 @@
       }
       async function show_stop() {
         await stop_screen();
+        shouldStop = false;
         let stop_sentences = route_data[Object.keys(route_data)[route_stage]].split("/");
         for (let i = 0; i < stop_sentences.length; i++) {
           if (stop_sentences[i].includes("*")) {
@@ -156,7 +157,7 @@
             for (let k = 0; k < (display_data[0].length + 143); k++) {
               to_display(display_data);
               display_xspace -= 1;
-              await delay(100);
+              if (await delay(16)) return;
             }
           }
         }
