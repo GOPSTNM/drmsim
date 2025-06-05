@@ -149,11 +149,11 @@
           }
         }
         while (route_stage < Object.keys(route_data).length) {
-          for (let i = 0; i < stop_sentences.length; i++) {
-            display_data = font_todata(stop_sentences[i]);
+          for (let p = 0; p < stop_sentences.length; p++) {
+            display_data = font_todata(stop_sentences[p]);
             display_xspace = 142;
             display_yspace = 0;
-            for (let i = 0; i < (display_data[0].length + 143); i++) {
+            for (let k = 0; k < (display_data[0].length + 143); k++) {
               to_display(display_data);
               display_xspace -= 1;
               if (await delay(16)) return;
