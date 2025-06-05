@@ -148,7 +148,7 @@
             stop_sentences.splice(i, 1);
           }
         }
-        if (route_stage < Object.keys(route_data).length) {
+        while (route_stage < Object.keys(route_data).length) {
           for (let p = 0; p < stop_sentences.length; p++) {
             display_data = font_todata(stop_sentences[p]);
             display_xspace = 142;
@@ -156,7 +156,6 @@
             for (let k = 0; k < (display_data[0].length + 143); k++) {
               to_display(display_data);
               display_xspace -= 1;
-              if (await delay(16)) return;
             }
           }
         }
