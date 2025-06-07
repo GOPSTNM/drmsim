@@ -8,15 +8,13 @@
     "往新達廣場": {
       "D010": "+路綫 K12 前往新達廣場, 大埔墟站     Route K12 towards Uptown Plaza, Tai Po Market Station",
       "D020": "大埔超級城/Tai Po Mega Mall",
-      "D030": "新達廣場/Uptown Plaza/*E",
-      "D040": "大埔墟站/Tai Po Market Station"
+      "D030": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
     }
   },
   "K14": {
     "往新達廣場": {
       "D010": "+路綫 K14 前往新達廣場, 大埔墟站     Route K14 towards Uptown Plaza, Tai Po Market Station",
-      "D020": "新達廣場/Uptown Plaza/*E",
-      "D030": "大埔墟站/Tai Po Market Station"
+      "D020": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
     }
   },
   "K17": {
@@ -28,8 +26,7 @@
     },
     "往新達廣場": {
       "D010": "+路綫 K17 前往新達廣場, 大埔墟站     Route K17 towards Uptown Plaza, Tai Po Market Station",
-      "D020": "新達廣場/Uptown Plaza/*E",
-      "D030": "大埔墟站/Tai Po Market Station"
+      "D020": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
     }
   },
   "K18": {
@@ -40,8 +37,7 @@
     },
     "往新達廣場": {
       "D010": "+路綫 K18 前往新達廣場, 大埔墟站     Route K18 towards Uptown Plaza, Tai Po Market Station",
-      "D020": "新達廣場/Uptown Plaza/*E",
-      "D030": "大埔墟站/Tai Po Market Station"
+      "D020": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
     }
   },
   "K73": {
