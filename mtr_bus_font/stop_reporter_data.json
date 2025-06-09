@@ -81,7 +81,11 @@
       "5": "濕地公園路 (近天葵路)/Wetland Park Road (near Tin Kwai Road)"
     },
     "往天水圍站": {
-      "1": "+路綫 K76S 前往新達廣場, 大埔墟站     Route K18 towards Uptown Plaza, Tai Po Market Station",
-      "2": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
+      "1": "+路綫 K76S 前往站     Route K76S towards Station",
+      "2": "輕鐵濕地公園站/LR Wetland Park Stop",
+      "3": "天逸邨逸潭樓/Yat Tam House, Tin Yat Estate",
+      "4": "天富苑欣富閣/Yan Fu House, Tin Fu Court/*M",
+      "5": "天盛苑/Tin Shing Court/*T/*H/*S"
     }
+  }
 }
