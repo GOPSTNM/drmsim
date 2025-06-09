@@ -85,6 +85,7 @@
         })
       let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
       for (let i in all_routes_data) {
+        alert(i);
         rte_option_list += `<option value="${i}">${i}</option>`;
       }
       document.getElementById("route").innerHTML = rte_option_list;
