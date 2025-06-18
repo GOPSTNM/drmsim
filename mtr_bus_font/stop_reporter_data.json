@@ -39,6 +39,50 @@
       "D020": "新達廣場, 大埔墟站/Uptown Plaza, Tai Po Market Station/*E"
     }
   },
+  "K68": {
+    "循環綫往元朗公園": {
+      "U010": "+路綫 K68 前往元朗公園     Route K18 towards Yuen Long Park",
+      "U020": "凸版資訊卡/Toppan Forms Card Tech Ltd/*H",
+      "U030": "雀巢/Nestle (HK) Ltd",
+      "U040": "元朗污水處理廠/Yuen Long Sewage Treatment Works",
+      "U050": "位元堂藥業大廈/Wai Yuen Tong Medicine Building/*H",
+      "U060": "東電化電子零件/TDK Manufacturing (HK) Co Ltd",
+      "U070": "凸版印刷/Toppan Printing Co (HK) Ltd/*M",
+      "U080": "匯泉國際實業/Telford International Industries Ltd",
+      "U090": "橫洲福慶村/Wang Chau Fuk Hing Tsuen/*M",
+      "U100": "朗屏 (巴士總站)/Long Ping (Bus Terminus)/*H",
+      "U110": "楊屋村/Yeung Uk Tsuen/*H",
+      "U120": "屏昌徑/Ping Cheong Path/*T/*H",
+      "U130": "元朗盲人安老院/Yuen Long Home for the Aged Blind/*H",
+      "U140": "聿修堂/Lut Sau Hall/*H",
+      "U150": "元朗劇院/Yuen Long Theatre",
+      "U160": "銀田花園/Silver Field Garden",
+      "U170": "南元朗官立小學/South Yuen Long Government Primary School/*M",
+      "D010": "元朗公園/Yuen Long Park"
+    },
+    "循環綫往元朗工業邨":{
+      "D020": "御豪山莊/Park Royale/*H",
+      "D030": "藝典居/Villa Art Deco",
+      "D040": "御庭居/Springdale Villas/*M",
+      "D050": "元朗游泳池/Yuen Long Swimming Pool/*H",
+      "D060": "元朗大會堂/Yuen Long Town Hall",
+      "D070": "元朗廣場/Yuen Long Plaza/*H",
+      "D080": "元朗安寧路/Yuen Long On Ning Road",
+      "D090": "大橋村/Tai Kiu Tsuen/*T/*M",
+      "D100": "惠州學校/Wai Chow School",
+      "D110": "朗屏邨珠屏樓/Chu Ping House, Long Ping Estate/*S",
+      "D120": "朗屏 (巴士總站)/Long Ping (Bus Terminus)/*H/*M",
+      "D130": "橫洲福慶村/Wang Chau Fuk Hing Tsuen/*H",
+      "D140": "元朗紡織品/Yuen Long Textile Co Ltd",
+      "D150": "大昌行食品加工及物流中心/DCH Food Processing & Logistics Centre",
+      "D160": "有生鉛水/Yau Sang Galvanizers (Hot-Dip) Co Ltd",
+      "D170": "余仁生中心/Eu Yan Sang Centre/*H",
+      "D180": "元朗污水處理廠/Yuen Long Sewage Treatment Works/*H",
+      "D190": "雀巢/Nestle (HK) Ltd",
+      "D200": "牛尾香港/Ushio HK Ltd/*H",
+      "U011": "元朗工業邨/Yuen Long Industrial Estate"
+    }
+  },
   "K73": {
     "往元朗西": {
       "U010": "+路綫 K73 前往元朗西     Route K73 towards Yuen Long West",
@@ -80,7 +124,7 @@
       "4": "輕鐵濕地公園站/LR Wetland Park Stop",
       "5": "濕地公園路 (近天葵路)/Wetland Park Road (near Tin Kwai Road)"
     },
-    "往天水圍站": {
+    "往天盛苑": {
       "1": "+路綫 K76S 前往天盛苑     Route K76S towards Tin Shing Court",
       "2": "輕鐵濕地公園站/LR Wetland Park Stop",
       "3": "天逸邨逸潭樓/Yat Tam House, Tin Yat Estate",
