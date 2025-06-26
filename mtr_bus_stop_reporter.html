@@ -54,12 +54,19 @@
         .then(data => {
           c_font = data;
         })
-      fetch("mtr_bus_font/mtr_bus_b_font.json")
+      fetch("mtr_bus_font/mtr_bus_e_font.json")
         .then(response => {
           return response.json();
         })
         .then(data => {
           e_font = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_b_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          b_font = data;
         })
       function clear_display() {
         clearInterval(scroll);
