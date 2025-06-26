@@ -27,6 +27,10 @@
     </select>
     <input type="button" value="Show" onclick="show()">
     <input type="button" value="Clear" onclick="clear_display()">
+    <select id="display_text_style">
+      <option value="e">Standard</option>
+      <option value="b">Bold</option>
+    </select>
     <script>
       const display = document.getElementById("display");
       for (let row = -2; row < 17; row++) {
@@ -80,7 +84,12 @@
         for (let i = 0; i < input.length; i++) {
           let character = c_font[input[i]];
           if (character === undefined) {
-            character = e_font[input[i]];
+            let fonttype = document.getElementById("display_text_style").value
+            if (fonttype == "e") {
+              character = e_font[input[i]];
+            } else {
+              character = b_font[input[i]];
+            }
           }
           if (character === undefined) {
           } else {
