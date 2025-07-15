@@ -28,7 +28,7 @@
     <input type="button" value="Start Route" onclick="start_route();"><br>
     <input type="button" value="Arrive / Depart" onclick="arrive_depart();">
     <input type="button" value="Open / Close Door" onclick="stopping_door();">
-    <input type="button" value="Next Stop" onclick="arrive_depart(); arrive_depart();">
+    <input type="button" value="Next Stop" onclick="skip_stop();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -153,6 +153,11 @@
           route_stage += 1;
           show_stop();
         }
+      }
+      function skip_stop() {
+        stopping_stage = 0;
+        route_stage += 1;
+        show_stop();
       }
       function stopping_door() {
         if (stopping_stage == 1) {
