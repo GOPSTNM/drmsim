@@ -26,7 +26,9 @@
       <option selected="true" disabled="true">Select Destination</option>
     </select>
     <input type="button" value="Start Route" onclick="start_route();"><br>
-    <input type="button" value="Arrive / Depart" onclick="arrive_depart();"><input type="button" value="Open / Close Door" onclick="stopping_door();">
+    <input type="button" value="Arrive / Depart" onclick="arrive_depart();">
+    <input type="button" value="Open / Close Door" onclick="stopping_door();">
+    <input type="button" value="Next Stop" onclick="arrive_depart(); arrive_depart();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
