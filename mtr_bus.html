@@ -175,7 +175,12 @@
         shouldStop = false;
         let stop_sentences = route_data[Object.keys(route_data)[route_stage]]
         if (stop_sentences instanceof Array) {
-          stop_sentences = stop_sentences[3].split("/");
+          stop_sentences = stop_sentences[2].split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+            }
+          }
         } else {
           stop_sentences = stop_sentences.split("/");
           for (let i = 0; i < stop_sentences.length; i++) {
@@ -207,7 +212,12 @@
         shouldStop = false;
         let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
         if (stop_sentences instanceof Array) {
-          stop_sentences = stop_sentences[1].split("/");
+          stop_sentences = stop_sentences[0].split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+            }
+          }
         } else {
           stop_sentences = stop_sentences.split("/");
           for (let i = 0; i < stop_sentences.length; i++) {
