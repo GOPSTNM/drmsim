@@ -1,4 +1,11 @@
 {
+  "Test Route": {
+    "To PAC": {
+      "1": "Welcome",
+      "2": ["NS PCJ", "Soon PCJ", "This is PCJ"],
+      "3": ["NS PAC", "Soon PAC", "This is PAC"]
+    }
+  },
   "K12": {
     "往八號花園": {
       "U010": "+路綫 K12 前往八號花園      Route K12 towards Eightland Garden",
