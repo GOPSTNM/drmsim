@@ -148,6 +148,31 @@
         if (stopping_stage == 0) {
           stopping_stage = 1;
           stop_screen();
+          // New Part
+          let stop_sentences = route_data[Object.keys(route_data)[route_stage]][1]
+          if (stop_sentences) {
+            await stop_screen();
+            shouldStop = false;
+            stop_sentences = stop_sentences.split("/");
+            for (let i = 0; i < stop_sentences.length; i++) {
+              if (stop_sentences[i].includes("*")) {
+                stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+              }
+            }
+            while (route_stage < Object.keys(route_data).length) {
+              for (let p = 0; p < stop_sentences.length; p++) {
+                display_data = font_todata(stop_sentences[p]);
+                display_xspace = 142;
+                display_yspace = 0;
+                for (let k = 0; k < (display_data[0].length + 143); k++) {
+                  to_display(display_data);
+                  display_xspace -= 1;
+                  if (await delay(14)) return;
+                }
+              }
+            }
+            return;
+          }
         } else {
           stopping_stage = 0;
           route_stage += 1;
