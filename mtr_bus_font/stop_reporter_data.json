@@ -138,7 +138,7 @@
     }
   },
   "K58": {
-    "NIS": {
+    "往管翠路18號": {
       "U010": "+路綫 K58 前往管翠路 18 號     Route K58 towards 18 Kwun Chui Road",
       "U020": "聚康山莊/Beneville/*M",
       "U023": "嶺南大學/Lingnan University/*M",
@@ -157,10 +157,10 @@
       "U140": "輕鐵建安站/LR Kin On Stop/*H",
       "U150": "港鐵屯門站/MTR Tuen Mun Station/*T",
       "U160": "屯門市中心/Tuen Mun Town Centre",
-      "U170": "屯門官立中學/Tuen Mun Government Secondary School",
+      "U170": "屯門官立中學/Tuen Mun Government Secondary School/*H",
       "U180": "恒順園/Handsome Court",
       "U190": "恒豐園/Harvest Garden",
-      "U200": "三聖邨/Sam Shing Estate",
+      "U200": "三聖邨/Sam Shing Estate/*H",
       "U215": "青山灣/Castle Peak Beach",
       "U220": "海景花園/Seaview Garden",
       "U230": "咖啡灣/Cafeteria Beach",
@@ -168,15 +168,14 @@
       "U250": "香港黃金海岸/Hong Kong Gold Coast",
       "U260": "愛琴海岸/Aegean Coast",
       "U270": "掃管笏變電站/So Kwun Wat Sub-station",
-      "U280": "掃管笏村/So Kwun Wat Tsuen",
+      "U280": "掃管笏村/So Kwun Wat Tsuen/*H",
       "U290": ["下一站：鄭任安夫人千禧小學      Next stop: Mrs Cheng Yam On Millennium School", "", "本站：鄭任安夫人千禧小學      This stop: Mrs Cheng Yam On Millennium School"],
       "U300": "掃管笏路/So Kwun Wat Road",
       "U310": "管翠路 18 號/18 Kwun Chui Road",
-      "U320": "管翠路/Kwun Chui Road"
     },
     "往富泰": {
       "D001": "+路綫 K58 前往富泰     Route K58 towards Fu Tai",
-      "D002": "鄭任安夫人千禧小學/Mrs Cheng Yam On Millennium School",
+      "D002": ["下一站：鄭任安夫人千禧小學      Next stop: Mrs Cheng Yam On Millennium School", "", "本站：鄭任安夫人千禧小學      This stop: Mrs Cheng Yam On Millennium School"],
       "D003": "掃管笏路/So Kwun Wat Road",
       "D004": "管翠路 18 號/18 Kwun Chui Road",
       "D005": "管翠路/Kwun Chui Road",
