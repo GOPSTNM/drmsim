@@ -209,6 +209,58 @@
       "D210": "富泰/Fu Tai"
     }
   },
+  "K66": {
+    "往大棠黃泥墩村": {
+      "U010": "+路綫 K66 前往大棠黃泥墩村     Route K66 towards Tai Tong Wong Nai Tun Tsuen",
+      "U020": "楊屋村/Yeung Uk Tsuen/*H",
+      "U030": "屏昌徑/Ping Cheong Path/*T/*H",
+      "U040": "元朗盲人安老院/Yuen Long Home for the Aged Blind/*H",
+      "U050": "元朗大會堂/Yuen Long Town Hall",
+      "U060": "安康路/On Hong Road/*H",
+      "U070": "元朗商業中心/Yuen Long Commercial Centre/*M",
+      "U080": "富達廣場/Manhattan Plaza/*M",
+      "U090": "蝶翠峰/Sereno Verde",
+      "U100": "禮修村/Fraser Village",
+      "U110": "深涌村/Sham Chung Tsuen",
+      "U120": "羅家園/Law Ka Yuen",
+      "U130": "崇正公立學校/Shung Ching School",
+      "U140": "崇正菜站/Shung Ching Vegetable Market",
+      "U150": "老圍/Lo Wai",
+      "U160": "振華花園/Chun Wah Villas",
+      "U170": "南坑排/Nam Hang Pai",
+      "U180": "水蕉新村/Shui Chiu San Tsuen",
+      "U190": "華苑/Wah Yuen",
+      "U200": "大棠迴旋處/Tai Tong Roundabout",
+      "U210": "大棠山路/Tai Tong Shan Road/*H",
+      "U220": "大棠黃泥墩村/Tai Tong Wong Nai Tun Tsuen"
+    },
+    "往朗屏": {
+      "D010": "+路綫 K66 前往朗屏     Route K66 towards Long Ping",
+      "D020": "大棠山路/Tai Tong Shan Road",
+      "D030": "大棠迴旋處/Tai Tong Roundabout/*H",
+      "D040": "華苑/Wah Yuen",
+      "D050": "水蕉新村/Shui Chiu San Tsuen",
+      "D060": "南坑排/Nam Hang Pai",
+      "D070": "南坑村/Nam Hang Tsuen",
+      "D080": "紅棗田村/Hung Tso Tin Tsuen/*M",
+      "D090": "普盛圍/Po Shing Wai",
+      "D100": "崇正公立學校/Shung Ching School",
+      "D110": "羅家園/Law Ka Yuen",
+      "D120": "深涌村/Sham Chung Tsuen/*M",
+      "D130": "禮修村/Fraser Village",
+      "D140": "蝶翠峰/Sereno Verde/*M",
+      "D150": "恆香製餅廠/Hang Heung Cake Shop",
+      "D160": "富達廣場/Manhattan Plaza",
+      "D170": "千色廣場/Citi Mall/*H",
+      "D180": "安康路/On Hong Road",
+      "D190": "元朗大會堂/Yuen Long Town Hall",
+      "D200": "水邊圍康水樓/Hong Shui House, Shui Pin Wai Estate",
+      "D210": "朗屏邨悅屏樓/Yuet Ping House, Long Ping Estate/*T/*H",
+      "D220": "惠州學校/Wai Chow School",
+      "D230": "朗屏邨珠屏樓/Chu Ping House, Long Ping Estate/*H",
+      "D240": "朗屏/Long Ping"
+    }
+  },
   "K68": {
     "循環綫往元朗公園": {
       "U010": "+路綫 K68 前往元朗公園     Route K68 towards Yuen Long Park",
