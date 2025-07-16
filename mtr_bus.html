@@ -151,6 +151,7 @@
           // New Part
           let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
           if (stop_sentences[1] && stop_sentences instanceof Array) {
+            stop_sentences = stop_sentences[1];
             await stop_screen();
             shouldStop = false;
             stop_sentences = stop_sentences.split("/");
