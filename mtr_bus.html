@@ -190,12 +190,12 @@
           stopping_stage = 2;
           open_door();
         } else if (stopping_stage == 2) {
-          stop_screen();
           if (pa) {
             pa.pause();
           }
           pa = document.createElement("AUDIO");
           pa.src = "mtr_bus_font/MTR_Bus_Hold_Handrail_Door.m4a";
+          stop_screen();
           pa.play();
           pa.onended = function(){skip_stop();};
         }
