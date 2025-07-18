@@ -202,7 +202,7 @@
       async function open_door() {
         await stop_screen();
         shouldStop = false;
-        let stop_sentences = route_data[Object.keys(route_data)[route_stage]]
+        let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
         if (stop_sentences instanceof Array) {
           stop_sentences = stop_sentences[2].split("/");
           for (let i = 0; i < stop_sentences.length; i++) {
@@ -278,8 +278,8 @@
         await delay(100);
       }
       function delay(ms) {
-        return new Promise(resolve => {
-          const start = Date.now();
+        return new Promise(resolve => {
+          const start = Date.now();
           const checkStop = () => {
             if (shouldStop) {
               resolve(true);
@@ -290,8 +290,8 @@
             }
           };
           setTimeout(checkStop, 14);
-        });
-      }
+          });
+}
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
