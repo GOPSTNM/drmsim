@@ -280,18 +280,18 @@
       function delay(ms) {
         return new Promise(resolve => {
           const start = Date.now();
-          const checkStop = () => {
-            if (shouldStop) {
-              resolve(true);
-            } else if (Date.now() - start >= ms) {
-              resolve(false);
-            } else {
-              setTimeout(checkStop, 14);
-            }
-          };
-          setTimeout(checkStop, 14);
-          });
-}
+          const checkStop = () => {
+            if (shouldStop) {
+              resolve(true);
+            } else if (Date.now() - start >= ms) {
+              resolve(false);
+            } else {
+              setTimeout(checkStop, 14);
+            }
+          };
+          setTimeout(checkStop, 14);
+        });
+      }
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
