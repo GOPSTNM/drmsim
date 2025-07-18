@@ -190,6 +190,7 @@
           stopping_stage = 2;
           open_door();
         } else if (stopping_stage == 2) {
+          stop_screen();
           if (pa) {
             pa.pause();
           }
