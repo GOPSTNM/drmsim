@@ -196,9 +196,7 @@
           pa = document.createElement("AUDIO");
           pa.src = "mtr_bus_font/MTR_Bus_Hold_Handrail_Door.m4a";
           pa.play();
-          stopping_stage = 0;
-          route_stage += 1;
-          show_stop();
+          pa.onended = skip_stop();
         }
       }
       async function open_door() {
