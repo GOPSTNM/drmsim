@@ -191,7 +191,7 @@
         } else if (stopping_stage == 2) {
           let pa = document.createElement("AUDIO");
           pa.src = "mtr_bus_font/MTR_Bus_Hold_Handrail_Door.m4a";
-          pa.play;
+          pa.play();
           stopping_stage = 0;
           route_stage += 1;
           show_stop();
