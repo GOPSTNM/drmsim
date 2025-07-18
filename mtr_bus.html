@@ -148,7 +148,6 @@
         if (stopping_stage == 0) {
           stopping_stage = 1;
           stop_screen();
-          // New Part
           let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
           if (stop_sentences[1] && stop_sentences instanceof Array) {
             stop_sentences = stop_sentences[1];
@@ -190,7 +189,9 @@
           stopping_stage = 2;
           open_door();
         } else if (stopping_stage == 2) {
-          // please hold the handrail pa
+          let pa = document.createElement("AUDIO");
+          pa.src = "mtr_bus_font/MTR_Bus_Hold_Handrail_Door.m4a";
+          pa.play;
           stopping_stage = 0;
           route_stage += 1;
           show_stop();
