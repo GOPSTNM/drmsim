@@ -199,7 +199,9 @@
           pa.onended = function(){
             skip_stop();
           };
-          stop_screen();
+          pa.onplaying = function(){
+            stop_screen();
+          };
         }
       }
       async function open_door() {
