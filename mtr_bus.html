@@ -321,6 +321,11 @@
             character_data = font_c[c].slice();
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
+          } else if (font_b[c]) {
+            let margin = "0".repeat(font_b[c][0].length);
+            character_data = font_b[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
           } else if (font_e[c]) {
             let margin = "0".repeat(font_e[c][0].length);
             character_data = font_e[c].slice();
