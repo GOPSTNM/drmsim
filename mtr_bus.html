@@ -316,9 +316,7 @@
           let character_data;
           let character_font_type = 0;
           if (c == "§") {
-            if (document.getElementById("display_text_style").value == "b") {
-              character_font_type = (character_font_type + 1) % 2;
-            }
+            character_font_type = (character_font_type + 1) % 2;
           } else if (font_s[c]) {
             character_data = font_s[c].slice();           
           } else if (font_c[c]) {
