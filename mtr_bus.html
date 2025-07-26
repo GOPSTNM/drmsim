@@ -46,11 +46,11 @@
         display.appendChild(br);
       }
       let special_message = {
-        M: "請盡量行入車廂裡面      §Please move further into the bus compartment§",
-        H: "請緊握扶手     §Please hold the handrail§",
-        T: "乘客可在該站轉乘屯馬綫      §Passengers may change here for the Tuen Ma Line§",
-        S: "請勿在上層及梯級站立      §Please do not stand on the staircase or upper level§",
-        E: "乘客可在該站轉乘東鐵綫      §Passengers may change here for the East Rail Line§",
+        M: "請盡量行入車廂裡面      Please move further into the bus compartment",
+        H: "請緊握扶手     Please hold the handrail",
+        T: "乘客可在該站轉乘屯馬綫      Passengers may change here for the Tuen Ma Line",
+        S: "請勿在上層及梯級站立      Please do not stand on the staircase or upper level",
+        E: "乘客可在該站轉乘東鐵綫      Passengers may change here for the East Rail Line",
         C: "港鐵巴士車長招聘熱線 : 29932440",
         N: "本班車已到達終點站，請乘客注意"
       };
@@ -234,7 +234,7 @@
               stop_sentences.splice(i, 1);
               i -= 1;
             } else if (i + 1 < stop_sentences.length) {
-              stop_sentences[i + 1] = `#    ${stop_sentences[i]}      §${stop_sentences[i + 1]}§`;
+              stop_sentences[i + 1] = `#    ${stop_sentences[i]}      ${stop_sentences[i + 1]}`;
               stop_sentences.splice(i, 1);
             }
           }
@@ -270,7 +270,7 @@
             if (stop_sentences[i].includes("*")) {
               stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
             } else if (i + 1 < stop_sentences.length) {
-              stop_sentences[i + 1] = `下一站：${stop_sentences[i]}      §Next stop: ${stop_sentences[i + 1]}§`;
+              stop_sentences[i + 1] = `下一站：${stop_sentences[i]}      Next stop: ${stop_sentences[i + 1]}`;
               stop_sentences.splice(i, 1);
             }
           }
@@ -312,21 +312,13 @@
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
-        let character_font_type = 0;
         for (const c of text) {
           let character_data;
-          if (c == "§") {
-            character_font_type = (character_font_type + 1) % 2;
-          } else if (font_s[c]) {
-            character_data = font_s[c].slice();           
+          if (font_s[c]) {
+            character_data = font_s[c].slice();
           } else if (font_c[c]) {
             let margin = "0".repeat(font_c[c][0].length);
             character_data = font_c[c].slice();
-            character_data.push(margin, margin, margin);
-            character_data.unshift(margin, margin);
-          } else if ((font_b[c]) && (character_font_type == 1)) { 
-            let margin = "0".repeat(font_b[c][0].length);
-            character_data = font_b[c].slice();
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
           } else if (font_e[c]) {
