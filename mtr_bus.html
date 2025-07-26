@@ -29,6 +29,10 @@
     <input type="button" value="Arrive / Depart" onclick="arrive_depart();">
     <input type="button" value="Open / Close Door" onclick="stopping_door();">
     <input type="button" value="Next Stop" onclick="skip_stop();">
+    <select id="display_text_style">
+      <option value="e">Standard</option>
+      <option value="b">Bold</option>
+    </select>
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -53,6 +57,7 @@
       let all_routes_data;
       let font_c;
       let font_e;
+      let font_b;
       let font_s;
       let route_data;
       let route_stage;
@@ -86,6 +91,13 @@
         })
         .then(data => {
           font_e = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_b_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_b = data;
         })
       fetch("mtr_bus_font/special_characters.json")
         .then(response => {
@@ -315,7 +327,7 @@
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
           } else {
-            character_data = Array(19).fill("1".repeat(15))
+            character_data = Array(19).fill("1".repeat(15));
           }
           for (let k = 0; k < 19; k++) {
             font_data[k] += character_data[k];
