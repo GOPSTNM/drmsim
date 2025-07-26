@@ -312,9 +312,9 @@
       function font_todata(text) {
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
+        let character_font_type = 0;
         for (const c of text) {
           let character_data;
-          let character_font_type = 0;
           if (c == "§") {
             character_font_type = (character_font_type + 1) % 2;
           } else if (font_s[c]) {
