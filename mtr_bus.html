@@ -324,7 +324,7 @@
             character_data = font_c[c].slice();
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
-          } else if (font_b[c] && character_font_type == 1) { 
+          } else if ((font_b[c]) && (character_font_type == 1)) { 
             let margin = "0".repeat(font_b[c][0].length);
             character_data = font_b[c].slice();
             character_data.push(margin, margin, margin);
