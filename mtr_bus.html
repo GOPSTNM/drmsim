@@ -313,7 +313,17 @@
         let dts = document.getElementById("display_text_style").value;
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
+        let space_count = 0;
+        let bold_part = 0;
         for (const c of text) {
+          if (c == " ") {
+            space_count += 1;
+          } else {
+            space_count = 0;
+          }
+          if (space_count >= 6) {
+           bold_part = 1; 
+          }
           let character_data;
           if (font_s[c]) {
             character_data = font_s[c].slice();
@@ -322,7 +332,7 @@
             character_data = font_c[c].slice();
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
-          } else if (font_b[c] && font_b[c] != "" && dts == "b") {
+          } else if (font_b[c] && font_b[c] != "" && dts == "b" && bold_part == 1) {
             let margin = "0".repeat(font_b[c][0].length);
             character_data = font_b[c].slice();
             character_data.push(margin, margin, margin);
