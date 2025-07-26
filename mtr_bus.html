@@ -310,6 +310,7 @@
         });
       }
       function font_todata(text) {
+        let dts = document.getElementById("display_text_style").value;
         text = text.replaceAll(" ","  ").split("").join(" ");
         let font_data = Array(19).fill("");
         for (const c of text) {
@@ -321,7 +322,7 @@
             character_data = font_c[c].slice();
             character_data.push(margin, margin, margin);
             character_data.unshift(margin, margin);
-          } else if (font_b[c]) {
+          } else if (font_b[c] && font_b[c] != "" && dts == "b") {
             let margin = "0".repeat(font_b[c][0].length);
             character_data = font_b[c].slice();
             character_data.push(margin, margin, margin);
