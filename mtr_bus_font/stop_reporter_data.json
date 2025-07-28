@@ -254,6 +254,54 @@
       "D210": "富泰/Fu Tai"
     }
   },
+  "K65": {
+    "U": {
+      "U010": "+路綫 K65 前往流浮山總站    Route K65 towards Lau Fau Shan Terminus",
+      "U020": "又新街/Yau San Street",
+      "U030": "大棠路/Tai Tong Road",
+      "U040": "康樂路/Hong Lok Road",
+      "U050": "元朗警署/Yuen Long Police Station",
+      "U060": "輕鐵水邊圍站/LR Shui Pin Wai Stop/*M",
+      "U070": "元朗公園/Yuen Long Park",
+      "U080": "朗邊/Long Bin",
+      "U090": "屏山屏興里/Ping Hing Lane-Ping Shan/*H",
+      "U100": "坑尾村/Hang Mei Tsuen",
+      "U110": "輕鐵坑尾村站/LR Hang Mei Tsuen Stop",
+      "U120": "天盛苑/Tin Shing Court/*T/*H",
+      "U130": "石埗路/Shek Po Road",
+      "U140": "沙洲里村/Sha Chau Lei Tsuen/*H",
+      "U150": "廈村/Ha Tsuen",
+      "U160": "錫降圍/Shek Kong Wai",
+      "U170": "羅屋村/Lo Uk Tsuen",
+      "U180": "東頭村 (南)/Tung Tau Tsuen (South)",
+      "U190": "東頭村 (北)/Tung Tau Tsuen (North)",
+      "U200": "鳳降村/Fung Kong Tsuen",
+      "U210": "沙江圍/Sha Kong Wai",
+      "U220": "新慶村/San Hing Tsuen",
+      "U230": "流浮山總站/Lau Fau Shan Terminus"
+    },
+    "D": {
+      "D010": "流浮山 Lau Fau Shan",
+      "D020": "新慶村 San Hing Tsuen",
+      "D030": "沙江圍 Sha Kong Wai",
+      "D040": "鳳降村 Fung Kong Tsuen",
+      "D050": "東頭村 Tung Tau Tsuen",
+      "D060": "羅屋村 Lo Uk Tsuen",
+      "D070": "錫降圍 Shek Kong Wai",
+      "D080": "廈村 Ha Tsuen",
+      "D090": "沙洲里村 Sha Chau Lei Tsuen",
+      "D100": "天盛苑（港鐵天水圍站）Tin Shing Court (MTR Tin Shui Wai Station)",
+      "D110": "輕鐵坑尾村站 LR Hang Mei Tsuen Stop",
+      "D120": "坑尾村 Hang Mei Tsuen",
+      "D130": "屏山屏興里 Ping Hing Lane, Ping Shan",
+      "D140": "輕鐵屏山站 LR Ping Shan Stop",
+      "D150": "輕鐵水邊圍站 LR Shui Pin Wai Stop",
+      "D160": "元朗廣場 Yuen Long Plaza",
+      "D170": "開心廣場 Yuen Long Landmark",
+      "D180": "谷亭街 Kuk Ting Street",
+      "D190": "元朗站(輕鐵元朗站) (港鐵元朗站) Yuen Long Station (LR Yuen Long Stop) (MTR Yuen Long Station)"
+    }
+  },
   "K66": {
     "往大棠黃泥墩村": {
       "U010": "+路綫 K66 前往大棠黃泥墩村     Route K66 towards Tai Tong Wong Nai Tun Tsuen",
