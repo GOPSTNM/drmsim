@@ -384,6 +384,38 @@
       "D160": "天恆/Tin Heng"
     }
   },
+  "K74": {
+    "循環綫往東成里": {
+      "U001": "+路綫 K74 前往東成里     Route K74 towards Tung Shing Lei",
+      "U004": "天頌苑頌棋閣/Chung Ki House, Tin Chung Court",
+      "U007": "天頌苑/Tin Chung Court/*H",
+      "U010": "天瑞/Tin Shui",
+      "U020": "天水圍公園/Tin Shui Wai Park/*M",
+      "U030": "天慈邨/Tin Tsz Estate/*M",
+      "U040": "鳳池村/Fung Chi Tsuen/*H",
+      "U050": "朗屏/Long Ping/*H/*S",
+      "U060": "元朗盲人安老院/Yuen Long Home for the Aged Blind",
+      "U070": "元朗廣場/Yuen Long Plaza/*H",
+      "U080": "開心廣場/Yuen Long Landmark",
+      "U090": "港鐵元朗站 (朗日路)/MTR Yuen Long Station (Long Yat Road)/*T/*H",
+      "U100": "博愛醫院/Pok Oi Hospital/*H",
+      "D010": "東成里/Tung Shing Lei/*H"
+    },
+    "循環綫往天水圍市中心": {
+      "D020": "東華三院馬振玉紀念中學 (朗善邨)/TWGHs C.Y. Ma Memorial College (Long Shin Estate)",
+      "D030": "大橋村/Tai Kiu Tsuen/*T/*M",
+      "D040": "惠州學校/Wai Chow School/*H",
+      "D050": "朗屏邨珠屏樓/Chu Ping House, Long Ping Estate",
+      "D060": "朗屏/Long Ping/*H",
+      "D070": "鳳池村/Fung Chi Tsuen",
+      "D080": "輕鐵天慈站/LR Tin Tsz Stop/*H",
+      "D090": "天水圍公園/Tin Shui Wai Park",
+      "U011": "天瑞/Tin Shui",
+      "D100": "天華邨/Tin Wah Estate",
+      "D110": "天悅邨/Tin Yuet Estate/*H",
+      "U002": "天水圍市中心/Tin Shui Wai Town Centre"
+    }
+  },
   "K76S": {
     "往濕地公園路": {
       "1": "+路綫 K76S 前往濕地公園路 (近天葵路)      Route K76S towards Wetland Park Road (near Tin Kwai Road)",
