@@ -137,6 +137,52 @@
       "nD300": "悅湖山莊/Yuet Wu Villa"
     }
   },
+  "K52A": {
+    "往曾咀": {
+      "U010": "+路綫 K52A 前往曾咀靈灰安置所    Route K52A towards Tsang Tsui Columbarium",
+      "U015": "輕鐵屯門站/LR Tuen Mun Stop",
+      "U020": "輕鐵建安站/LR Kin On Stop",
+      "U030": "輕鐵青雲站/LR Tsing Wun Stop",
+      "U040": "聖彼得堂/SKH St. Peter's Church",
+      "U050": "富健花園/Glorious Garden",
+      "U060": "新屯門中心/Sun Tuen Mun Centre",
+      "U070": "輕鐵蝴蝶站/LR Butterfly Stop",
+      "U080": "屯門公眾騎術學校/Tuen Mun Public Riding School",
+      "U090": "蝴蝶灣公園/Butterfly Beach Park",
+      "U100": "望后石/Pillar Point",
+      "U110": "政府車場/Government Depot",
+      "U120": "內河碼頭/River Trade Terminal",
+      "U130": "環保園/EcoPark",
+      "U140": "紹榮鋼鐵/Shiu Wing Steel Mill",
+      "U150": "沙埔崗 312 號/No. 312 Sha Po Kong",
+      "U151": "沙埔崗 312 號/No. 312 Sha Po Kong/*L",
+      "U160": "沙埔崗 177 號/No. 177 Sha Po Kong",
+      "U170": "沙埔崗 127 號/No. 127 Sha Po Kong/*L",
+      "U180": "曾咀靈灰安置所/Tsang Tsui Columbarium"
+      "U181": "曾咀靈灰安置所/Tsang Tsui Columbarium/*F"
+    },
+    "往港鐵屯門站": {
+      "D010": "曾咀 Tsang Tsui",
+      "D020": "沙埔崗 127 號 No.127 Sha Po Kong",
+      "D030": "沙埔崗 177 號 No.177 Sha Po Kong",
+      "D040": "沙埔崗 288 號 No.288 Sha Po Kong",
+      "D050": "沙埔崗 351 號 No.351 Sha Po Kong",
+      "D060": "中電 A 廠 CLP (Plant A)",
+      "D070": "紹榮鋼鐵 Shiu Wing Steel Mill",
+      "D080": "環保園 EcoPark",
+      "D090": "內河碼頭 River Trade Terminal",
+      "D100": "政府車場 Government Depot",
+      "D110": "望后石 Pillar Point",
+      "D120": "蝴蝶灣公園 Butterfly Beach Park",
+      "D130": "屯門公眾騎術學校 Tuen Mun Public Riding School",
+      "D140": "輕鐵蝴蝶站 LR Butterfly Stop",
+      "D150": "輕鐵車廠站 Light Rail Depot Stop",
+      "D160": "輕鐵龍門站 LR Lung Mun Stop",
+      "D170": "輕鐵青雲站 LR Tsing Wun Stop",
+      "D180": "輕鐵建安站 LR Kin On Stop",
+      "D190": "屯門站 Tuen Mun Station"
+    }
+  },
   "K53": {
     "循環綫往掃管笏": {
       "U010": "+路綫 K53 前往掃管笏    Route K53 towards So Kwun Wat",
