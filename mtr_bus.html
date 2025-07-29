@@ -378,7 +378,7 @@
               test_string = all_routes_data[i][j][k];
               for (let l = 0; l < test_string.length; l++) {
                 let c = test_string[l];
-                if (!font_s[c] && !font_c[c] && !font_e[c] && !font_b[c] && (c != "/") && (c != "+") && (c != "*") && (!Array.isArray(all_routes_data[i][j][k]))) {
+                if (!font_s[c] && !font_c[c] && !font_e[c] && !font_b[c] && (c != "/") && (c != "+") && (c != "*") && !Array.isArray(all_routes_data[i][j][k]) && !font_test_message.includes(c)) {
                   font_test_message += "\n" + c;
                 }
               }
