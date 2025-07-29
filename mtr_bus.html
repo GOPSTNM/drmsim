@@ -375,7 +375,12 @@
         for (let i in all_routes_data) {
           for (let j in all_routes_data[i]) {
             for (let k in all_routes_data[i][j]) {
-              alert(all_routes_data[i][j][k]);
+              test_string = all_routes_data[i][j][k];
+              test_string.split("").forEach(c => {
+                if (!font_s[c] && !font_c[c] && !font_e[c] && !font_b[c] && c != "/") {
+                  font_test_message += "\r" + c;
+                }
+              });
             }
           }
         }
