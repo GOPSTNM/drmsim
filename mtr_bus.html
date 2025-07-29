@@ -372,9 +372,13 @@
       }
       function font_test() {
         let font_test_message = "The following characters have not been made:";
-        all_routes_data["K12"].forEach(item => {
-          alert("test");
-        });
+        for (let i in all_routes_data) {
+          for (let j in all_routes_data[i]) {
+            for (let k in all_routes_data[i][k]) {
+              alert(k);
+            }
+          }
+        }
       }
     </script>
   </body>
