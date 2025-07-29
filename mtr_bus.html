@@ -376,7 +376,8 @@
           for (let j in all_routes_data[i]) {
             for (let k in all_routes_data[i][j]) {
               test_string = all_routes_data[i][j][k];
-              for (let c = 0; c < test_string.length; c++) {
+              for (let l = 0; l < test_string.length; l++) {
+                let c = test_string[l];
                 if ((!font_s[c]) && (!font_c[c]) && (!font_e[c]) && (!font_b[c]) && (c != "/")) {
                   font_test_message += "\n" + c;
                 }
