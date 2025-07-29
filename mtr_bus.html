@@ -33,6 +33,7 @@
       <option value="e">Standard</option>
       <option value="b">Bold</option>
     </select>
+    <input type="button" value="Font Test" onclick="font_test();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 19; row++) {
@@ -368,6 +369,11 @@
             }
           }
         }
+      }
+      function font_test() {
+        route_data.forEach(item => {
+          alert("1");
+        });
       }
     </script>
   </body>
