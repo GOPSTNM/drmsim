@@ -327,14 +327,14 @@
         for (const c of text) {
           alert(c + space_count);
           if (c == "#") {
-            space_count = -9;
+            space_count = -18;
             bold_part = 0;
           } else if (c == " ") {
             space_count += 1;
           } else {
             space_count = 0;
           }
-          if (space_count >= 6) {
+          if (space_count >= 13) {
            bold_part = 1;
           }
           let character_data;
