@@ -327,13 +327,14 @@
         for (const c of text) {
           if (c == "#") {
             space_count = -6;
+            bold_part = 0;
           } else if (c == " ") {
             space_count += 1;
           } else {
             space_count = 0;
           }
           if (space_count >= 6) {
-           bold_part = 1; 
+           bold_part = 1;
           }
           let character_data;
           if (font_s[c]) {
