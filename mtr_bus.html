@@ -325,7 +325,9 @@
           bold_part_exception = 0;
         }
         for (const c of text) {
-          if (c == " ") {
+          if (c == "#") {
+            space_count = -5;
+          } else if (c == " ") {
             space_count += 1;
           } else {
             space_count = 0;
