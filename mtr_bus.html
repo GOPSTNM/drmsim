@@ -69,6 +69,7 @@
       let display_yspace;
       let display_yhide_space;
       let pa;
+      let bold_part_exception;
       fetch("mtr_bus_font/stop_reporter_data.json")
         .then(response => {
           return response.json();
@@ -143,7 +144,8 @@
             }
             display_yhide_space = 0;
             if (await delay(2000)) return;
-            display_data = font_todata("§Welcome aboard");
+            bold_part_exception = 1;
+            display_data = font_todata("Welcome aboard");
             display_xspace = Math.round((143-display_data[0].length)/2);
             display_yspace = 0;
             to_display(display_data);
@@ -318,17 +320,19 @@
         let font_data = Array(19).fill("");
         let space_count = 0;
         let bold_part = 0;
+        if (bold_part_exception == 1) {
+          bold_part = 1;
+          bold_part_exception = 0;
+        }
         for (const c of text) {
-          if (c == "§") {
-            bold_part = 1;
-          } else if (c == "#") {
+          if (c == "#") {
             space_count = -23;
           } else if (c == " ") {
             space_count += 1;
           } else {
             space_count = 0;
           }
-          if (space_count >= 24) {
+          if (space_count >= 17) {
            bold_part = 1;
           }
           let character_data;
