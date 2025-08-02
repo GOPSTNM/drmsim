@@ -592,6 +592,36 @@
       "U002": "天水圍市中心/Tin Shui Wai Town Centre"
     }
   },
+  "K75P": {
+    "循環綫往洪水橋": {
+      "U010": "+路綫 K75P 前往洪水橋    Route K75P towards Hung Shui Kiu",
+      "U020": "天水圍公園/Tin Shui Wai Park",
+      "U030": "天耀邨耀盛樓/Yiu Shing House, Tin Yiu Estate",
+      "U040": "輕鐵天耀站/LR Tin Yiu Stop/*M",
+      "U050": "天盛苑/Tin Shing Court/*T",
+      "U060": "石埗路/Shek Po Road/*M",
+      "U070": "沙洲里村/Sha Chau Lei Tsuen/*M",
+      "U080": "廈村市/Ha Tsuen Shi/*M",
+      "U090": "新屋村/San Uk Tsuen",
+      "U100": "李屋村/Lee Uk Tsuen/*M",
+      "U110": "新生村/San Sang Tsuen/*M",
+      "U120": "新李屋村/San Lee Uk Tsuen",
+      "U130": "田心/Tin Sam",
+      "U140": "鄉事委員會/Rural Committee",
+      "D010": "洪水橋/Hung Shui Kiu/*M"
+    },
+    "循環綫往天瑞": {
+      "D010": "+路綫 K75P 前往天瑞    Route K75P towards Tin Shui",
+      "D020": "洪水橋巴士廠/Hung Shui Kiu Bus Depot",
+      "D030": "洪福邨/Hung Fuk Estate",
+      "D040": "石埗村/Shek Po Tsuen/*S",
+      "D050": "天盛苑/Tin Shing Court/*T",
+      "D060": "天水圍警署/Tin Shui Wai Police Station",
+      "D070": "賞湖居/Sherwood Court",
+      "D080": "天水圍公園/Tin Shui Wai Park/*H",
+      "U011": "天瑞/Tin Shui"
+    }
+  },
   "K76S": {
     "往濕地公園路": {
       "1": "+路綫 K76S 前往濕地公園路 (近天葵路)      Route K76S towards Wetland Park Road (near Tin Kwai Road)",
