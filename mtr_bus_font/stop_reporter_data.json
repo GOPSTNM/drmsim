@@ -622,6 +622,21 @@
       "U011": "天瑞/Tin Shui"
     }
   },
+  "K76": {
+    "往港鐵天水圍站": {
+      "U010": "+路綫 K76 前往港鐵天水圍站      Route K76 towards MTR Tin Shui Wai Station",
+      "U020": "天逸邨逸潭樓/Yat Tam House, Tin Yat Estate/*M",
+      "U030": "天富苑欣富閣/Yan Fu House, Tin Fu Court/*M",
+      "U040": "天盛苑/Tin Shing Court/*T",
+      "U050": "港鐵天水圍站/MTR Tin Shui Wai Station/*T/*"
+    },
+    "往天恆": {
+      "D010": "+路綫 K76 前往天恆      Route K76 towards Tin Heng",
+      "D020": "天恩邨/Tin Yan Estate/*H/*M",
+      "D030": "天澤邨/Tin Chak Estate",
+      "D040": "天恆/Tin Heng"
+    }
+  },
   "K76S": {
     "往濕地公園路": {
       "1": "+路綫 K76S 前往濕地公園路 (近天葵路)      Route K76S towards Wetland Park Road (near Tin Kwai Road)",
