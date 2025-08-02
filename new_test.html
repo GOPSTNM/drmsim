@@ -4,7 +4,7 @@
     <title>MTR Bus Stop Reporter</title>
     <style>
       .display {
-        width: 900px;
+        width: auto;
         background-color: #5C5C5C;
       }
       .dot {
@@ -34,7 +34,7 @@
     <input type="button" value="Clear All" onclick="clear_display()"><br>
     <textarea id="output" disabled></textarea>
     <input type="button" value="Confirm and Copy" onclick="show()">
-    <input type="range" onchange="update_range()" id="width_range" min="1" max="30">
+    <input type="range" onchange="update_range()" id="width_range" min="1" max="33">
     <script>  
       let width_range = 15;
       function update_range() {
