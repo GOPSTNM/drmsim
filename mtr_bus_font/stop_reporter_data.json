@@ -282,7 +282,7 @@
       "D170": "港鐵屯門站/MTR Tuen Mun Station/*T"
     },
     "循環綫經業旺邨": {
-      "D170": "+路綫 K53 前往港鐵屯門站   Route K53 towards MTR Tuen Mun Station",
+      "D170": "+路綫 K53 前往港鐵屯門站    Route K53 towards MTR Tuen Mun Station",
       "D180": "天后路/Tin Hau Road",
       "D190": "業旺邨/Yip Wong Estate",
       "U011": "港鐵屯門站/MTR Tuen Mun Station/*T"
@@ -290,7 +290,7 @@
   },
   "K54": {
     "循環綫往屯門市中心": {
-      "U010": "+路綫 K54 前往屯門市中心  Route K54 towards Tuen Mun Town Centre",
+      "U010": "+路綫 K54 前往屯門市中心    Route K54 towards Tuen Mun Town Centre",
       "U020": "菁田邨/Ching Tin Estate/*H",
       "U030": "紫田村/Tsz Tin Tsuen",
       "U040": "欣田邨/Yan Tin Estate/*H/*M",
@@ -299,7 +299,7 @@
       "U070": "屯門市中心/Tuen Mun Town Centre"
     },
     "循環綫往和田邨": {
-      "U070": "+路綫 K54 前往和田邨  Route K54 towards Wo Tin Estate",
+      "U070": "+路綫 K54 前往和田邨    Route K54 towards Wo Tin Estate",
       "D010": "屯門市廣場/Tuen Mun Town Plaza/*H",
       "D020": "新墟街市/San Hui Market",
       "D030": "港鐵兆康站 (北)/MTR Siu Hong Station (North)/*T/*H",
