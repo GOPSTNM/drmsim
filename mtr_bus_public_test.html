@@ -1,0 +1,393 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        margin: 0.5px;
+        display: inline-block;
+        background-color: #6E6E6E;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div><br>
+    <select id="route" onchange="input_route_change()">
+      <option selected="true" disabled="true">Select Route</option>
+    </select>
+    <select id="dest" onchange="input_dest_change()">
+      <option selected="true" disabled="true">Select Destination</option>
+    </select>
+    <input type="button" value="Start Route" onclick="start_route();"><br>
+    <input type="button" value="Next Stop" onclick="skip_stop();">
+    <select id="display_text_style" disabled>
+      <option value="e">Standard</option>
+      <option value="b">Bold</option>
+    </select>
+    <script>
+      const display = document.getElementById("display");
+      for (let row = 0; row < 19; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        display.appendChild(br);
+      }
+      let special_message = {
+        M: "請盡量行入車廂裡面      Please move further into the bus compartment",
+        H: "請緊握扶手     Please hold the handrail",
+        T: "乘客可在該站轉乘屯馬綫      Passengers may change here for the Tuen Ma Line",
+        S: "請勿在上層及梯級站立      Please do not stand on the staircase or upper level",
+        E: "乘客可在該站轉乘東鐵綫      Passengers may change here for the East Rail Line",
+        C: "港鐵巴士車長招聘熱線 : 29932440",
+        N: "本班車已到達終點站，請乘客注意",
+        L: "前往龍鼓灘，請在沙埔崗 127 號巴士站下車      For Lung Kwn Tan, please alight at 127 Sha Po Kong bus stop",
+        F: "乘客下車後請拍卡繳付第二段車費",
+        A: "本班車為路綫 K51 前往大欖     This bus is Route K51 to Tai Lam",
+        B: "本班車為路綫 K51A 前往掃管笏      This bus is Route K51A to So Kwun Wat"
+      };
+      let all_routes_data;
+      let font_c;
+      let font_e;
+      let font_b;
+      let font_s;
+      let route_data;
+      let route_stage;
+      let stopping_stage;
+      let display_xspace;
+      let display_yspace;
+      let display_yhide_space;
+      let pa;
+      let bold_part_exception;
+      fetch("mtr_bus_font/stop_reporter_data.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          all_routes_data = data;
+          let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
+          for (let i in all_routes_data) {
+            rte_option_list += `<option value="${i}">${i}</option>`;
+          }
+          document.getElementById("route").innerHTML = rte_option_list;
+        })
+      fetch("mtr_bus_font/mtr_bus_c_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_c = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_e_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_e = data;
+        })
+      fetch("mtr_bus_font/mtr_bus_b_font.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_b = data;
+        })
+      fetch("mtr_bus_font/special_characters.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          font_s = data;
+        })
+      function input_route_change() {
+        let option_list = "";
+        for (let i in all_routes_data[document.getElementById("route").value]) {
+          option_list += `<option value="${i}">${i}</option>`;
+        }
+        document.getElementById("dest").innerHTML = option_list;
+        input_dest_change();
+      }
+      function input_dest_change() {
+        route_data = all_routes_data[document.getElementById("route").value][document.getElementById("dest").value];
+      }
+      let shouldStop = false;
+      async function start_route() {
+        await stop_screen();
+        shouldStop = false;
+        let display_data;
+        display_xspace = 0;
+        display_yspace = 0;
+        display_yhide_space = 0;
+        route_stage = 0;
+        stopping_stage = 2;
+        while (route_stage == 0) {
+          if (route_data[Object.keys(route_data)[0]].includes("+")){
+            display_data = font_todata("歡 迎 乘 搭");
+            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_yspace = 14;
+            display_yhide_space = 2;
+            for (let i = 0; i < 15; i++) {
+              to_display(display_data);
+              display_yspace -= 1;
+              if (await delay(30)) return;
+            }
+            display_yhide_space = 0;
+            if (await delay(2000)) return;
+            bold_part_exception = 1;
+            display_data = font_todata("Welcome aboard");
+            display_xspace = Math.round((143-display_data[0].length)/2);
+            display_yspace = 0;
+            to_display(display_data);
+            if (await delay(2000)) return;
+          }
+          display_data = font_todata(route_data[Object.keys(route_data)[0]].replaceAll("+", ""));
+          display_xspace = 142;
+          display_yspace = 0;
+          for (let i = 0; i < (display_data[0].length + 143); i++) {
+            to_display(display_data);
+            display_xspace -= 1;
+            if (await delay(14)) return;
+          }
+        }
+        return;
+      }
+      async function arrive_depart() {
+        if (stopping_stage == 0) {
+          stopping_stage = 1;
+          stop_screen();
+          let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
+          if (stop_sentences[1] && stop_sentences instanceof Array) {
+            stop_sentences = stop_sentences[1];
+            await stop_screen();
+            shouldStop = false;
+            stop_sentences = stop_sentences.split("/");
+            for (let i = 0; i < stop_sentences.length; i++) {
+              if (stop_sentences[i].includes("*")) {
+                stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+              }
+            }
+            while (route_stage < Object.keys(route_data).length) {
+              for (let p = 0; p < stop_sentences.length; p++) {
+                display_data = font_todata(stop_sentences[p]);
+                display_xspace = 142;
+                display_yspace = 0;
+                for (let k = 0; k < (display_data[0].length + 143); k++) {
+                  to_display(display_data);
+                  display_xspace -= 1;
+                  if (await delay(14)) return;
+                }
+              }
+            }
+            return;
+          }
+        } else {
+          stopping_stage = 0;
+          route_stage += 1;
+          show_stop();
+        }
+      }
+      function skip_stop() {
+        stopping_stage = 0;
+        route_stage += 1;
+        show_stop();
+      }
+      function stopping_door() {
+        if (stopping_stage == 1) {
+          stopping_stage = 2;
+          open_door();
+        } else if (stopping_stage == 2) {
+          if (pa) {
+            pa.pause();
+          }
+          pa = document.createElement("AUDIO");
+          pa.src = "mtr_bus_font/MTR_Bus_Hold_Handrail_Door.m4a";
+          pa.play();
+          pa.onended = function(){
+            skip_stop();
+          };
+          pa.onplaying = function(){
+            stop_screen();
+          };
+        }
+      }
+      async function open_door() {
+        await stop_screen();
+        shouldStop = false;
+        let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
+        if (stop_sentences instanceof Array) {
+          stop_sentences = stop_sentences[2].split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+            }
+          }
+        } else {
+          stop_sentences = stop_sentences.split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences.splice(i, 1);
+              i -= 1;
+            } else if (i + 1 < stop_sentences.length) {
+              stop_sentences[i + 1] = `#    ${stop_sentences[i]}      ${stop_sentences[i + 1]}`;
+              stop_sentences.splice(i, 1);
+            }
+          }
+        }
+        while (route_stage < Object.keys(route_data).length) {
+          for (let p = 0; p < stop_sentences.length; p++) {
+            display_data = font_todata(stop_sentences[p]);
+            display_xspace = 142;
+            display_yspace = 0;
+            for (let k = 0; k < (display_data[0].length + 143); k++) {
+              to_display(display_data);
+              display_xspace -= 1;
+              if (await delay(14)) return;
+            }
+          }
+        }
+        return;
+      }
+      async function show_stop() {
+        await stop_screen();
+        shouldStop = false;
+        let stop_sentences = route_data[Object.keys(route_data)[route_stage]];
+        if (stop_sentences instanceof Array) {
+          stop_sentences = stop_sentences[0].split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+            }
+          }
+        } else {
+          stop_sentences = stop_sentences.split("/");
+          for (let i = 0; i < stop_sentences.length; i++) {
+            if (stop_sentences[i].includes("*")) {
+              stop_sentences[i] = special_message[stop_sentences[i].replace("*", "")];
+            } else if (i + 1 < stop_sentences.length) {
+              stop_sentences[i + 1] = `下一站：${stop_sentences[i]}      Next stop: ${stop_sentences[i + 1]}`;
+              stop_sentences.splice(i, 1);
+            }
+          }
+        }
+        while (route_stage < Object.keys(route_data).length) {
+          for (let p = 0; p < stop_sentences.length; p++) {
+            display_data = font_todata(stop_sentences[p]);
+            display_xspace = 142;
+            display_yspace = 0;
+            for (let k = 0; k < (display_data[0].length + 143); k++) {
+              to_display(display_data);
+              display_xspace -= 1;
+              if (await delay(14)) return;
+            }
+          }
+        }
+        return;
+      }
+      async function stop_screen() {
+        shouldStop = true;
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        await delay(100);
+      }
+      function delay(ms) {
+        return new Promise(resolve => {
+          const start = Date.now();
+          const checkStop = () => {
+            if (shouldStop) {
+              resolve(true);
+            } else if (Date.now() - start >= ms) {
+              resolve(false);
+            } else {
+              setTimeout(checkStop, 14);
+            }
+          };
+          setTimeout(checkStop, 14);
+        });
+      }
+      function font_todata(text) {
+        let dts = document.getElementById("display_text_style").value;
+        text = text.replaceAll(" ","  ").split("").join(" ");
+        let font_data = Array(19).fill("");
+        let space_count = 0;
+        let bold_part = 0;
+        if (bold_part_exception == 1) {
+          bold_part = 1;
+          bold_part_exception = 0;
+        }
+        for (const c of text) {
+          if (c == "#") {
+            space_count = -17;
+          } else if (c == " ") {
+            space_count += 1;
+          } else {
+            space_count = 0;
+          }
+          if (space_count >= 17) {
+           bold_part = 1;
+          }
+          let character_data;
+          if (font_s[c]) {
+            character_data = font_s[c].slice();
+          } else if (font_c[c]) {
+            let margin = "0".repeat(font_c[c][0].length);
+            character_data = font_c[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
+          } else if (font_b[c] && font_b[c] != "" && dts == "b" && bold_part == 1) {
+            let margin = "0".repeat(font_b[c][0].length);
+            character_data = font_b[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
+          } else if (font_e[c]) {
+            let margin = "0".repeat(font_e[c][0].length);
+            character_data = font_e[c].slice();
+            character_data.push(margin, margin, margin);
+            character_data.unshift(margin, margin);
+          } else {
+            character_data = Array(19).fill("1".repeat(15));
+          }
+          for (let k = 0; k < 19; k++) {
+            font_data[k] += character_data[k];
+          }
+        }
+        return font_data;
+      }
+      function to_display(data) {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1" && (k+display_xspace) >= 0 && (k+display_xspace) < 143 && (i+display_yspace) >= 0 && (i+display_yspace) < (19 - display_yhide_space)) {
+              document.getElementById((i+display_yspace) + "-" + (k+display_xspace)).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
+      }
+      function font_test() {
+        let font_test_message = "The following characters have not been made:";
+        for (let i in all_routes_data) {
+          for (let j in all_routes_data[i]) {
+            for (let k in all_routes_data[i][j]) {
+              test_string = all_routes_data[i][j][k];
+              for (let l = 0; l < test_string.length; l++) {
+                let c = test_string[l];
+                if (!font_s[c] && !font_c[c] && !font_e[c] && !font_b[c] && (c != "/") && (c != "+") && (c != "*") && !Array.isArray(all_routes_data[i][j][k]) && !font_test_message.includes(c)) {
+                  font_test_message += "\n" + c;
+                }
+              }
+            }
+          }
+        }
+        alert(font_test_message);
+      }
+    </script>
+  </body>
+</html>
