@@ -21,6 +21,8 @@
     <div class="display" id="display"></div><br>
     <select id="route" onchange="input_route_change()">
       <option selected="true" disabled="true">Select Route</option>
+      <option value="K73">Route K73</option>
+      <option value="K74">Route K74</option>
     </select>
     <select id="dest" onchange="input_dest_change()">
       <option selected="true" disabled="true">Select Destination</option>
@@ -79,7 +81,7 @@
           for (let i in all_routes_data) {
             rte_option_list += `<option value="${i}">${i}</option>`;
           }
-          document.getElementById("route").innerHTML = rte_option_list;
+          //document.getElementById("route").innerHTML = rte_option_list;
         })
       fetch("mtr_bus_font/mtr_bus_c_font.json")
         .then(response => {
