@@ -122,10 +122,16 @@
       }
       function shape(mode) {
         let to_fill = [];
+        let y1 = point[0].split("-")[0];
+        let y2 = point[1].split("-")[0];
+        let x1 = point[0].split("-")[1];
+        let x2 = point[1].split("-")[1];
+        let ychange = (y1-y2) > 0 ? 1 : -1;
+        let xchange = (x1-x2) > 0 ? 1 : -1;
         if (mode == 1) {
-          for (let y = point[0].split("-")[0]; y == Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); y += (point[0].split("-")[0] - point[1].split("-")[0] > 0 ? 1 : -1)) {
-            for (let x = point[0].split("-")[1]; x == Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); x += (point[0].split("-")[1] - point[1].split("-")[1] > 0 ? 1 : -1)) {
-              to_fill.push(`${y}-${x}`);
+          for (let i = y1; i == y2; i += ychange) {
+            for (let k = x1; k == x2; k += xchange) {
+              to_fill.push(`${i}-${k}`);
             }
           }
         }
