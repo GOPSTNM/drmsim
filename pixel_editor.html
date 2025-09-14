@@ -15,25 +15,14 @@
         display: inline-block;
         background-color: #696969;
       }
-      textarea {
-        width: fit-content;
-        height: 150px;
-        padding: 12px 20px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        background-color: #f8f8f8;
-        font-size: 16px;
-        resize: none;
-      }
     </style>
   </head>
   <body>
     <div class="display" id="display"></div><br><br>
-    <input type="text" id="text_input" onchange="update_text()">
     <input type="button" value="Clear All" onclick="clear_display()"><br>
-    <textarea id="output" disabled></textarea>
-    <input type="button" value="Confirm and Copy" onclick="show()">
+    <textarea id="output" disabled></textarea><br>
+    <input type="button" value="Confirm and Copy" onclick="show()"><br>
+    <input type="range" onchange="update_range()" id="width_range" min="1" max="120"><br>
     <input type="range" onchange="update_range()" id="width_range" min="1" max="120">
     <input type="button" value="Load" onclick="load_from();">
     <script>
