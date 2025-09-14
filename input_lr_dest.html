@@ -33,9 +33,9 @@
     <input type="button" value="Clear All" onclick="clear_display()"><br>
     <textarea id="output" disabled></textarea>
     <input type="button" value="Confirm and Copy" onclick="show()">
-    <input type="range" onchange="update_range()" id="width_range" min="1" max="119">
+    <input type="range" onchange="update_range()" id="width_range" min="1" max="120">
     <script>  
-      let width_range = 119;
+      let width_range = 120;
       function update_range() {
         width_range = document.getElementById('width_range').value;
         setup();
@@ -43,7 +43,7 @@
       const display = document.getElementById('display');
       function setup() {
         display.replaceChildren();   
-        for (let row = 0; row < 31; row++) {
+        for (let row = 0; row < 32; row++) {
           for (let col = 0; col < width_range; col++) {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -82,7 +82,7 @@
       }
       function update_json() {
         let out = "";
-        for (let row = 0; row < 31; row++) {
+        for (let row = 0; row < 32; row++) {
           out += '"';
           for (let col = 0; col < width_range; col++) {
             const dot = document.getElementById(`${row}-${col}`);
@@ -93,7 +93,7 @@
             }
           }
           out += '"';
-          if (row != 30) {
+          if (row != 31) {
             out += ", ";
           }
         }
