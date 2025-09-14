@@ -38,8 +38,8 @@
       <option value="2">Medium</option>
       <option value="3">Large</option>
     </select><br><br>
-    <input type="button" value="1st Point" onclick="point(0);">
-    <input type="button" value="2nd Point" onclick="point(1);">
+    <input type="button" value="1st Point" onclick="set_point(0);">
+    <input type="button" value="2nd Point" onclick="set_point(1);">
     <input type="button" value="Rectangle" onclick="shape(1);"><br>
     <script>
       let current_point = "";
@@ -71,7 +71,7 @@
           display.appendChild(document.createElement("br"));
         }
       }
-      function point(n) {
+      function set_point(n) {
         point[n] = current_point;
       }
       function shape(mode) {
