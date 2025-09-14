@@ -12,7 +12,6 @@
         display: inline-block;
         background-color: #696969;
       }
-      }
       textarea {
         width: fit-content;
         height: 150px;
@@ -79,7 +78,7 @@
           clear_display();
           for (let y = 0; y < load_data.length; y++) {
             let string = load_data[y].replaceAll('"',"");
-            for (let x = 0; c < string.length; c++) {
+            for (let x = 0; x < string.length; x++) {
               if (string[x] == "1") {
                 document.getElementById(`${y}-${x}`).style.backgroundColor = "#FFC002";
               }
