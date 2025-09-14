@@ -22,10 +22,10 @@
     <input type="range" onchange="setup()" id="y_range" value="32" min="1" max="32"><br>
     <input type="button" value="Load" onclick="load_from();">
     <input type="button" value="Clear All" onclick="clear_display()"><br>
-    <select id="pixel_size">
+    <select onchange="setup();" id="pixel_size">
       <option value="1">Small</option>
-      <option value="1.5">Medium</option>
-      <option value="2">Large</option>
+      <option value="2">Medium</option>
+      <option value="3">Large</option>
     </select>
     <script>
       const display = document.getElementById("display");
