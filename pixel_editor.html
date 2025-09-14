@@ -123,8 +123,8 @@
       function shape(mode) {
         let to_fill = [];
         if (mode == 1) {
-          for (let y = point[0].split("-")[0]; y < Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); y ++) {
-            for (let x = point[0].split("-")[1]; x < Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); x ++) {
+          for (let y = point[0].split("-")[0]; y == Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); y += point[0].split("-")[0] - point[1].split("-")[0] > 0 ? 1 : -1) {
+            for (let x = point[0].split("-")[1]; x == Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); x += point[0].split("-")[1] - point[1].split("-")[1] > 0 ? 1 : -1) {
               to_fill.push(`${y}-${x}`);
             }
           }
