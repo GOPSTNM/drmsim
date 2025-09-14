@@ -37,6 +37,8 @@
             const dot = document.createElement("div");
             dot.classList.add("dot");
             dot.id = `${y}-${x}`;
+            dot.style.width = "7.5px"
+            dot.style.height = "7.5px"
             dot.addEventListener("click", function() {
               if (this.style.backgroundColor == "rgb(255, 192, 2)") {
                 this.style.backgroundColor = "#696969";
