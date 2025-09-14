@@ -40,6 +40,7 @@
     </select><br><br>
     <input type="button" value="1st Point" onclick="set_point(0);">
     <input type="button" value="2nd Point" onclick="set_point(1);">
+    <input type="button" value="3rd Point" onclick="set_point(2);">
     <input type="button" value="Rectangle" onclick="shape(1);"><br>
     <script>
       let current_point = "";
@@ -75,7 +76,13 @@
         point[n] = current_point;
       }
       function shape(mode) {
-        alert(point[0]);
+        let to_fill = ["1-1"];
+        if (mode == 1) {
+        }
+        for (const i of to_fill) {
+          document.getElementById(i).style.backgroundColor = "#FFC002";
+        }
+        update_json();
       }
       function copy() {
         update_json();
