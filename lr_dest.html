@@ -19,10 +19,11 @@
   </head>
   <body>
     <div class="display" id="display"></div><br>
-    <select id="route" onchange="input_route_change()">
+    <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
+      <option value="706_TIS">706_TIS</option>
     </select>
-    <input type="button" value="Font Test" onclick="font_test();">
+    <input type="button" value="Export" onclick="image_export();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 31; row++) {
@@ -34,6 +35,10 @@
         }
         const br = document.createElement("br");
         display.appendChild(br);
+      }
+      function input_change() {
+      }
+      function image_export() {
       }
     </script>
   </body>
