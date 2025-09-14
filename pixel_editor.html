@@ -135,9 +135,9 @@
         console.log(ychange);
         console.log(xchange);
         if (mode == 1) {
-          for (let i = 0; i < ((y1-y2) * ychange); i += ychange) {
-            for (let k = 0; k < ((x1-x2) * xchange); k += xchange) {
-              to_fill.push(`${i + (y1)}-${k + (x1)}`);
+          for (let i = 0; i < ((y2-y1) * ychange); i += ychange) {
+            for (let k = 0; k < ((x2-x1) * xchange); k += xchange) {
+              to_fill.push(`${i + y1}-${k + x1}`);
             }
           }
         }
