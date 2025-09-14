@@ -4,7 +4,7 @@
     <title>Pixel Editor</title>
     <style>
       .display {
-        width: auto;
+        width: max-content;
         background-color: #5C5C5C;
       }
       .dot {
@@ -37,8 +37,10 @@
             const dot = document.createElement("div");
             dot.classList.add("dot");
             dot.id = `${y}-${x}`;
-            dot.style.width = "7.5px"
-            dot.style.height = "7.5px"
+            let pixel_size = document.getElementById("pixel_size").value;
+            dot.style.width = `${7.5 * pixel_size}px`;
+            dot.style.height = `${7.5 * pixel_size}px`;
+            dot.style.margin = `${0.75 * pixel_size}px`;
             dot.addEventListener("click", function() {
               if (this.style.backgroundColor == "rgb(255, 192, 2)") {
                 this.style.backgroundColor = "#696969";
