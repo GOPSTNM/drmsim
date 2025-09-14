@@ -8,10 +8,7 @@
         background-color: #5C5C5C;
       }
       .dot {
-        height: 7.5px;
-        width: 7.5px;
         border-radius: 100%;
-        margin: 0.75px;
         display: inline-block;
         background-color: #696969;
       }
@@ -20,10 +17,10 @@
   <body>
     <div class="display" id="display"></div><br><br>
     <textarea id="output" disabled></textarea><br>
-    <input type="button" value="Confirm and Copy" onclick="show()"><br>
-    <input type="range" onchange="update_range()" id="x_range" value="120" min="1" max="120"><br>
-    <input type="range" onchange="update_range()" id="y_range" value="32" min="1" max="32"><br>
-    <input type="button" value="Load" onclick="load_from();"><br>
+    <input type="button" value="Confirm and Copy" onclick="copy();"><br>
+    <input type="range" onchange="setup()" id="x_range" value="120" min="1" max="120"><br>
+    <input type="range" onchange="setup()" id="y_range" value="32" min="1" max="32"><br>
+    <input type="button" value="Load" onclick="load_from();">
     <input type="button" value="Clear All" onclick="clear_display()"><br>
     <select id="pixel_size">
       <option value="1">Small</option>
@@ -31,6 +28,28 @@
       <option value="10">Large</option>
     </select>
     <script>
+      const display = document.getElementById("display");
+      setup();
+      function setup() {
+        display.replaceChildren();  
+        for (let y = 0; y < document.getElementById("y_range").value; y++) {
+          for (let x = 0; x < document.getElementById("x_range").value; x++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            dot.id = `${y}-${x}`;
+            dot.addEventListener("click", function() {
+              if (this.style.backgroundColor == "rgb(255, 192, 2)") {
+                this.style.backgroundColor = "#696969";
+              } else {
+                this.style.backgroundColor = "#FFC002";
+              }
+              update_json();
+            });
+            display.appendChild(dot);
+          }
+          display.appendChild(document.createElement("br"));
+        }
+      }
     </script>
   </body>
 </html>
