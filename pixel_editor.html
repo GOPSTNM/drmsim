@@ -12,10 +12,22 @@
         display: inline-block;
         background-color: #696969;
       }
+      }
+      textarea {
+        width: fit-content;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+      }
     </style>
   </head>
   <body>
-    <div class="display" id="display"></div><br><br>
+    <div class="display" id="display"></div><br>
     <textarea id="output" disabled></textarea><br>
     <input type="button" value="Confirm and Copy" onclick="copy();"><br>
     <input type="range" onchange="setup()" id="x_range" value="120" min="1" max="120"><br>
@@ -62,6 +74,19 @@
         }
       }
       function load_from() {
+        let load_data = prompt("Please enter data", "").split(", ");
+        if (load_data) {
+          clear_display();
+          for (let y = 0; y < load_data.length; y++) {
+            let string = load_data[y].replaceAll('"',"");
+            for (let x = 0; c < string.length; c++) {
+              if (string[x] == "1") {
+                document.getElementById(`${y}-${x}`).style.backgroundColor = "#FFC002";
+              }
+            }
+          }
+          update_json();
+        }
       }
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
