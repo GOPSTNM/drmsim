@@ -64,9 +64,14 @@
         }
       }
       function load_from() {
-        clear_display();
         let load_data = prompt("Please enter data", "").split(", ");
-        alert(load_data[0]);
+        if (load_data) {
+          clear_display();
+          for (let i of load_data) {
+            i = i.replaceAll('"',"");
+            alert(i);
+          }
+        }
       }
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
