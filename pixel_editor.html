@@ -126,18 +126,17 @@
         let y2 = point[1].split("-")[0];
         let x1 = point[0].split("-")[1];
         let x2 = point[1].split("-")[1];
-        let ychange = (y1-y2) > 0 ? 1 : -1;
-        let xchange = (x1-x2) > 0 ? 1 : -1;
+        let ychange = y1 > y2 ? 1 : -1;
+        let xchange = x1 > x2 ? 1 : -1;
         console.log(y1);
         console.log(y2);
         console.log(x1);
         console.log(x2);
         console.log(ychange);
         console.log(xchange);
-        console.log((y1-y2) * ychange);
         if (mode == 1) {
-          for (let i = 0; i < ((y1-y2) * ychange); i++) {
-            for (let k = 0; k < ((x1-x2) * xchange); k++) {
+          for (let i = 0; i < ((y1-y2) * ychange); i += ychange) {
+            for (let k = 0; k < ((x1-x2) * xchange); k += xchange) {
               to_fill.push(`${i + (y1)}-${k + (x1)}`);
             }
           }
