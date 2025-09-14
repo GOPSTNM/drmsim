@@ -29,15 +29,16 @@
     <div class="display" id="display"></div><br>
     <textarea id="output" disabled></textarea><br>
     <input type="button" value="Confirm and Copy" onclick="copy();"><br>
-    <input type="range" onchange="setup()" id="x_range" value="120" min="1" max="120"><br>
-    <input type="range" onchange="setup()" id="y_range" value="32" min="1" max="32"><br>
+    <input type="range" onchange="setup();" id="x_range" value="120" min="1" max="120"><br>
+    <input type="range" onchange="setup();" id="y_range" value="32" min="1" max="32"><br>
     <input type="button" value="Load" onclick="load_from();">
-    <input type="button" value="Clear All" onclick="clear_display()"><br>
+    <input type="button" value="Clear All" onclick="clear_display();"><br>
     <select onchange="setup();" id="pixel_size">
       <option value="1">Small</option>
       <option value="2">Medium</option>
       <option value="3">Large</option>
-    </select>
+    </select><br><br>
+    <input type="button" value="Draw Rectangle" onclick="shape(1);"><br>
     <script>
       const display = document.getElementById("display");
       setup();
@@ -64,6 +65,8 @@
           }
           display.appendChild(document.createElement("br"));
         }
+      }
+      function shape(mode) {
       }
       function copy() {
         update_json();
