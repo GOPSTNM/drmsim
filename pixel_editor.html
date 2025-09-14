@@ -54,6 +54,31 @@
           display.appendChild(document.createElement("br"));
         }
       }
+      function copy() {
+      }
+      function load_from() {
+      }
+      function clear_display() {
+      }
+      function update_json() {
+        let output = "";
+        for (let y = 0; y < document.getElementById("y_range").value; y++) {
+          output += '"';
+          for (let x = 0; x < document.getElementById("x_range").value; x++) {
+            const dot = document.getElementById(`${y}-${x}`);
+            if (dot.style.backgroundColor == "rgb(255, 192, 2)") {
+              output += "1";
+            } else {
+              output += "0";
+            }
+          }
+          output += '"';
+          if (y != document.getElementById("y_range").value - 1) {
+            out += ", ";
+          }
+        }
+        document.getElementById("output").value = output;
+      }
     </script>
   </body>
 </html>
