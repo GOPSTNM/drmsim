@@ -75,21 +75,6 @@
       function set_point(n) {
         point[n] = current_point;
       }
-      function shape(mode) {
-        let to_fill = [];
-        if (mode == 1) {
-          for (let i = 0; i < Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); i++) {
-            for (let k = 0; k < Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); k++) {
-              to_fill.push(`${i + +point[0].split("-")[0]}-${k + +point[0].split("-")[1]}`);
-            }
-          }
-        }
-        console.log(to_fill);
-        for (const m of to_fill) {
-          document.getElementById(m).style.backgroundColor = "#FFC002";
-        }
-        update_json();
-      }
       function copy() {
         update_json();
         if (confirm("Confirm?") == true) {
@@ -134,6 +119,20 @@
           }
         }
         document.getElementById("output").value = output;
+      }
+      function shape(mode) {
+        let to_fill = [];
+        if (mode == 1) {
+          for (let y = point[0].split("-")[0]; y < Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); y += point[0].split("-")[0] - point[1].split("-")[0] > 0 ? 1 : -1;) {
+            for (let x = point[0].split("-")[1]; c < Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); x += point[0].split("-")[1] - point[1].split("-")[1] > 0 ? 1 : -1;) {
+              to_fill.push(`${y}-${x}`);
+            }
+          }
+        }
+        for (const i of to_fill) {
+          document.getElementById(i).style.backgroundColor = "#FFC002";
+        }
+        update_json();
       }
     </script>
   </body>
