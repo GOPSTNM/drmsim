@@ -138,7 +138,7 @@
         if (mode == 1) {
           for (let i = 0; i < ((y1-y2) * ychange); i++) {
             for (let k = 0; k < ((x1-x2) * xchange); k++) {
-              to_fill.push(`${i}-${k}`);
+              to_fill.push(`${i += ((y1-y2) * ychange)}-${k += ((x1-x2) * xchange)}`);
             }
           }
         }
