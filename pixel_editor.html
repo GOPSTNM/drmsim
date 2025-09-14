@@ -133,9 +133,9 @@
               to_fill.push(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`);
             }
           }
-        } else if (mode == 2) {
-        const centerY = (y1 + y2) / 2;
-        const centerX = (x1 + x2) / 2;
+        } else if (mode == 2) { // Circle
+        const centerY = Math.round((y1 + y2) / 2);
+        const centerX = Math.round((x1 + x2) / 2);
         const radius = Math.round(Math.abs(y1 - y2) / 2); // Adjust radius as needed
 
         for (let i = -radius; i <= radius; i++) {
@@ -146,6 +146,7 @@
             }
         }
     }
+
         console.log(to_fill);
         for (const i of to_fill) {
           document.getElementById(i).style.backgroundColor = "#FFC002";
