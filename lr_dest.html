@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTR Bus Stop Reporter</title>
+    <style>
+      .display {
+        width: 858px;
+        background-color: #5C5C5C;
+      }
+      .dot {
+        height: 5px;
+        width: 5px;
+        border-radius: 100%;
+        margin: 0.5px;
+        display: inline-block;
+        background-color: #6E6E6E;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display" id="display"></div><br>
+    <select id="route" onchange="input_route_change()">
+      <option selected="true" disabled="true">Select Route</option>
+    </select>
+    <select id="dest" onchange="input_dest_change()">
+      <option selected="true" disabled="true">Select Destination</option>
+    </select>
+    <input type="button" value="Start Route" onclick="start_route();"><br>
+    <input type="button" value="Arrive / Depart" onclick="arrive_depart();">
+    <input type="button" value="Open / Close Door" onclick="stopping_door();">
+    <input type="button" value="Next Stop" onclick="skip_stop();">
+    <select id="display_text_style">
+      <option value="e">Standard</option>
+      <option value="b">Bold</option>
+    </select>
+    <input type="button" value="Font Test" onclick="font_test();">
+    <script>
+      const display = document.getElementById("display");
+      for (let row = 0; row < 19; row++) {
+        for (let col = 0; col < 143; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        display.appendChild(br);
+      }
+    </script>
+  </body>
+</html>
