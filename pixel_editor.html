@@ -38,8 +38,12 @@
       <option value="2">Medium</option>
       <option value="3">Large</option>
     </select><br><br>
-    <input type="button" value="Draw Rectangle" onclick="shape(1);"><br>
+    <input type="button" value="1st Point" onclick="point(0);">
+    <input type="button" value="2nd Point" onclick="point(1);">
+    <input type="button" value="Rectangle" onclick="shape(1);"><br>
     <script>
+      let current_point = "";
+      let point = [];
       const display = document.getElementById("display");
       setup();
       function setup() {
@@ -54,6 +58,7 @@
             dot.style.height = `${7.5 * pixel_size}px`;
             dot.style.margin = `${0.75 * pixel_size}px`;
             dot.addEventListener("click", function() {
+              current_point = this.id;
               if (this.style.backgroundColor == "rgb(255, 192, 2)") {
                 this.style.backgroundColor = "#696969";
               } else {
@@ -66,7 +71,11 @@
           display.appendChild(document.createElement("br"));
         }
       }
+      function point(n) {
+        point[n] = current_point;
+      }
       function shape(mode) {
+        alert(point[0]);
       }
       function copy() {
         update_json();
