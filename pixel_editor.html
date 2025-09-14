@@ -80,7 +80,7 @@
         if (mode == 1) {
           for (let i = 0; i < Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); i++) {
             for (let k = 0; k < Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); k++) {
-              to_fill.push(`${i + point[0].split("-")[0]}-${k + point[0].split("-")[1]}`);
+              to_fill.push(`${i + +point[0].split("-")[0]}-${k + +point[0].split("-")[1]}`);
             }
           }
         }
