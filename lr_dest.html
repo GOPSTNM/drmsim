@@ -50,6 +50,15 @@
           document.getElementById("route").innerHTML = rte_option_list;
         })
       function input_change() {
+        let data = display_data[document.getElementById("route").value];
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1") {
+              document.getElementById((i+display_yspace) + "-" + (k+display_xspace)).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
       }
       function image_export() {
       }
