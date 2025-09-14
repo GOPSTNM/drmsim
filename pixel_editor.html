@@ -126,8 +126,8 @@
         let y2 = point[1].split("-")[0];
         let x1 = point[0].split("-")[1];
         let x2 = point[1].split("-")[1];
-        let ychange = (y1-y2) > 0 ? 1 : -1;
-        let xchange = (x1-x2) > 0 ? 1 : -1;
+        let ychange = (y1-y2) > 0 ? -1 : 1;
+        let xchange = (x1-x2) > 0 ? -1 : 1;
         if (mode == 1) {
           for (let i = y1; i == y2; i += ychange) {
             for (let k = x1; k == x2; k += xchange) {
