@@ -44,7 +44,7 @@
     <input type="button" value="Rectangle" onclick="shape(1);"><br>
     <script>
       let current_point = "";
-      let point = [];
+      let point = ["0-0", "0-0", "0-0"];
       const display = document.getElementById("display");
       setup();
       function setup() {
@@ -76,8 +76,13 @@
         point[n] = current_point;
       }
       function shape(mode) {
-        let to_fill = ["1-1"];
+        let to_fill = [];
         if (mode == 1) {
+          for (let i = 0; i < Math.abs(point[0].split("-")[0] - point[1].split("-")[0]); i++) {
+            for (let k = 0; k < Math.abs(point[0].split("-")[1] - point[1].split("-")[1]); k++) {
+              to_fill.push(`${i}-${k}`);
+            }
+          }
         }
         for (const i of to_fill) {
           document.getElementById(i).style.backgroundColor = "#FFC002";
