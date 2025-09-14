@@ -41,7 +41,7 @@
     <input type="button" value="1st Point" onclick="set_point(0);">
     <input type="button" value="2nd Point" onclick="set_point(1);">
     <input type="button" value="3rd Point" onclick="set_point(2);">
-    <input type="button" value="Rectangle" onclick="shape(1);"><br>
+    <input type="button" value="Rectangle" onclick="shape(1);">
     <script>
       let current_point = "";
       let point = ["0-0", "0-0", "0-0"];
@@ -135,8 +135,8 @@
         console.log(ychange);
         console.log(xchange);
         if (mode == 1) {
-          for (let i = y1; i == y2; i += ychange) {
-            for (let k = x1; k == x2; k += xchange) {
+          for (let i = y1; i <= y2; i += ychange) {
+            for (let k = x1; k <= x2; k += xchange) {
               to_fill.push(`${i}-${k}`);
             }
           }
