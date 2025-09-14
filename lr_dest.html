@@ -36,6 +36,19 @@
         const br = document.createElement("br");
         display.appendChild(br);
       }
+      let display_data;
+      fetch("light_rail_data/front_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          display_data = data;
+          let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
+          for (let i in display_data) {
+            rte_option_list += `<option value="${i}">${i}</option>`;
+          }
+          document.getElementById("route").innerHTML = rte_option_list;
+        })
       function input_change() {
       }
       function image_export() {
