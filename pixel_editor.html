@@ -122,10 +122,10 @@
       }
       function shape(mode) {
         let to_fill = [];
-        let y1 = point[0].split("-")[0];
-        let y2 = point[1].split("-")[0];
-        let x1 = point[0].split("-")[1];
-        let x2 = point[1].split("-")[1];
+        let y1 = +point[0].split("-")[0];
+        let y2 = +point[1].split("-")[0];
+        let x1 = +point[0].split("-")[1];
+        let x2 = +point[1].split("-")[1];
         let ychange = y1 < y2 ? 1 : -1;
         let xchange = x1 < x2 ? 1 : -1;
         console.log(y1);
