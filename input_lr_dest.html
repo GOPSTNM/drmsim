@@ -34,6 +34,7 @@
     <textarea id="output" disabled></textarea>
     <input type="button" value="Confirm and Copy" onclick="show()">
     <input type="range" onchange="update_range()" id="width_range" min="1" max="120">
+    <input type="button" value="Load" onclick="load_from();">
     <script>  
       let width_range = 120;
       function update_range() {
@@ -61,6 +62,11 @@
           const br = document.createElement('br');
           display.appendChild(br);
         }
+      }
+      function load_from() {
+        clear_display();
+        let load_data = prompt("Please enter data", "").split(", ");
+        alert(load_data[0]);
       }
       function clear_display() {
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
