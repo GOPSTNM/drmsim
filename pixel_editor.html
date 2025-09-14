@@ -55,10 +55,17 @@
         }
       }
       function copy() {
+        update_json();
+        if (confirm("Confirm?") == true) {
+          navigator.clipboard.writeText(document.getElementById("output").value);
+          clear_display();
+        }
       }
       function load_from() {
       }
       function clear_display() {
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#696969");
+        update_json();
       }
       function update_json() {
         let output = "";
