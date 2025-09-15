@@ -62,6 +62,7 @@
       }
       function image_export() {
         let data = display_data[document.getElementById("route").value];
+        console.log(data);
         let export_display = document.createElement("svg");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
