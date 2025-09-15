@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <div class="test" id="test"></div>
+    <svg class="test" id="test"></svg>
     <div class="display" id="display"></div><br>
     <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
@@ -66,7 +66,12 @@
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
             if (data[i][k] == "1") {
-              
+              const circle = document.createElementNS(svgNS, "circle");
+              circle.setAttribute("cx", 100);
+              circle.setAttribute("cy", 100);
+              circle.setAttribute("r", 50);
+              circle.setAttribute("fill", "blue");
+              export_display.appendChild(circle);
             }
           }
         }
