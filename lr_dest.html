@@ -83,7 +83,7 @@
     const link = document.createElement('a');
     link.href = pngUrl;
     link.download = 'light_rail_display.png';
-  
+    share(pngUrl);
     // Workaround for iOS
     document.body.appendChild(link);
     link.click();
