@@ -136,12 +136,12 @@
         } else if (mode == 2) {
           const centerY = Math.round((y1 + y2) / 2);
         const centerX = Math.round((x1 + x2) / 2);
-        const radius = Math.round(Math.abs(y1 - y2) / 2); // Use original radius
+        const radius = Math.round(Math.abs(y1 - y2) / 2);
 
         for (let i = -radius; i <= radius; i++) {
             for (let k = -radius; k <= radius; k++) {
-                // Check if the point is within the circle
-                if (i * i + k * k <= radius * radius) { // Inclusive check
+                // Use a modified check to create a more rounded edge
+                if (i * i + k * k < radius * radius) {
                     to_fill.push(`${centerY + i}-${centerX + k}`);
                 }
             }
