@@ -60,31 +60,8 @@
         }
       }
       function image_export() {
-    let data = display_data[document.getElementById("route").value];
-    let export_display = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    export_display.setAttribute("width", "200"); // Set width for the SVG
-    export_display.setAttribute("height", "200"); // Set height for the SVG
-
-    for (let i = 0; i < data.length; i++) {
-        for (let k = 0; k < data[i].length; k++) {
-            if (data[i][k] === "1") {
-                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                circle.setAttribute("cx", k * 50 + 50); // Adjust x position based on k
-                circle.setAttribute("cy", i * 50 + 50); // Adjust y position based on i
-                circle.setAttribute("r", "20"); // Set radius of the circle
-                circle.setAttribute("fill", "blue");
-                export_display.appendChild(circle);
-            }
-        }
-    }
-
-    document.body.appendChild(export_display);
-    
-    // Create and append the text
-    const textElement = document.createElement("div");
-    textElement.textContent = "Test";
-    document.body.appendChild(textElement);
-}
+        
+      }
     </script>
   </body>
 </html>
