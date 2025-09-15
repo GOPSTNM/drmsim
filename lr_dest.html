@@ -18,7 +18,6 @@
     </style>
   </head>
   <body>
-    <svg class="test" id="test"></svg>
     <div class="display" id="display"></div><br>
     <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
@@ -75,7 +74,8 @@
             }
           }
         }
-        document.getElementById("test").innerHTML = export_display;
+        document.body.appendChild(export_display);
+        document.body.appendChild("Test");
       }
     </script>
   </body>
