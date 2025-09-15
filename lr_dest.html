@@ -60,21 +60,22 @@
         }
       }
       function image_export() {
-    const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = 780; // Set canvas width
-            canvas.height = 400; // Set canvas height
-
-            Array.from(document.getElementsByClassName("dot")).forEach(dot => {
-                const position = dot.id.split('-');
-                const row = position[0];
-                const col = position[1];
-                const color = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E"; // Convert to hex color
-                const x = col * 6; // Adjust based on your layout
-                const y = row * 6; // Adjust based on your layout
-                ctx.fillStyle = color;
-                ctx.fillRect(x, y, 5, 5); // Draw a rectangle for each dot
-            });
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        let display_width = 0;
+        let display_height = 0;
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => {
+          const position = dot.id.split('-');
+          const row = position[0];
+          const col = position[1];
+          const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
+          const x = col * 6;
+          const y = row * 6;
+          ctx.fillStyle = colour;
+          ctx.fillRect(x, y, 5, 5);
+        });
+        canvas.width = 720;
+        canvas.height = 192;
 
             // Convert the canvas to a Blob
             canvas.toBlob((blob) => {
