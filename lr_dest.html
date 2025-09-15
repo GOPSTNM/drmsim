@@ -60,10 +60,16 @@
         }
       }
       function image_export() {
-        const link = document, createElement ('a');
-link. download = 'my_drawing.png';
-link.href = canvas. toDataURL (' image/png');
-link. click();
+        const data = display_data[document.getElementById("route").value];
+        const export_display = document.createElement("svg");
+        for (let i = 0; i < data.length; i++) {
+          for (let k = 0; k < data[i].length; k++) {
+            if (data[i][k] == "1") {
+              
+            }
+          }
+        }
+        document.getElementById("display").appendChild(export_display);
       }
     </script>
   </body>
