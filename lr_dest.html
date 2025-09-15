@@ -64,6 +64,8 @@
         const ctx = canvas.getContext("2d");
         canvas.width = 720;
         canvas.height = 192;
+        ctx.fillStyle = "#5C5C5C";
+        ctx.fillRect(0, 0, 720, 192);
         Array.from(document.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
           const row = position[0];
