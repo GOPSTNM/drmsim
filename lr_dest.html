@@ -62,6 +62,8 @@
       function image_export() {
         let data = display_data[document.getElementById("route").value];
         let export_display = document.createElement("svg");
+        export_display.setAttribute("width", "200");
+        export_display.setAttribute("height", "200");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
             if (data[i][k] == "1") {
@@ -75,7 +77,6 @@
           }
         }
         document.body.appendChild(export_display);
-        document.body.appendChild("Test");
       }
     </script>
   </body>
