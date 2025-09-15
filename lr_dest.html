@@ -18,6 +18,7 @@
     </style>
   </head>
   <body>
+    <div class="test" id="test"></div>
     <div class="display" id="display"></div><br>
     <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
@@ -69,7 +70,7 @@
             }
           }
         }
-        document.getElementById("display").appendChild(export_display);
+        document.getElementById("test").innerHTML = export_display;
       }
     </script>
   </body>
