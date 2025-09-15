@@ -60,33 +60,35 @@
         }
       }
       function image_export() {
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = 780; // Set canvas width
-            canvas.height = 400; // Set canvas height
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 780; // Set canvas width
+    canvas.height = 400; // Set canvas height
 
-            Array.from(document.getElementsByClassName("dot")).forEach(dot => {
-                const position = dot.id.split('-');
-                const row = position[0];
-                const col = position[1];
-                const color = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E"; // Convert to hex color
-                const x = col * 6; // Adjust based on your layout
-                const y = row * 6; // Adjust based on your layout
-                ctx.fillStyle = color;
-                ctx.fillRect(x, y, 5, 5); // Draw a rectangle for each dot
-            });
+    Array.from(document.getElementsByClassName("dot")).forEach(dot => {
+        const position = dot.id.split('-');
+        const row = position[0];
+        const col = position[1];
+        const color = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E"; // Convert to hex color
+        const x = col * 6; // Adjust based on your layout
+        const y = row * 6; // Adjust based on your layout
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, 5, 5); // Draw a rectangle for each dot
+    });
 
-            // Convert the canvas to a PNG data URL
-            const pngUrl = canvas.toDataURL("image/png");
+    // Convert the canvas to a PNG data URL
+    const pngUrl = canvas.toDataURL("image/png");
 
-            // Create a link and download the PNG
-            const link = document.createElement('a');
-            link.href = pngUrl;
-            link.download = 'light_rail_display.png';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+    // Create a link and download the PNG
+    const link = document.createElement('a');
+    link.href = pngUrl;
+    link.download = 'light_rail_display.png';
+  
+    // Workaround for iOS
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
     </script>
   </body>
 </html>
