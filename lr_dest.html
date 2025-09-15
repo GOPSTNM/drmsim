@@ -62,12 +62,11 @@
       }
       function image_export() {
         let data = display_data[document.getElementById("route").value];
-        console.log(data);
         let export_display = document.createElement("svg");
         for (let i = 0; i < data.length; i++) {
           for (let k = 0; k < data[i].length; k++) {
             if (data[i][k] == "1") {
-              const circle = document.createElementNS(svgNS, "circle");
+              const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
               circle.setAttribute("cx", 100);
               circle.setAttribute("cy", 100);
               circle.setAttribute("r", 50);
