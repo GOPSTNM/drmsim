@@ -21,7 +21,6 @@
     <div class="display" id="display"></div><br>
     <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
-      <option value="706_TIS">706_TIS</option>
     </select>
     <input type="button" value="Export" onclick="image_export();">
     <script>
@@ -61,6 +60,10 @@
         }
       }
       function image_export() {
+        const link = document, createElement ('a');
+link. download = 'my_drawing.png';
+link.href = canvas. toDataURL (' image/png');
+link. click();
       }
     </script>
   </body>
