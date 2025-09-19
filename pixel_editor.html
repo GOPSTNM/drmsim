@@ -44,7 +44,10 @@
     <input type="button" value="Rectangle" onclick="shape(1);">
     <input type="button" value="Circle" onclick="shape(2);">
     <input type="button" value="Rectangle Remove" onclick="shape(3);">
+    <input type="button" value="Copy" onclick="shape(4);">
+    <input type="button" value="Paste" onclick="shape(5);">
     <script>
+      let clone_data = [];
       let current_point = "";
       let point = ["0-0", "0-0", "0-0"];
       const display = document.getElementById("display");
@@ -160,6 +163,17 @@
           for (const i of to_fill) {
             document.getElementById(i).style.backgroundColor = "#696969";
           }
+        } else if (mode == 4) {
+          clone_data = [];
+          for (let i = 0; i <= Math.abs(y1 - y2); i++) {
+            for (let k = 0; k <= Math.abs(x1 - x2); k++) {
+              if (document.getElementById(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`).style.backgroundColor = "#FFC002") {
+                clone_data.push(`${i}-${k}`);
+              }
+            }
+          }
+          alert(clone_data);
+        } else if (mode == 5) {
         }
         update_json();
       }
