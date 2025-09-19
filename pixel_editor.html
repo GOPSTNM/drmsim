@@ -172,8 +172,10 @@
               }
             }
           }
-          alert(clone_data);
         } else if (mode == 5) {
+          for (const i of clone_data) {
+            document.getElementById(`${i.split("-")[0] + y1}-${k.split("-")[1] + x1}`).style.backgroundColor = "#FFC002";
+          }
         }
         update_json();
       }
