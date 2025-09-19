@@ -43,6 +43,7 @@
     <input type="button" value="3rd Point" onclick="set_point(2);">
     <input type="button" value="Rectangle" onclick="shape(1);">
     <input type="button" value="Circle" onclick="shape(2);">
+    <input type="button" value="Rectangle Remove" onclick="shape(3);">
     <script>
       let current_point = "";
       let point = ["0-0", "0-0", "0-0"];
@@ -133,23 +134,32 @@
               to_fill.push(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`);
             }
           }
+          for (const i of to_fill) {
+            document.getElementById(i).style.backgroundColor = "#FFC002";
+          }
         } else if (mode == 2) {
           const centerY = Math.round((y1 + y2) / 2);
-        const centerX = Math.round((x1 + x2) / 2);
-        const radius = Math.round(Math.abs(y1 - y2) / 2);
-
-        for (let i = -radius; i <= radius; i++) {
+          const centerX = Math.round((x1 + x2) / 2);
+          const radius = Math.round(Math.abs(y1 - y2) / 2);
+          for (let i = -radius; i <= radius; i++) {
             for (let k = -radius; k <= radius; k++) {
-                // Use a modified check to create a more rounded edge
-                if (i * i + k * k < radius * radius) {
-                    to_fill.push(`${centerY + i}-${centerX + k}`);
-                }
+              if (i * i + k * k < radius * radius) {
+                to_fill.push(`${centerY + i}-${centerX + k}`);
+              }
             }
-        }
-        }
-        console.log(to_fill);
-        for (const i of to_fill) {
-          document.getElementById(i).style.backgroundColor = "#FFC002";
+          }
+          for (const i of to_fill) {
+            document.getElementById(i).style.backgroundColor = "#FFC002";
+          }
+        } else if (mode == 3) {
+          for (let i = 0; i <= Math.abs(y1 - y2); i++) {
+            for (let k = 0; k <= Math.abs(x1 - x2); k++) {
+              to_fill.push(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`);
+            }
+          }
+          for (const i of to_fill) {
+            document.getElementById(i).style.backgroundColor = "#FFC002";
+          }
         }
         update_json();
       }
