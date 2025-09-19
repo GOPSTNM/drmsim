@@ -167,7 +167,7 @@
           clone_data = [];
           for (let i = 0; i <= Math.abs(y1 - y2); i++) {
             for (let k = 0; k <= Math.abs(x1 - x2); k++) {
-              if (document.getElementById(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`).style.backgroundColor == "#FFC002") {
+              if (document.getElementById(`${i + Math.min(y1, y2)}-${k + Math.min(x1, x2)}`).style.backgroundColor == "rgb(255, 192, 2)") {
                 clone_data.push(`${i}-${k}`);
               }
             }
