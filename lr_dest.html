@@ -63,17 +63,17 @@
         const res = 5;
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = 720 * res;
-        canvas.height = 192 * res;
+        canvas.width = (720 - 0.75) * res;
+        canvas.height = (192 - 0.75) * res;
         ctx.fillStyle = "#5C5C5C";
-        ctx.fillRect(0, 0, 720 * res, 192 * res);
+        ctx.fillRect(0, 0, (720 - 0.75) * res, (192 - 0.75) * res);
         Array.from(document.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
           const row = position[0];
           const col = position[1];
           const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
-          const x = (col * 6 + 0.75) * res;
-          const y = (row * 6 + 0.75) * res;
+          const x = (col * 6) * res;
+          const y = (row * 6) * res;
           ctx.fillStyle = colour;
           ctx.fillRect(x, y, 5 * res, 5 * res);
         });
