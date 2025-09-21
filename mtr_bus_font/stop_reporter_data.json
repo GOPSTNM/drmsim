@@ -652,5 +652,25 @@
       "3": "天富苑欣富閣/Yan Fu House, Tin Fu Court/*M",
       "4": "天盛苑/Tin Shing Court/*T/*H/*S"
     }
+  },
+  "705": {
+    "天水圍循環綫": {
+      "0": "+路綫 705 前往天水圍循環綫     Route 705 Tin Shui Wai Circular",
+      "1": "輕鐵天慈站/LR Tin Tsz Stop",
+      "2": "輕鐵天湖站/LR Tin Wu Stop",
+      "3": "輕鐵銀座站/LR Ginza Stop",
+      "4": "輕鐵天榮站/LR Tin Wing Stop",
+      "5": "輕鐵天悅站/LR Tin Yuet Stop",
+      "6": "輕鐵天秀站/LR Tin Sau Stop",
+      "7": "輕鐵濕地公園站/LR Wetland Park Stop",
+      "8": "輕鐵天恒站/LR Tin Heng Stop",
+      "9": "輕鐵天逸站/LR Tin Yat Stop",
+      "10": "輕鐵天富站/LR Tin Fu Stop",
+      "11": "輕鐵頌富站/LR Chung Fu Stop",
+      "12": "輕鐵天瑞站/LR Tin Shui Stop",
+      "13": "輕鐵樂湖站/LR Locwood Stop",
+      "14": "輕鐵天耀站/LR Tin Yiu Stop",
+      "15": "輕鐵天水圍站/LR Tin Shui Wai Stop/*T"
+    }
   }
 }
