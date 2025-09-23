@@ -27,25 +27,25 @@
     <input type="button" value="Side Rte Export" onclick="image_export();">
     <input type="button" value="Rear Export" onclick="image_export();">
     <script>
-      function set_display(display_id, rows, cols) {
+      function set_display(display_id, rows, cols, ratio) {
         const display = document.getElementById(display_id);
         for (let row = 0; row < rows; row++) {
           for (let col = 0; col < cols; col++) {
             const dot = document.createElement("div");
             dot.classList.add('dot');
             dot.id = `${display_id}-${row}-${col}`;
-            dot.style.height = "5px";
-            dot.style.width = "5px";
-            dot.style.margin = "0.75px";
+            dot.style.height = 5 * ratio;
+            dot.style.width = 5 * ratio;
+            dot.style.margin = 0.75 * ratio;
             display.appendChild(dot);
           }
           display.appendChild(document.createElement("br"));
         }
       }
-      set_display("front_display", 32, 120);
-      set_display("side_dest_display", 24, 64);
-      set_display("side_rte_display", 13, 23);
-      set_display("rear_display", 13, 26);
+      set_display("front_display", 32, 120, 1);
+      set_display("side_dest_display", 24, 64, 1);
+      set_display("side_rte_display", 13, 23, 1.75);
+      set_display("rear_display", 13, 26, 1.5);
       let front_data;
       let side_dest_data;
       let side_rte_data;
