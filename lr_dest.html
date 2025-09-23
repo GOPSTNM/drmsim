@@ -93,7 +93,7 @@
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < front_data[rte_dest].length; i++) {
           for (let k = 0; k < front_data[rte_dest][i].length; k++) {
-            if (data[i][k] == "1") {
+            if (front_data[rte_dest][i][k] == "1") {
               document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
             }
           }
