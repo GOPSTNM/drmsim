@@ -7,6 +7,7 @@
         width: max-content;
         display: inline-block;
         background-color: #5C5C5C;
+        margin: 10px;
       }
       .dot {
         border-radius: 100%;
@@ -55,12 +56,33 @@
           return response.json();
         })
         .then(data => {
-          display_data = data;
+          front_data = data;
           let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
           for (let i in display_data) {
             rte_option_list += `<option value="${i}">${i}</option>`;
           }
           document.getElementById("route").innerHTML = rte_option_list;
+        })
+      fetch("light_rail_data/side_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          side_dest_data = data;
+        })
+      fetch("light_rail_data/side_rte.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          side_rte_data = data;
+        })
+      fetch("light_rail_data/rear_rte.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          rear_data = data;
         })
       function input_change() {
         let data = display_data[document.getElementById("route").value];
