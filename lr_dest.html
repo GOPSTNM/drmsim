@@ -9,10 +9,7 @@
         background-color: #5C5C5C;
       }
       .dot {
-        height: 5px;
-        width: 5px;
         border-radius: 100%;
-        margin: 0.75px;
         display: inline-block;
         background-color: #6E6E6E;
       }
@@ -36,7 +33,10 @@
           for (let col = 0; col < cols; col++) {
             const dot = document.createElement("div");
             dot.classList.add('dot');
-            dot.id = `${row}-${col}`;
+            dot.id = `${display_id}-${row}-${col}`;
+            dot.style.height = "5px";
+            dot.style.width = "5px";
+            dot.style.margin = "0.75px";
             display.appendChild(dot);
           }
           display.appendChild(document.createElement("br"));
