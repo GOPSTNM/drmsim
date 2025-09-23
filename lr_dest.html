@@ -18,11 +18,16 @@
     </style>
   </head>
   <body>
-    <div class="display" id="display"></div><br>
+    <div class="display" id="front_display"></div><br>
+    <div class="display" id="side_dest_display"></div><div class="display" id="side_rte_display"></div><br>
+    <div class="display" id="rear_display"></div><br>
     <select id="route" onchange="input_change();">
       <option selected="true" disabled="true">Select Route</option>
     </select>
-    <input type="button" value="Export" onclick="image_export();">
+    <input type="button" value="Front Export" onclick="image_export();">
+    <input type="button" value="Side Dest Export" onclick="image_export();">
+    <input type="button" value="Side Rte Export" onclick="image_export();">
+    <input type="button" value="Rear Export" onclick="image_export();">
     <script>
       const display = document.getElementById("display");
       for (let row = 0; row < 32; row++) {
