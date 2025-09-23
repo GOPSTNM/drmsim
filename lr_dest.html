@@ -29,7 +29,7 @@
     <input type="button" value="Side Rte Export" onclick="image_export();">
     <input type="button" value="Rear Export" onclick="image_export();">
     <script>
-      const display = document.getElementById("display");
+      const front_display = document.getElementById("front_display");
       for (let row = 0; row < 32; row++) {
         for (let col = 0; col < 120; col++) {
           const dot = document.createElement("div");
@@ -38,7 +38,40 @@
           display.appendChild(dot);
         }
         const br = document.createElement("br");
-        display.appendChild(br);
+        front_display.appendChild(br);
+      }
+      const side_dest_display = document.getElementById("side_dest_display");
+      for (let row = 0; row < 24; row++) {
+        for (let col = 0; col < 64; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        side_dest_display.appendChild(br);
+      }
+      const side_rte_display = document.getElementById("side_rte_display");
+      for (let row = 0; row < 13; row++) {
+        for (let col = 0; col < 23; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        side_rte_display.appendChild(br);
+      }
+      const rear_display = document.getElementById("rear_display");
+      for (let row = 0; row < 13; row++) {
+        for (let col = 0; col < 26; col++) {
+          const dot = document.createElement("div");
+          dot.classList.add('dot');
+          dot.id = `${row}-${col}`;
+          display.appendChild(dot);
+        }
+        const br = document.createElement("br");
+        rear_display.appendChild(br);
       }
       let display_data;
       fetch("light_rail_data/front_dest.json")
