@@ -59,7 +59,7 @@
         .then(data => {
           front_data = data;
           let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
-          for (let i in display_data) {
+          for (let i in data) {
             rte_option_list += `<option value="${i}">${i}</option>`;
           }
           document.getElementById("route").innerHTML = rte_option_list;
