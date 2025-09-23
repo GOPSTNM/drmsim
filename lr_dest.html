@@ -86,6 +86,8 @@
           rear_data = data;
         })
       function input_change() {
+        console.log(document.getElementById("route").value.split("_")[0]);
+        console.log(document.getElementById("route").value.split("_")[1]);
         let data = display_data[document.getElementById("route").value];
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < data.length; i++) {
