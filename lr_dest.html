@@ -29,51 +29,26 @@
     <input type="button" value="Side Rte Export" onclick="image_export();">
     <input type="button" value="Rear Export" onclick="image_export();">
     <script>
-      const front_display = document.getElementById("front_display");
-      for (let row = 0; row < 32; row++) {
-        for (let col = 0; col < 120; col++) {
-          const dot = document.createElement("div");
-          dot.classList.add('dot');
-          dot.id = `${row}-${col}`;
-          display.appendChild(dot);
+      function set_display(display_id, rows, cols) {
+        const display = document.getElementById(display_id);
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const dot = document.createElement("div");
+            dot.classList.add('dot');
+            dot.id = `${row}-${col}`;
+            display.appendChild(dot);
+          }
+          display.appendChild(document.createElement("br"));
         }
-        const br = document.createElement("br");
-        front_display.appendChild(br);
       }
-      const side_dest_display = document.getElementById("side_dest_display");
-      for (let row = 0; row < 24; row++) {
-        for (let col = 0; col < 64; col++) {
-          const dot = document.createElement("div");
-          dot.classList.add('dot');
-          dot.id = `${row}-${col}`;
-          display.appendChild(dot);
-        }
-        const br = document.createElement("br");
-        side_dest_display.appendChild(br);
-      }
-      const side_rte_display = document.getElementById("side_rte_display");
-      for (let row = 0; row < 13; row++) {
-        for (let col = 0; col < 23; col++) {
-          const dot = document.createElement("div");
-          dot.classList.add('dot');
-          dot.id = `${row}-${col}`;
-          display.appendChild(dot);
-        }
-        const br = document.createElement("br");
-        side_rte_display.appendChild(br);
-      }
-      const rear_display = document.getElementById("rear_display");
-      for (let row = 0; row < 13; row++) {
-        for (let col = 0; col < 26; col++) {
-          const dot = document.createElement("div");
-          dot.classList.add('dot');
-          dot.id = `${row}-${col}`;
-          display.appendChild(dot);
-        }
-        const br = document.createElement("br");
-        rear_display.appendChild(br);
-      }
-      let display_data;
+      set_display("front_display", 32, 120);
+      set_display("side_dest_display", 24, 64);
+      set_display("side_rte_display", 13, 23);
+      set_display("rear_display", 13, 26);
+      let front_data;
+      let side_dest_data;
+      let side_rte_data;
+      let rear_data;
       fetch("light_rail_data/front_dest.json")
         .then(response => {
           return response.json();
