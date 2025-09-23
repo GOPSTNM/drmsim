@@ -98,6 +98,30 @@
             }
           }
         }
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < side_dest_data[dest].length; i++) {
+          for (let k = 0; k < side_dest_data[dest][i].length; k++) {
+            if (side_dest_data[dest][i][k] == "1") {
+              document.getElementById(`side_dest_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < side_rte_data[rte].length; i++) {
+          for (let k = 0; k < side_rte_data[rte][i].length; k++) {
+            if (side_rte_data[rte][i][k] == "1") {
+              document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
+        for (let i = 0; i < rear_data[rte].length; i++) {
+          for (let k = 0; k < rear_data[rte][i].length; k++) {
+            if (rear_data[rte][i][k] == "1") {
+              document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
+            }
+          }
+        }
       }
       function image_export() {
         const res = 5;
