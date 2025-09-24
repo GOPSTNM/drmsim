@@ -84,6 +84,9 @@
       function input_change() {
         let rte_dest = document.getElementById("route").value;
         let [rte, dest] = rte_dest.split("_");
+        if (!dest) {
+          dest = rte;
+        }
         Array.from(document.getElementsByClassName("dot")).forEach(dot => {
           dot.style.backgroundColor = "#6E6E6E";
         });
