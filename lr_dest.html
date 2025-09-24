@@ -87,42 +87,30 @@
         })
       function input_change() {
         let rte_dest = document.getElementById("route").value;
-        let rte = rte_dest.split("_")[0];
-        let dest = rte_dest.split("_")[1];
-        Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
-        for (let i = 0; i < front_data[rte_dest].length; i++) {
-          for (let k = 0; k < front_data[rte_dest][i].length; k++) {
-            if (front_data[rte_dest][i][k] == "1") {
-              document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
+        let [rte, dest] = rte_dest.split("_");
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => {
+          dot.style.backgroundColor = "#6E6E6E";
+        });
+        const update_display = (data, display_id) => {
+          for (let i = 0; i < data.length; i++) {
+            for (let k = 0; k < data[i].length; k++) {
+              if (data[i][k] === "1") {
+                document.getElementById(`${display_id}-${i}-${k}`).style.backgroundColor = "#FFBC02";
+              }
             }
           }
+        };
+        if (front_data[rte_dest]) {
+          update_display(front_data[rte_dest], "front_display");
         }
         if (dest && side_dest_data[dest]) {
-          for (let i = 0; i < side_dest_data[dest].length; i++) {
-            for (let k = 0; k < side_dest_data[dest][i].length; k++) {
-              if (side_dest_data[dest][i][k] == "1") {
-                document.getElementById(`side_dest_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
-              }
-            }
-          }
+          update_display(side_dest_data[dest], "side_dest_display");
         }
         if (rte && side_rte_data[rte]) {
-          for (let i = 0; i < side_rte_data[rte].length; i++) {
-            for (let k = 0; k < side_rte_data[rte][i].length; k++) {
-              if (side_rte_data[rte][i][k] == "1") {
-                document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
-              }
-            }
-          }
+          update_display(side_rte_data[rte], "front_display"); // Adjust if necessary
         }
         if (rte && rear_data[rte]) {
-          for (let i = 0; i < rear_data[rte].length; i++) {
-            for (let k = 0; k < rear_data[rte][i].length; k++) {
-              if (rear_data[rte][i][k] == "1") {
-                document.getElementById(`front_display-${i}-${k}`).style.backgroundColor = "#FFBC02";
-              }
-            }
-          }
+          update_display(rear_data[rte], "front_display"); // Adjust if necessary
         }
       }
       function image_export() {
