@@ -50,6 +50,7 @@
       let side_dest_data;
       let side_rte_data;
       let rear_data;
+      let interior_data;
       fetch("light_rail_data/front_dest.json")
         .then(response => {
           return response.json();
@@ -83,6 +84,13 @@
         .then(data => {
           rear_data = data;
         })
+      fetch("light_rail_data/interior_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          interior_data = data;
+        })
       function input_change() {
         let rte_dest = document.getElementById("route").value;
         let [rte, dest] = rte_dest.split("_");
@@ -112,6 +120,9 @@
         }
         if (rte && rear_data[rte]) {
           update_display(rear_data[rte], "rear_display");
+        }
+        if (dest && interior_data[dest]) {
+          update_display(interior_data[dest], "interior_display");
         }
       }
       function image_export() {
