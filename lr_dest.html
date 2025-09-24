@@ -89,7 +89,6 @@
         let rte_dest = document.getElementById("route").value;
         let rte = rte_dest.split("_")[0];
         let dest = rte_dest.split("_")[1];
-        
         Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
         for (let i = 0; i < front_data[rte_dest].length; i++) {
           for (let k = 0; k < front_data[rte_dest][i].length; k++) {
@@ -99,7 +98,6 @@
           }
         }
         if (dest && side_dest_data[dest]) {
-          Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
           for (let i = 0; i < side_dest_data[dest].length; i++) {
             for (let k = 0; k < side_dest_data[dest][i].length; k++) {
               if (side_dest_data[dest][i][k] == "1") {
@@ -109,7 +107,6 @@
           }
         }
         if (rte && side_rte_data[rte]) {
-          Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
           for (let i = 0; i < side_rte_data[rte].length; i++) {
             for (let k = 0; k < side_rte_data[rte][i].length; k++) {
               if (side_rte_data[rte][i][k] == "1") {
@@ -119,7 +116,6 @@
           }
         }
         if (rte && rear_data[rte]) {
-          Array.from(document.getElementsByClassName("dot")).forEach(dot => dot.style.backgroundColor = "#6E6E6E");
           for (let i = 0; i < rear_data[rte].length; i++) {
             for (let k = 0; k < rear_data[rte][i].length; k++) {
               if (rear_data[rte][i][k] == "1") {
