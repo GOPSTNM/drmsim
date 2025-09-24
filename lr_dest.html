@@ -90,6 +90,7 @@
         })
         .then(data => {
           interior_data = data;
+          console.log(data);
         })
       function input_change() {
         let rte_dest = document.getElementById("route").value;
@@ -122,7 +123,6 @@
           update_display(rear_data[rte], "rear_display");
         }
         if (dest && interior_data[dest]) {
-          console.log(interior_data[dest]);
           update_display(interior_data[dest], "interior_display");
         }
       }
