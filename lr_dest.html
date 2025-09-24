@@ -43,7 +43,7 @@
       set_display("front_display", 32, 120, 1);
       set_display("side_dest_display", 24, 64, 1);
       set_display("side_rte_display", 13, 24, 1.75);
-      set_display("rear_display", 13, 26, 1.5);
+      set_display("rear_display", 13, 28, 1.5);
       let front_data;
       let side_dest_data;
       let side_rte_data;
@@ -91,7 +91,6 @@
           for (let i = 0; i < data.length; i++) {
             for (let k = 0; k < data[i].length; k++) {
               if (data[i][k] === "1") {
-                console.log((`${display_id}-${i}-${k}`));
                 document.getElementById(`${display_id}-${i}-${k}`).style.backgroundColor = "#FFBC02";
               }
             }
