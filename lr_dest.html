@@ -145,7 +145,7 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            window.open(URL.createObjectURL(blob), '_blank');
+            window.open(URL.createObjectURL(blob));
           }
         }, 'image/png');
       }
