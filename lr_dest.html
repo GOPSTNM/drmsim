@@ -145,17 +145,13 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            const objectURL = URL.createObjectURL(blob);
-            const imgElement = document.createElement('img');
-            imgElement.src = objectURL;
-            imgElement.alt = 'Generated PNG Image';
-            imgElement.style.maxWidth = '100%';
-            document.body.innerHTML = '';
-            document.body.appendChild(imgElement);
-            imgElement.onload = () => {
-              URL.revokeObjectURL(objectURL);
-              console.log('Object URL revoked.');
-            };
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.target = '_blank';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
           }
         }, 'image/png');
       }
