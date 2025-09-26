@@ -145,10 +145,17 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            //window.location.replace(URL.createObjectURL(blob));
-            document.open();
-            document.write(blob);
-            document.close();
+            const objectURL = URL.createObjectURL(yourPngBlob);
+            const imgElement = document.createElement('img');
+            imgElement.src = objectURL;
+            imgElement.alt = 'Generated PNG Image';
+            imgElement.style.maxWidth = '100%';
+            document.body.innerHTML = '';
+            document.body.appendChild(imgElement);
+            imgElement.onload = () => {
+              URL.revokeObjectURL(objectURL);
+              console.log('Object URL revoked.');
+            };
           }
         }, 'image/png');
       }
