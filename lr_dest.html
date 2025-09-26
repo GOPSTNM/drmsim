@@ -150,7 +150,8 @@
             link.href = url;
             link.download = 'light_rail_display.png';
             document.body.appendChild(link);
-            link.click();
+            window.location.replace(link);
+            //link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
           }
