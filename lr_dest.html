@@ -145,13 +145,7 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.target = '_blank';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            window.open(URL.createObjectURL(blob), '_blank');
           }
         }, 'image/png');
       }
