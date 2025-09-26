@@ -145,8 +145,9 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
+            a.href = url;
             a.target = '_blank';
             a.click();
             document.body.removeChild(a);
