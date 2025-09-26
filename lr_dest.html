@@ -126,12 +126,12 @@
         }
       }
       function image_export(elem) {
-        console.log(elem);
+        console.log(elem.height);
         const res = 5;
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = elem.style.height * res;
-        canvas.height = elem.style.width * res;
+        canvas.width = elem.height * res;
+        canvas.height = elem.width * res;
         ctx.fillStyle = "#5C5C5C";
         ctx.fillRect(0, 0, (720 - 0.75) * res, (192 - 0.75) * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
