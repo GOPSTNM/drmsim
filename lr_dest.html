@@ -145,7 +145,7 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            const objectURL = URL.createObjectURL(yourPngBlob);
+            const objectURL = URL.createObjectURL(blob);
             const imgElement = document.createElement('img');
             imgElement.src = objectURL;
             imgElement.alt = 'Generated PNG Image';
