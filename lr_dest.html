@@ -145,7 +145,10 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            window.location.replace(URL.createObjectURL(blob));
+            //window.location.replace(URL.createObjectURL(blob));
+            document.open();
+            document.write(blob);
+            document.close();
           }
         }, 'image/png');
       }
