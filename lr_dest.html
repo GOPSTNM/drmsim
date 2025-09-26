@@ -145,7 +145,15 @@
         });
         canvas.toBlob((blob) => {
           if (blob) {
-            window.open(URL.createObjectURL(blob));
+            const url = URL.createObjectURL(blob);
+            alert(url);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'light_rail_display.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
           }
         }, 'image/png');
       }
