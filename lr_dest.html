@@ -129,8 +129,8 @@
         const res = 5;
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = elem.clientHeight * res;
-        canvas.height = elem.clientWidth * res;
+        canvas.width = elem.clientWidth * res;
+        canvas.height = elem.clientHeight * res;
         ctx.fillStyle = "#5C5C5C";
         ctx.fillRect(0, 0, elem.clientWidth * res, elem.clientHeight * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
