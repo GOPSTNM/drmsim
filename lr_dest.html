@@ -138,10 +138,10 @@
           const row = position[1];
           const col = position[2];
           const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
-          const x = col * res;
-          const y = row * res;
+          const x = dot.clientWidth * col * res;
+          const y = dot.clientHeight * row * res;
           ctx.fillStyle = colour;
-          ctx.fillRect(x, y, 5 * res, 5 * res);
+          ctx.fillRect(x, y, dot.clientWidth * res, dot.clientHeight * res);
         });
         canvas.toBlob((blob) => {
           if (blob) {
