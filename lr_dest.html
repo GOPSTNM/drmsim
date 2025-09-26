@@ -126,14 +126,13 @@
         }
       }
       function image_export(elem) {
-        console.log(elem.clientHeight);
         const res = 5;
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = elem.height * res;
-        canvas.height = elem.width * res;
+        canvas.width = elem.clientHeight * res;
+        canvas.height = elem.clientWidth * res;
         ctx.fillStyle = "#5C5C5C";
-        ctx.fillRect(0, 0, (720 - 0.75) * res, (192 - 0.75) * res);
+        ctx.fillRect(0, 0, elem.clientHeight * res, elem.clientWidth * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
           const row = position[0];
