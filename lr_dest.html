@@ -126,22 +126,32 @@
         }
       }
       function image_export(elem) {
+        let height = 0;
+        let width = 0;
+        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+          if (dot.id.split('-')[1] == "0") {
+            height += 5 * 1.15;
+          }
+          if (dot.id.split('-')[2] == "0") {
+            width += 5 * 1.15;
+          }
+        }
         const res = 5;
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
-        canvas.width = elem.clientWidth * res;
-        canvas.height = elem.clientHeight * res;
+        canvas.width = width * res;
+        canvas.height = height * res;
         ctx.fillStyle = "#5C5C5C";
-        ctx.fillRect(0, 0, elem.clientWidth * res, elem.clientHeight * res);
+        ctx.fillRect(0, 0, width * res, height * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
           const row = position[1];
           const col = position[2];
           const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
-          const x = dot.clientWidth * 1.2 * col * res;
-          const y = dot.clientHeight * 1.2 * row * res;
+          const x = 5 * 1.15 * col * res;
+          const y = 5 * 1.15 * row * res;
           ctx.fillStyle = colour;
-          ctx.fillRect(x, y, dot.clientWidth * res, dot.clientHeight * res);
+          ctx.fillRect(x, y, 5 * res, 5 * res);
         });
         canvas.toBlob((blob) => {
           if (blob) {
