@@ -142,7 +142,7 @@
         canvas.width = width * res;
         canvas.height = height * res;
         ctx.fillStyle = "#5C5C5C";
-        ctx.fillRect(0, 0, width * res, height * res);
+        ctx.fillRect(0, 0, height * res, width * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
           const row = position[1];
