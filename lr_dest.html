@@ -109,19 +109,23 @@
             }
           }
         };
-        if (front_data[rte_dest]) {
-          update_display(front_data[rte_dest], "front_display");
-        }
-        if (dest && side_dest_data[dest]) {
+        update_display(front_data[rte_dest], "front_display");
+        if (side_dest_data[rte_dest]) {
+          update_display(side_dest_data[rte_dest], "side_dest_display");
+        } else if (side_dest_data[dest]) {
           update_display(side_dest_data[dest], "side_dest_display");
         }
-        if (rte && side_rte_data[rte]) {
+        if (side_rte_data[rte_dest]) {
+          update_display(side_rte_data[rte_dest], "side_rte_display");
+        } else if (side_rte_data[rte]) {
           update_display(side_rte_data[rte], "side_rte_display");
         }
-        if (rte && rear_data[rte]) {
+        if (rear_data[rte_dest]) {
+          update_display(rear_data[rte_dest], "rear_display");
+        } else if (rear_data[rte]) {
           update_display(rear_data[rte], "rear_display");
         }
-        if (dest && interior_data[rte_dest]) {
+        if (interior_data[rte_dest]) {
           update_display(interior_data[rte_dest], "interior_display");
         }
       }
