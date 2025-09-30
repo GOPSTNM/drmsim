@@ -49,9 +49,11 @@
     <script>
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      document.getElementById("x_range").value = urlParams.get('x');
-      document.getElementById("y_range").value = urlParams.get('y');
-      document.getElementById("pixel_size").value = urlParams.get('size');
+      if (urlParams.get('x') && urlParams.get('y') && urlParams.get('size')) {
+        document.getElementById("x_range").value = urlParams.get('x');
+        document.getElementById("y_range").value = urlParams.get('y');
+        document.getElementById("pixel_size").value = urlParams.get('size');
+      }
       let clone_data = [];
       let current_point = "";
       let point = ["0-0", "0-0", "0-0"];
