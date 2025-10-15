@@ -27,24 +27,24 @@
   </head>
   <body>
     <div class="plate">
-      <input type="button" class="btn" value="1" onclick="click('1');">
-      <input type="button" class="btn" value="2" onclick="click('2');">
-      <input type="button" class="btn" value="3" onclick="click('3');">
-      <input type="button" class="btn" value="4" onclick="click('4');">
-      <input type="button" class="btn" value="5" onclick="click('5');">
-      <input type="button" class="btn" value="6" onclick="click('6');">
-      <input type="button" class="btn" value="7" onclick="click('7');">
-      <input type="button" class="btn" value="8" onclick="click('8');">
-      <input type="button" class="btn" value="9" onclick="click('9');">
-      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click('*');">
-      <input type="button" class="btn" value="0" onclick="click('0');">
-      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click('#');">
+      <input type="button" class="btn" value="1" onclick="click_btn('1');">
+      <input type="button" class="btn" value="2" onclick="click_btn('2');">
+      <input type="button" class="btn" value="3" onclick="click_btn('3');">
+      <input type="button" class="btn" value="4" onclick="click_btn('4');">
+      <input type="button" class="btn" value="5" onclick="click_btn('5');">
+      <input type="button" class="btn" value="6" onclick="click_btn('6');">
+      <input type="button" class="btn" value="7" onclick="click_btn('7');">
+      <input type="button" class="btn" value="8" onclick="click_btn('8');">
+      <input type="button" class="btn" value="9" onclick="click_btn('9');">
+      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click_btn('*');">
+      <input type="button" class="btn" value="0" onclick="click_btn('0');">
+      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click_btn('#');">
     </div>
     <script>
       let audio_mode;
       let lang;
       let inputs;
-      function click(x) {
+      function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
             audio_mode = 1;
