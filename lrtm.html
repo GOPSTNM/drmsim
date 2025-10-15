@@ -45,11 +45,11 @@
       let lang;
       let inputs;
       function click(x) {
-        if (x === "5") {
-          audio_mode = 1;
-          alert("Set lang");
-        }
         if (audio_mode !== 1) {
+          if (x === "5") {
+            audio_mode = 1;
+            alert("Set lang");
+          }
           return;
         }
         if (x === "*") {
