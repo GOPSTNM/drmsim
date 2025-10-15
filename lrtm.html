@@ -27,20 +27,40 @@
   </head>
   <body>
     <div class="plate">
-      <input type="button" class="btn" value="1">
-      <input type="button" class="btn" value="2">
-      <input type="button" class="btn" value="3">
-      <input type="button" class="btn" value="4">
-      <input type="button" class="btn" value="5">
-      <input type="button" class="btn" value="6">
-      <input type="button" class="btn" value="7">
-      <input type="button" class="btn" value="8">
-      <input type="button" class="btn" value="9">
-      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;">
-      <input type="button" class="btn" value="0">
-      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;">
+      <input type="button" class="btn" value="1" onclick="click("1");">
+      <input type="button" class="btn" value="2" onclick="click("2");">
+      <input type="button" class="btn" value="3" onclick="click("3");">
+      <input type="button" class="btn" value="4" onclick="click("4");">
+      <input type="button" class="btn" value="5" onclick="click("5");">
+      <input type="button" class="btn" value="6" onclick="click("6");">
+      <input type="button" class="btn" value="7" onclick="click("7");">
+      <input type="button" class="btn" value="8" onclick="click("8");">
+      <input type="button" class="btn" value="9" onclick="click("9");">
+      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click("*");">
+      <input type="button" class="btn" value="0" onclick="click("0");">
+      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click("#");">
     </div>
     <script>
+      let audio_mode;
+      let lang;
+      let inputs;
+      function click(x) {
+        if (x === "5") {
+          audio_mode = 1;
+          alert("Set lang");
+        }
+        if (audio_mode !== 1) {
+          return;
+        }
+        if (x === "*") {
+          if (lang) {
+            alert("Transaction Cancelled" + lang);
+          } else {
+            alert("Transaction Cancelled 3 lang");
+          }
+          return;
+        }
+      }
     </script>
   </body>
 </html>
