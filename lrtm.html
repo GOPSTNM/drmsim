@@ -63,15 +63,17 @@
           audio_mode = 0;
           return;
         }
-        if (inputs === "") {
-          if ((x === "1" || x === "2" || x === "3") && !lang) {
-            lang = x;
-            alert("You are in zone stop. This machine buy ticket only. Please select service, buy sjt press 1." + lang);
-          } else if (lang) {
-            if (x === "1") {
-              alert("to buy with zone press 1 to buy with stop press 2." + lang);
+        switch (inputs.length) {
+          case 0:
+            if ((x === "1" || x === "2" || x === "3") && !lang) {
+              inputs += x;
+              lang = x;
+              alert("You are in zone stop. This machine buy ticket only. Please select service, buy sjt press 1." + lang);
             }
-          }
+            break;
+          case 1:
+            alert("to buy with zone press 1 to buy with stop press 2." + lang);
+            break;
         }
       }
     </script>
