@@ -47,6 +47,7 @@
       function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
+            inputs = "";
             audio_mode = 1;
             alert("Set lang");
           }
@@ -60,6 +61,19 @@
           }
           audio_mode = 0;
           return;
+        }
+        if (input.length() === 0) {
+          switch(x) {
+            case "1":
+            lang = "1";
+            break;
+            case "2":
+            lang = "2";
+            break;
+            case "3":
+            lang = "3";
+            break;
+          }
         }
       }
     </script>
