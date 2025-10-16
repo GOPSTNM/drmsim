@@ -48,6 +48,7 @@
         if (audio_mode !== 1) {
           if (x === "5") {
             inputs = "";
+            lang = "";
             audio_mode = 1;
             alert("Set lang");
           }
@@ -63,16 +64,10 @@
           return;
         }
         if (inputs === "") {
-          switch(x) {
-            case "1":
-            lang = "1";
-            break;
-            case "2":
-            lang = "2";
-            break;
-            case "3":
-            lang = "3";
-            break;
+          if ((x === "1" || x === "2" || x === "3") && !lang) {
+            lang = x;
+          } else if (lang) {
+            alert("You are in zone stop. This machine buy ticket only. Please select service, buy sjt press 1." + lang);
           }
         }
       }
