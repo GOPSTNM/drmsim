@@ -56,40 +56,41 @@
           return;
         }
         if (x === "*") {
-          if (lang) {
-            alert("Transaction Cancelled" + lang);
-          } else {
-            alert("Transaction Cancelled 3 lang");
-          }
+          play_audio("02");
           audio_mode = 0;
           return;
         }
         switch (inputs.length) {
+          inputs += x;
           case 0:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
-              inputs += x;
               lang = x;
-              alert("You are in zone stop. This machine buy ticket only. Please select service, buy sjt press 1." + lang);
+              await play_audio("04");
+              // Zone
+              await play_audio("09");
+              // Stop
+              await play_audio("11");
+              // Coin
+              await play_audio("12");
+              await play_audio("13");
+              await play_audio("14");
             }
             break;
           case 1:
             if (x === "1") {
-              inputs += x;
-              alert("to buy with zone press 1 to buy with stop press 2." + lang);
+              play_audio("15");
             }
             break;
           case 2:
             if (x === "1") {
-              inputs += x;
-              alert("zone" + lang);
+              play_audio("16");
             } else if (x === "2") {
-              inputs += x;
-              alert("stop" + lang);
+              play_audio("17");
             }
             break;
         }
       }
-      function play_audio(p) {
+      async function play_audio(p, t) {
         if (audio) {
           audio.pause();
         }
