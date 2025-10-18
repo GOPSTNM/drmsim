@@ -27,7 +27,7 @@
   </head>
   <body>
     <div class="plate">
-      <input type="button" class="btn" value="1" onclick="await click_btn('1');">
+      <input type="button" class="btn" value="1" onclick="click_btn('1');">
       <input type="button" class="btn" value="2" onclick="click_btn('2');">
       <input type="button" class="btn" value="3" onclick="click_btn('3');">
       <input type="button" class="btn" value="4" onclick="click_btn('4');">
@@ -45,13 +45,13 @@
       let lang = "0";
       let inputs;
       let audio;
-      async function click_btn(x) {
+      function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
             inputs = "";
             lang = "0";
             audio_mode = 1;
-            await play_audio("01");
+            play_audio("01");
           }
           return;
         }
@@ -65,15 +65,15 @@
           case 0:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
               lang = x;
-              await play_audio("04");
+              play_audio("04");
               // Zone
-              await play_audio("09");
+              play_audio("09");
               // Stop
-              await play_audio("11");
+              play_audio("11");
               // Coin
-              await play_audio("12");
-              await play_audio("13");
-              await play_audio("14");
+              play_audio("12");
+              play_audio("13");
+              play_audio("14");
             }
             break;
           case 1:
