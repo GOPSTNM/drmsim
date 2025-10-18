@@ -91,7 +91,12 @@
         }
         audio = document.createElement("AUDIO");
         audio.src = aurl
-        audio.play();
+        return new Promise((resolve) => {
+          audio.addEventListener('ended', () => {
+            resolve();
+          });
+          audio.play();
+        });
       }
     </script>
   </body>
