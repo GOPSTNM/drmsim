@@ -95,9 +95,11 @@
         if (audio) {
           audio.pause();
         }
-        audio = document.createElement("AUDIO");
-        audio.src = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
-        audio.play();
+        try {
+          audio = document.createElement("AUDIO");
+          audio.src = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
+          audio.play();
+        }
       }
     </script>
   </body>
