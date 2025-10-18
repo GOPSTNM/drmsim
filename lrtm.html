@@ -84,17 +84,16 @@
         }
       }
       async function play_audio(p, t) {
-        console.log(p);
+        let aurl = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
         if (audio) {
           audio.pause();
         }
-        try {
+        if (Boolean(aurl)) {
           audio = document.createElement("AUDIO");
-          audio.src = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
+          audio.src = aurl
           audio.play();
-        }
-        catch(e) {
-          message.innerHTML = e;
+        } else {
+          console.log(aurl);
         }
       }
     </script>
