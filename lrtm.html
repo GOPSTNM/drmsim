@@ -62,19 +62,19 @@
         }
         userinputs += x;
         switch (userinputs.length) {
-          case 0:
+          case 1:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
               lang = x;
               play_audio("09");
               play_audio("12");
             }
             break;
-          case 1:
+          case 2:
             if (x === "1") {
               play_audio("15");
             }
             break;
-          case 2:
+          case 3:
             if (x === "1") {
               play_audio("16");
             } else if (x === "2") {
