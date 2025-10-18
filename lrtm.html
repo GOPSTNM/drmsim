@@ -85,16 +85,13 @@
       }
       async function play_audio(p, t) {
         let aurl = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
+        console.log(aurl);
         if (audio) {
           audio.pause();
         }
-        if (Boolean(aurl)) {
-          audio = document.createElement("AUDIO");
-          audio.src = aurl
-          audio.play();
-        } else {
-          console.log(aurl);
-        }
+        audio = document.createElement("AUDIO");
+        audio.src = aurl
+        audio.play();
       }
     </script>
   </body>
