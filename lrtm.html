@@ -45,7 +45,7 @@
       let lang = "0";
       let userinputs;
       let audio;
-      function click_btn(x) {
+      async function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
             userinputs = "";
@@ -65,7 +65,7 @@
           case 1:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
               lang = x;
-              play_audio("09");
+              await play_audio("09");
               play_audio("12");
             }
             break;
