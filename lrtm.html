@@ -100,6 +100,9 @@
           audio.src = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
           audio.play();
         }
+        catch(e) {
+          message.innerHTML = e;
+        }
       }
     </script>
   </body>
