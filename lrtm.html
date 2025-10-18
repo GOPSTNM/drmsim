@@ -42,15 +42,16 @@
     </div>
     <script>
       let audio_mode;
-      let lang;
+      let lang = "0";
       let inputs;
+      let audio;
       function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
             inputs = "";
-            lang = "";
+            lang = "0";
             audio_mode = 1;
-            alert("Set lang");
+            play_audio("01");
           }
           return;
         }
@@ -87,6 +88,14 @@
             }
             break;
         }
+      }
+      function play_audio(p) {
+        if (audio) {
+          audio.pause();
+        }
+        audio = document.createElement("AUDIO");
+        audio.src = "https://gopstnm.github.io/wr/lrtm/" + p + lang;
+        audio.play();
       }
     </script>
   </body>
