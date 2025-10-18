@@ -61,7 +61,7 @@
           return;
         }
         userinputs += x;
-        switch (inputs.length) {
+        switch (userinputs.length) {
           case 0:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
               lang = x;
@@ -91,6 +91,7 @@
         }
       }
       async function play_audio(p, t) {
+        console.log(p);
         if (audio) {
           audio.pause();
         }
