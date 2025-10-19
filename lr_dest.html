@@ -1,102 +1,174 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Rail Ticket Machine</title>
+    <title>Light Rail Destination Display</title>
     <style>
-      .plate {
-        height: min-content;
-        width: min-content;
-        background-color: #D1CDC9;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12.5px;
-        padding: 25px 20px;
-        border: 1px solid #545250;
-        border-radius: 5px;
+      .display {
+        width: max-content;
+        display: inline-block;
+        background-color: #5C5C5C;
+        margin: 10px;
+        vertical-align: bottom;
       }
-      .btn {
-        height: 50px;
-        width: 50px;
-        background-color: #B5B4B3;
-        color: #292217;
-        border: 1px solid #545250;
-        border-radius: 5px;
-        font-size: 35px;
+      .dot {
+        border-radius: 100%;
+        display: inline-block;
+        background-color: #6E6E6E;
       }
     </style>
   </head>
   <body>
-    <div class="plate">
-      <input type="button" class="btn" value="1" onclick="click_btn('1');">
-      <input type="button" class="btn" value="2" onclick="click_btn('2');">
-      <input type="button" class="btn" value="3" onclick="click_btn('3');">
-      <input type="button" class="btn" value="4" onclick="click_btn('4');">
-      <input type="button" class="btn" value="5" onclick="click_btn('5');">
-      <input type="button" class="btn" value="6" onclick="click_btn('6');">
-      <input type="button" class="btn" value="7" onclick="click_btn('7');">
-      <input type="button" class="btn" value="8" onclick="click_btn('8');">
-      <input type="button" class="btn" value="9" onclick="click_btn('9');">
-      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click_btn('*');">
-      <input type="button" class="btn" value="0" onclick="click_btn('0');">
-      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click_btn('#');">
-    </div>
+    <div class="display" onclick="image_export(this);" id="front_display"></div><br>
+    <div class="display" onclick="image_export(this);" id="side_dest_display"></div><div class="display" onclick="image_export(this);" id="side_rte_display"></div><br>
+    <div class="display" onclick="image_export(this);" id="interior_display"></div><div class="" id="lrvp5_interior_display"></div><br>
+    <div class="display" onclick="image_export(this);" id="rear_display"></div><br>
+    <select id="route" onchange="input_change();">
+      <option selected="true" disabled="true">Select Route</option>
+    </select>
     <script>
-      let audio_mode;
-      let lang = "0";
-      let userinputs;
-      let audio;
-      async function click_btn(x) {
-        if (audio_mode !== 1) {
-          if (x === "5") {
-            userinputs = "";
-            lang = "0";
-            audio_mode = 1;
-            play_audio("01");
+      function set_display(display_id, rows, cols, ratio) {
+        const display = document.getElementById(display_id);
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const dot = document.createElement("div");
+            dot.classList.add('dot');
+            dot.id = `${display_id}-${row}-${col}`;
+            dot.style.height = 5 * ratio;
+            dot.style.width = 5 * ratio;
+            dot.style.margin = 0.75 * ratio;
+            display.appendChild(dot);
           }
-          return;
-        }
-        if (x === "*") {
-          play_audio("02");
-          audio_mode = 0;
-          return;
-        }
-        userinputs += x;
-        switch (userinputs.length) {
-          case 1:
-            if ((x === "1" || x === "2" || x === "3") && lang === "0") {
-              lang = x;
-              await play_audio("09");
-              play_audio("12");
-            }
-            break;
-          case 2:
-            if (x === "1") {
-              play_audio("15");
-            }
-            break;
-          case 3:
-            if (x === "1") {
-              play_audio("16");
-            } else if (x === "2") {
-              play_audio("17");
-            }
-            break;
+          display.appendChild(document.createElement("br"));
         }
       }
-      async function play_audio(p, t) {
-        let aurl = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
-        console.log(aurl);
-        if (audio) {
-          audio.pause();
+      set_display("front_display", 32, 120, 1);
+      set_display("side_dest_display", 24, 64, 1);
+      set_display("side_rte_display", 13, 24, 1.75);
+      set_display("interior_display", 16, 240, 0.5);
+      set_display("rear_display", 13, 28, 1.5);
+      let front_data;
+      let side_dest_data;
+      let side_rte_data;
+      let rear_data;
+      let interior_data;
+      fetch("light_rail_data/front_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          front_data = data;
+          let rte_option_list = "<option selected='true' disabled='true'>Select Route</option>";
+          for (let i in data) {
+            rte_option_list += `<option value="${i}">${i}</option>`;
+          }
+          document.getElementById("route").innerHTML = rte_option_list;
+        })
+      fetch("light_rail_data/side_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          side_dest_data = data;
+        })
+      fetch("light_rail_data/side_rte.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          side_rte_data = data;
+        })
+      fetch("light_rail_data/rear_rte.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          rear_data = data;
+        })
+      fetch("light_rail_data/interior_dest.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          interior_data = data;
+        })
+      function input_change() {
+        let rte_dest = document.getElementById("route").value;
+        let [rte, dest] = rte_dest.split("_");
+        if (!dest) {
+          dest = rte;
         }
-        audio = document.createElement("AUDIO");
-        audio.src = aurl
-        return new Promise((resolve) => {
-          audio.addEventListener('ended', () => {
-            resolve();
-          });
-          audio.play();
+        Array.from(document.getElementsByClassName("dot")).forEach(dot => {
+          dot.style.backgroundColor = "#6E6E6E";
         });
+        const update_display = (data, display_id) => {
+          for (let i = 0; i < data.length; i++) {
+            for (let k = 0; k < data[i].length; k++) {
+              if (data[i][k] === "1") {
+                document.getElementById(`${display_id}-${i}-${k}`).style.backgroundColor = "#FFBC02";
+              }
+            }
+          }
+        };
+        update_display(front_data[rte_dest], "front_display");
+        if (side_dest_data[rte_dest]) {
+          update_display(side_dest_data[rte_dest], "side_dest_display");
+        } else if (side_dest_data[dest]) {
+          update_display(side_dest_data[dest], "side_dest_display");
+        }
+        if (side_rte_data[rte_dest]) {
+          update_display(side_rte_data[rte_dest], "side_rte_display");
+        } else if (side_rte_data[rte]) {
+          update_display(side_rte_data[rte], "side_rte_display");
+        }
+        if (rear_data[rte_dest]) {
+          update_display(rear_data[rte_dest], "rear_display");
+        } else if (rear_data[rte]) {
+          update_display(rear_data[rte], "rear_display");
+        }
+        if (interior_data[rte_dest]) {
+          update_display(interior_data[rte_dest], "interior_display");
+        }
+      }
+      function image_export(elem) {
+        let height = 0;
+        let width = 0;
+        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+          if (dot.id.split('-')[1] == "0") {
+            width += 5 * 1.15;
+          }
+          if (dot.id.split('-')[2] == "0") {
+            height += 5 * 1.15;
+          }
+        });
+        const res = 5;
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = width * res;
+        canvas.height = height * res;
+        ctx.fillStyle = "#5C5C5C";
+        ctx.fillRect(0, 0, width * res, height * res);
+        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+          const position = dot.id.split('-');
+          const row = position[1];
+          const col = position[2];
+          const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
+          const x = 5 * 1.15 * col * res + 0.75;
+          const y = 5 * 1.15 * row * res + 0.75;
+          ctx.fillStyle = colour;
+          ctx.fillRect(x, y, 5 * res, 5 * res);
+        });
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            //link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+          }
+        }, 'image/png');
       }
     </script>
   </body>
