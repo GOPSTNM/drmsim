@@ -4,16 +4,17 @@
     <title>Light Rail Ticket Machine</title>
     <style>
       .plate {
-        height: 287.5px;
-        width: 215px;
+        height: min-content;
+        width: min-content;
         background-color: #D1CDC9;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12.5px;
         padding: 25px 20px;
         border: 1px solid #545250;
         border-radius: 5px;
       }
       .btn {
-        max-height: 50px;
-        max-width: 50px;
         height: 50px;
         width: 50px;
         background-color: #B5B4B3;
@@ -26,18 +27,18 @@
   </head>
   <body>
     <div class="plate">
-      <input type="button" class="btn" value="1" onclick="click_btn('1');">
-      <input type="button" class="btn" value="2" onclick="click_btn('2');">
-      <input type="button" class="btn" value="3" onclick="click_btn('3');"><br>
-      <input type="button" class="btn" value="4" onclick="click_btn('4');">
-      <input type="button" class="btn" value="5" onclick="click_btn('5');">
-      <input type="button" class="btn" value="6" onclick="click_btn('6');"><br>
-      <input type="button" class="btn" value="7" onclick="click_btn('7');">
-      <input type="button" class="btn" value="8" onclick="click_btn('8');">
-      <input type="button" class="btn" value="9" onclick="click_btn('9');"><br>
-      <input type="button" class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click_btn('*');">
-      <input type="button" class="btn" value="0" onclick="click_btn('0');">
-      <input type="button" class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click_btn('#');">
+      <div class="btn" value="1" onclick="click_btn('1');"></div>
+      <div class="btn" value="2" onclick="click_btn('2');"></div>
+      <div class="btn" value="3" onclick="click_btn('3');"></div>
+      <div class="btn" value="4" onclick="click_btn('4');"></div>
+      <div class="btn" value="5" onclick="click_btn('5');"></div>
+      <div class="btn" value="6" onclick="click_btn('6');"></div>
+      <div class="btn" value="7" onclick="click_btn('7');"></div>
+      <div class="btn" value="8" onclick="click_btn('8');"></div>
+      <div class="btn" value="9" onclick="click_btn('9');"></div>
+      <div class="btn" value="*" style="font-size: 45px; padding-top: 7px;" onclick="click_btn('*');"></div>
+      <div class="btn" value="0" onclick="click_btn('0');"></div>
+      <div class="btn" value="#" style="font-size: 25px; font-weight: 500;" onclick="click_btn('#');"></div>
     </div>
     <script>
       let audio_mode;
