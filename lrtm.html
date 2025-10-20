@@ -61,7 +61,7 @@
           return;
         }
         if (x === "*") {
-          play_audio("02");
+          console.log("02 Transaction Cancelled");
           audio_mode = 0;
           return;
         }
@@ -70,20 +70,25 @@
           case 1:
             if ((x === "1" || x === "2" || x === "3") && lang === "0") {
               lang = x;
-              await play_audio("09");
+              console.log("04 You are in");
+              console.log("05-10 Zone");
+              console.log("44 Stop");
+              console.log("11 This machine - buy ticket only");
               play_audio("12");
+              console.log("13 To cancel transaction at any time, press *");
+              console.log("14 Please select service: Buy single journey ticket, press 1");
             }
             break;
           case 2:
             if (x === "1") {
-              play_audio("15");
+              console.log("15 To buy tickets by selecting destination zone, press 1. To buy ticket by selecting destination stop, press 2.");
             }
             break;
           case 3:
             if (x === "1") {
-              play_audio("16");
+              console.log("16 Zone");
             } else if (x === "2") {
-              play_audio("17");
+              console.log("17 Stop");
             }
             break;
           case 4:
@@ -91,16 +96,16 @@
               userinputs = userinputs.slice(0, -1);
               ticketdest += x;
             } else {
-              console.log("select ticket type");
+              console.log("18 Please select ticket type");
             }
             break;
           case 5:
-            console.log(ticketdest);
-            console.log(x);
             await play_audio("19");
-            await play_audio("09");
-            await play_audio("21");
+            console.log("05-10 Zone");
+            await play_audio("21"); // or concessionary
             play_audio("23");
+            console.log("24-36 Amount");
+            play_audio("37");
             break;
         }
       }
