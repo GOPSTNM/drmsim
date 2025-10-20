@@ -48,10 +48,12 @@
       let lang = "0";
       let userinputs;
       let audio;
+      let ticketdest;
       async function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
             userinputs = "";
+            ticketdest = "";
             lang = "0";
             audio_mode = 1;
             play_audio("01");
@@ -82,6 +84,17 @@
               play_audio("16");
             } else if (x === "2") {
               play_audio("17");
+            }
+            break;
+          case 4:
+            if (x !== "#") {
+              userinputs = userinputs.slice(0, -1);
+              ticketdest += x;
+            } else {
+              await play_audio("19");
+              await play_audio("09");
+              await play_audio("21");
+              play_audio("23");
             }
             break;
         }
