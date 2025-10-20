@@ -91,11 +91,14 @@
               userinputs = userinputs.slice(0, -1);
               ticketdest += x;
             } else {
-              await play_audio("19");
-              await play_audio("09");
-              await play_audio("21");
-              play_audio("23");
+              console.log("select ticket type");
             }
+            break;
+          case 5:
+            await play_audio("19");
+            await play_audio("09");
+            await play_audio("21");
+            play_audio("23");
             break;
         }
       }
