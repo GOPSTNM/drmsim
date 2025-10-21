@@ -54,6 +54,10 @@
         .then(response => response.txt())
         .then(data => {
           lrtm_data = data.split("\n");
+          lrtm_data.forEach(item => {
+            item = item.split("\t");
+          };
+          alert(lrtm_data[0][0]);
         });
       async function click_btn(x) {
         if (audio_mode !== 1) {
