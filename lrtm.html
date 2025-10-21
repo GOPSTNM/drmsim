@@ -43,6 +43,8 @@
       <div class="btn" onclick="click_btn('0');">0</div>
       <div class="btn" onclick="click_btn('#');" style="font-size: 25px; font-weight: 500;">#</div>
     </div>
+    <input type="text" placeholder="Ticket Machine Location">
+    <input type="checkbox">Coin Only
     <script>
       let audio_mode;
       let lang = "0";
@@ -54,7 +56,6 @@
         .then(response => response.text())
         .then(data => {
           lrtm_data = data.split("\n").map(item => item.split("\t"));
-          alert(lrtm_data[0][0]);
         });
       async function click_btn(x) {
         if (audio_mode !== 1) {
