@@ -49,6 +49,12 @@
       let userinputs;
       let audio;
       let ticketdest;
+      let lrtm_data;
+      fetch("light_rail_data/lrtm_data.txt")
+        .then(response => response.txt())
+        .then(data => {
+          lrtm_data = data.split("\n");
+        });
       async function click_btn(x) {
         if (audio_mode !== 1) {
           if (x === "5") {
