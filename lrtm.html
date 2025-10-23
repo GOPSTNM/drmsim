@@ -45,7 +45,7 @@
     </div>
     <input type="text" placeholder="Ticket Machine Location" id="tm_location">
     <input type="checkbox" id="coin_only">Coin Only<br>
-    <input type="text" placeholder="Value" id="value_input"><input type="button" value="Insert Coin" onclick="insert_coin();">
+    <input type="text" placeholder="Value" id="value_input"><input type="button" value="Insert Coin" onclick="insert_value();">
     <script>
       let audio_mode;
       let lang = "0";
@@ -124,7 +124,7 @@
             break;
         }
       }
-      async function insert_coin() {
+      async function insert_value() {
       }
       async function play_audio(p, t) {
         let aurl = "https://gopstnm.github.io/wr/lrtm/" + p + lang + ".mp3";
