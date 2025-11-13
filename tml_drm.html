@@ -222,7 +222,7 @@
       <input type="button" onclick="document.getElementById('blue_bar').style.display = 'inline-block';" value="Message">
       <input type="button" onclick="document.getElementById('blue_bar').style.display = 'none';" value="Hide">
       <script>
-        fetch ('https://gopstnm.github.io/drmsim/data/tml_stn_list.txt')
+        fetch ('tml_data/tml_stn_list.txt')
           .then(x => x.text())
           .then(y => document.getElementById("station_list").innerHTML = y);
         function update() {
