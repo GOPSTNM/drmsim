@@ -2,6 +2,10 @@
   "RouteName": "Tuen Ma Line",
   "RouteColour": "#993109",
   "Data": [
-    "屯門", "Tuen Mun", "N"
+    [
+      "屯門",
+      "Tuen Mun",
+      "N"
+    ]
   ]
 }
