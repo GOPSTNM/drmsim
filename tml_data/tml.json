@@ -4,12 +4,55 @@
   "Data": {
     "TUM": {
       "Name": ["屯門", "Tuen Mun"],
+      "Door": "N",
       "Interchange": [
         {
           "RouteName": ["輕鐵", "Light Rail"],
           "RouteColour": "D4AB01"
         }
       ],
+    },
+    "SIH": {
+      "Name": ["兆康", "Siu Hong"],
+      "Door": "N",
+      "Interchange": [
+        {
+          "RouteName": ["輕鐵", "Light Rail"],
+          "RouteColour": "D4AB01"
+        }
+      ],
+    },
+    "TIS": {
+      "Name": ["天水圍", "Tin Shui Wai"],
+      "Door": "N",
+      "Interchange": [
+        {
+          "RouteName": ["輕鐵", "Light Rail"],
+          "RouteColour": "D4AB01"
+        }
+      ],
+    },
+    "LOP": {
+      "Name": ["朗屏", "Long Ping"],
+      "Door": "N",
+    },
+    "YUL": {
+      "Name": ["元朗", "Yuen Long"],
+      "Door": "N",
+      "Interchange": [
+        {
+          "RouteName": ["輕鐵", "Light Rail"],
+          "RouteColour": "D4AB01"
+        }
+      ],
+    },
+    "KSR": {
+      "Name": ["錦上路", "Kam Sheung Road"],
+      "Door": "N",
+    },
+    "TWW": {
+      "Name": ["荃灣西", "Tsuen Wan West"],
+      "Door": "N",
     }
   }
 }
