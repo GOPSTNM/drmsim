@@ -1,16 +1,15 @@
 {
   "RouteName": "Tuen Ma Line",
   "RouteColour": "#993109",
-  "Data": [
-    [
-      "屯門",
-      "Tuen Mun",
-      "N",
-    ],
-    [
-      "Siu Hong",
-      "兆康",
-      "R"
-    ]
-  ]
+  "Data": {
+    "TUM": {
+      "Name": ["屯門", "Tuen Mun"],
+      "Interchange": [
+        {
+          "RouteName": ["輕鐵", "Light Rail"],
+          "RouteColour": "D4AB01"
+        }
+      ],
+    }
+  }
 }
