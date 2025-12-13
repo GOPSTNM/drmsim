@@ -209,6 +209,10 @@
         function route_data_update() {
           route_data = JSON.parse(document.getElementById("route_data_display").value);
         }
+        function drm_update() {
+          content = `<div>${route_data['RouteName']}</div>`;
+          document.getElementById("drm").innerHTML = content;
+        }
       </script>
     </body>
 </html>
