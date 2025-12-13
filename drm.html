@@ -70,7 +70,7 @@
         }
         function drm_update() {
           content = `<div style="position: absolute; left: 10px; top: 10px; background-color: ${route_data["RouteColour"]}; height: 5px; width: 10px;"></div>`;
-          content += `<div style="position: absolute; left: 20px; top: 10px; font-size: 10px;>${route_data["RouteName"][0]}</div>`;
+          content += `<div style="position: absolute; left: 20px; top: 10px; font-size: 5px;>${route_data["RouteName"][0]}</div>`;
           content += `<div style="position: absolute; left: 20px; top: 20px; font-size: 5px;>${route_data["RouteName"][1]}</div>`;
           document.getElementById("drm").innerHTML = content;
         }
