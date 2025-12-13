@@ -197,7 +197,7 @@
       <div class="drm_base" id="drm">
       </div>
       <textarea id="route_data_display" oninput="route_data_update();" style="height: 330px; width: 400px;"></textarea>
-      <input type="button" onclick="alert(route_data['RouteName']);" value="Test">
+      <input type="button" onclick="drm_update();" value="Test">
       <script>
         let route_data;
         fetch("tml_data/tml.json")
@@ -210,7 +210,7 @@
           route_data = JSON.parse(document.getElementById("route_data_display").value);
         }
         function drm_update() {
-          content = `<div>${route_data['RouteName']}</div>`;
+          content = `<div style="left: 10px; top: 10px; background-color: ${route_data["RouteColour"]}; height: 5px; width: 10px;"></div>${route_data["RouteName"]}`;
           document.getElementById("drm").innerHTML = content;
         }
       </script>
