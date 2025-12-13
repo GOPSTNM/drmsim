@@ -202,8 +202,8 @@
         let route_data;
         fetch ("tml_data/tml.json")
           .then(data => {
-            route_data = data;
-            document.getElementById("route_data_display").value = JSON.stringify(data, null, 2);
+            route_data = JSON.parse(data);
+            document.getElementById("route_data_display").value = JSON.stringify(data);
           });
         function route_data_update() {
           route_data = JSON.parse(document.getElementById("route_data_display").value);
