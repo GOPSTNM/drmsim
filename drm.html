@@ -1,0 +1,213 @@
+<html>
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@200..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@500&display=swap');
+      .ctext {
+        font-family: "Noto Serif HK", serif;
+        font-weight: 580;
+        letter-spacing: 0.02em;
+      }
+      .etext {
+        font-family: "Roboto", serif;
+        font-weight: 580;
+      }
+      .hide {
+        display: none !important;
+      }
+      .drm_base {
+        position: relative;
+        height: 260px;
+        width: 1000px;
+        border: 4px solid #696969;
+        margin: auto;
+      }
+      .in_stn {
+        white-space: nowrap;
+        position: absolute;
+        top: 103px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .in_stn > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .in_stn > .ctext {
+        font-size: 70px;
+      }
+      .in_stn > .etext {
+        font-size: 48px;
+      }
+      .in_stn_circ {
+        height: 45px;
+        width: 45px;
+        border-radius: 100%;
+        border: 5px solid;
+        margin-left: 20px;
+        margin-right: 20px;
+        animation: blinker 2s step-start infinite;
+        background-color: #ffe100;
+      }
+      @keyframes blinker {
+        50% {
+          background-color: #ffffff;
+        }
+      }
+      .door_bar {
+        position: absolute;
+        height: 80px;
+        width: 100%;
+        background-color: #ffe100;
+        font-size: 35px;
+        color: #000000;
+        text-align: center;
+        line-height: 80px;
+        top: 180px;
+        bottom: 0%;
+      }
+      .door_bar > .ctext {
+        font-size: 38px;
+        letter-spacing: 0.06em;
+      }
+      .blue_bar {
+        position: absolute;
+        bottom: 0%;
+        height: 50px;
+        width: 100%;
+        background-color: #011D57;
+        font-size: 30px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 50px;
+      }
+      .door_mtg_left {
+        position: absolute;
+        bottom: 37.5px;
+        left: 60px;
+        transform: translate(50%, 50%);
+      }
+      .door_mtg_right {
+        position: absolute;
+        bottom: 37.5px;
+        right: 60px;
+        transform: translate(-50%, 50%);
+      }
+      input[type=text], select, textarea {
+        vertical-align: top;
+        text-align: left;
+        display: inline-block;
+        border: 3px solid #9B2E08;
+        border-radius: 6px;
+        color: #000000;
+        font-size: 20px;
+        background-color: #ffffff;
+        margin: 5px;
+        transition: 0.5s;
+        outline: none;
+      }
+      textarea {
+        overflow:auto;
+      }
+      input[type=range] {
+        vertical-align: top;
+        margin: 10px;
+        display: inline-block;
+        -webkit-appearance: none;
+        height: 8px;
+        border-radius: 7px;
+        background: #C0C0C0;
+        outline: none;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        background: #9B2E08;
+        cursor: pointer;
+      }
+      input[type=text]:focus, select:focus, textarea:focus {
+        border: 3px solid #ffe100;
+      }
+      input[type=button] {
+        display: inline-block;
+        height: 40px;
+        background-color: #9B2E08;
+        border: none;
+        font-size: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        margin: 4px;
+        cursor: pointer;
+      }
+      .line_grey {
+        position: absolute;
+        left: 50%;
+        top: 43%;
+        transform: translate(-50%, -50%);
+        background-color: #C0C0C0;
+        height: 10px;
+      }
+      .line_color {
+        position: absolute;
+        left: calc(1000px*calc(1+0)/28);
+        top: 0%;
+        background-color: #9B2E08;
+        height: 10px;
+      }
+      .circ {
+        position: absolute;
+        left: 50%;
+        top: 43%;
+        transform: translate(-50%, -50%);
+        height: 10.5px;
+        width: 10.5px;
+        border-radius: 100%;
+        border: 1.8px solid #000000;
+        background-color: #ffe100;
+      }
+      .stn_cname {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 12px;
+        font-size: 12px;
+        text-align: center;
+      }
+      .stn_ename {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 7px;
+        font-size: 7px;
+        text-align: center;
+      }
+      .arrow {
+        position: absolute;
+        top: 43%;
+        transform: translate(-50%, -50%);
+        height: 9px;
+      }
+      </style>
+    </head>
+    <body>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <div class="drm_base" id="drm">
+      </div>
+      <textarea id="route_data_display" oninput="route_data_update();" style="height: 330px; width: 250px;"></textarea>
+      <input type="button" onclick="alert(route_data['RouteName']);" value="Test">
+      <script>
+        let route_data;
+        fetch ("tml_data/tml.json")
+          .then(data => {
+            route_data = data;
+            document.getElementById("route_data_display").value = JSON.stringify(data, null, 2);
+          });
+        function route_data_update() {
+          route_data = JSON.parse(document.getElementById("route_data_display").value);
+        }
+      </script>
+    </body>
+</html>
