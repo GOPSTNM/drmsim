@@ -210,7 +210,7 @@
           route_data = JSON.parse(document.getElementById("route_data_display").value);
         }
         function drm_update() {
-          content = `<div style="left: 10px; top: 10px; background-color: ${route_data["RouteColour"]}; height: 5px; width: 10px;"></div>${route_data["RouteName"]}`;
+          content = `<div style="position: absolute; left: 10px; top: 10px; background-color: ${route_data["RouteColour"]}; height: 5px; width: 10px;"></div>${route_data["RouteName"]}`;
           document.getElementById("drm").innerHTML = content;
         }
       </script>
