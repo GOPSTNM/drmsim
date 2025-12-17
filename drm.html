@@ -73,9 +73,9 @@
           route_data = JSON.parse(document.getElementById("route_data_display").value);
         }
         function drm_update() {
-          content = `<div style="position: absolute; left: 10px; top: 10px; background-color: ${route_data["RouteColour"]}; border-radius: 4px; height: 4px; width: 20px;"></div>`;
+          content = `<div style="position: absolute; left: 10px; top: 12px; background-color: ${route_data["RouteColour"]}; border-radius: 4px; height: 5px; width: 18px;"></div>`;
           content += `<div style="position: relative; left: 30px; top: 8px; font-size: 8px;">${route_data["RouteName"][0]}</div>`;
-          content += `<div style="position: relative; left: 30px; top: 16px; font-size: 5px;">${route_data["RouteName"][1]}</div>`;
+          content += `<div style="position: relative; left: 30px; top: 12px; font-size: 5px;">${route_data["RouteName"][1]}</div>`;
           document.getElementById("drm").innerHTML = content;
         }
       </script>
