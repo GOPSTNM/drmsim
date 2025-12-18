@@ -69,12 +69,12 @@
           route_data = JSON.parse(document.getElementById("route_data_display").value);
         }
         function drm_update() {
-          content = `<div style="position: absolute; left: 12px; top: 15px; background-color: ${route_data["RouteColour"]}; border-radius: 4px; height: 5px; width: 20px;"></div>`;
+          content = `<div style="position: absolute; left: 12px; top: 15px; background-color: ${route_data["RouteColour"]}; border-radius: 5px; height: 5px; width: 20px;"></div>`;
           content += `<div class="ct" style="position: absolute; left: 35px; top: 8px; font-size: 8px;">${route_data["RouteName"][0]}</div>`;
           content += `<div class="et" style="position: absolute; left: 35px; top: 20px; font-size: 5px;">${route_data["RouteName"][1]}</div>`;
-          content += "<div style='position: absolute; right: 12px; top: 15px; background-color: #00B761; border-radius: 4px; height: 30px; width: 120px;'>";
-          content += "<div class='ct' style='position: absolute; right: 35px; top: 8px; font-size: 16px;'>請在這邊落車</div>";
-          content += "<div class='et' style='position: absolute; right: 35px; top: 28px; font-size: 10px;'>Please exit this side</div>";
+          content += "<div style='position: absolute; right: 12px; top: 15px; background-color: #00B761; border-radius: 35px; height: 35px; width: 150px;'>";
+          content += "<div class='ct' style='position: absolute; right: 35px; top: 8px; font-size: 16px; font-color: #FFFFFF;'>請在這邊落車</div>";
+          content += "<div class='et' style='position: absolute; right: 35px; top: 28px; font-size: 10px; font-color: #FFFFFF;'>Please exit this side</div>";
           content += "</div>";
           document.getElementById("drm").innerHTML = content;
         }
