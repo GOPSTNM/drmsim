@@ -59,7 +59,7 @@
       <input type="button" onclick="drm_update();" value="Test">
       <script>
         let route_data;
-        fetch("tml_data/tml.json")
+        fetch("https://gopstnm.github.io/drmsim/tml_data/tml.json")
           .then(response => response.json())
           .then(data => {
             route_data = data;
