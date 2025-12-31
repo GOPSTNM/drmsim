@@ -150,8 +150,8 @@
         ctx.fillRect(0, 0, width * res, height * res);
         Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
           const position = dot.id.split('-');
-          const row = position[1];
-          const col = position[2];
+          const row = position[0];
+          const col = position[1];
           const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
           const x = 5 * 1.15 * col * res + 0.75;
           const y = 5 * 1.15 * row * res + 0.75;
