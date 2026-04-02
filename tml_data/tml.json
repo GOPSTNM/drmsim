@@ -54,5 +54,20 @@
       "Name": ["荃灣西", "Tsuen Wan West"],
       "Door": "L"
     }
-  }
+  },
+  "Message": [
+    ["請緊握扶手", "Please hold the handrail"],
+    ["嚴禁飲食", "No eating or drinking"],
+    ["入閘後及車廂內，嚴禁飲食", "No eating or drinking in trains or paid area of stations"],
+    ["如感到不適，請落車並請職員協助", "If you feel unwell, exit and ask for help from staff"],
+    ["請勿站近車門通道", "Move away from door area"],
+    ["部份車門不會打開", "Some doors will not open"],
+    ["部分幕門不會打開", "Some Platform Screen Doors will not open"],
+    ["部份閘門不會打開", "Some Automatic Platform Gates will not open"],
+    ["列車暫停服務，請所有乘客落車", "End of train service. Please exit"],
+    ["請盡量行入車廂中間", "Move into the center of the train"],
+    ["有乘客需要協助，本班列車將稍遲關出，敬請原諒", "A passenger needs assistance. We apologise for the delay"],
+    ["有人誤闖路軌道，列車服務受阻，敬請原諒", "Someone walking along the track. We apologise for the delay"],
+    ["架空電纜故障，列車服務受阻，敬請原諒", "We apologise for the delay"]
+  ]
 }
