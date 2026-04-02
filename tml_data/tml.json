@@ -68,9 +68,11 @@
     ["本班列車暫停服務，請轉乘下一班車", "Out of service. Change to next train"],
     ["請盡量行入車廂中間", "Move into the center of the train"],
     ["前方列車尚未開出，本班列車稍為延遲，敬請原諒", "We apologise for the delay"],
+    ["前方列車尚未開出，本班列車稍為延遲，敬請原諒", "Train still in the next section of the track. We apologise for the delay"],
     ["有乘客需要協助，本班列車將稍遲關出，敬請原諒", "A passenger needs assistance. We apologise for the delay"],
     ["有人誤闖路軌道，列車服務受阻，敬請原諒", "Someone walking along the track. We apologise for the delay"],
     ["信號故障，列車服務受阻，敬請原諒", "Signalling fault. We apologise for the delay"],
-    ["架空電纜故障，列車服務受阻，敬請原諒", "Power supply problem. We apologise for the delay"]
+    ["架空電纜故障，列車服務受阻，敬請原諒", "Power supply problem. We apologise for the delay"],
+    ["輕鐵服務稍為延遲", "Light Rail service delay"]
   ]
 }
