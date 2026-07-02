@@ -394,14 +394,14 @@
         }
         alert(font_test_message);
       }
-      // Load FFmpeg UMD bundle dynamically from CDN
-if (!window.FFmpeg) {
-    const script = document.createElement('script');
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.12.15/umd/ffmpeg.min.js";
-    document.head.appendChild(script);
-}
+      let recordInterval = null;
+let mediaRecorder = null;
+let recordedChunks = [];
+let recordCanvas = null;
+let ctx = null;
+let isRecording = false;
 
-// 1. Existing image_export function (Fixed with Promise wrapping)
+// 1. Fixed image_export function returning a Promise wrapping the blob
 function image_export(elem) {
   return new Promise((resolve) => {
     let height = 0;
@@ -439,112 +439,95 @@ function image_export(elem) {
   });
 }
 
-// 2. FFmpeg-powered sequential array recorder
-let recordInterval = null;
-let isRecording = false;
-let recordedFrames = []; // Temporarily store frame Blobs during recording
-
+// 2. Pure Native JS Recording Setup
 async function start_record() {
-    if (!window.FFmpeg) {
-        console.error("FFmpeg library is still loading from CDN. Please try again in a second.");
-        return;
-    }
-
+    recordedChunks = [];
+    isRecording = true;
+    
     const targetElem = document.getElementById("display");
     if (!targetElem) {
         console.error("Element with id 'display' not found.");
         return;
     }
 
-    recordedFrames = [];
-    isRecording = true;
+    // Initialize processing canvas to match your dot grid output exactly
+    recordCanvas = document.createElement("canvas");
+    recordCanvas.width = 143 * 5 * 1.15 * 5; 
+    recordCanvas.height = 19 * 5 * 1.15 * 5;
+    ctx = recordCanvas.getContext("2d", { alpha: false });
 
+    // Stream from canvas at 30 FPS (ideal for WebM encoding stability)
+    const stream = recordCanvas.captureStream(30); 
+    
+    // WebM is native and perfectly supported across Chromium & Firefox engines
+    const selectedMimeType = 'video/webm; codecs=vp9';
+    
+    mediaRecorder = new MediaRecorder(stream, { mimeType: selectedMimeType });
+
+    mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+            recordedChunks.push(event.data);
+        }
+    };
+
+    mediaRecorder.start();
+
+    // A safe sequential loop instead of setInterval to prevent race conditions
     async function captureFrameLoop() {
         if (!isRecording) return;
         
         try {
             const pngBlob = await image_export(targetElem);
             if (pngBlob && isRecording) {
-                // Collect raw frames in memory to avoid real-time rendering overhead
-                recordedFrames.push(pngBlob);
+                const bitmap = await createImageBitmap(pngBlob);
+                ctx.drawImage(bitmap, 0, 0);
+                bitmap.close(); // Clean up memory immediately
             }
         } catch (error) {
-            console.error("Error collecting frame:", error);
+            console.error("Error processing framework frame:", error);
         }
         
+        // Wait 14ms after processing finishes before grabbing the next frame
         recordInterval = setTimeout(captureFrameLoop, 14);
     }
 
     captureFrameLoop();
-    console.log("Recording frames into memory array...");
+    console.log("Recording natively to WebM...");
 }
 
-async function end_record() {
-    if (!isRecording) {
-        console.warn("No active recording found.");
-        return null;
-    }
+function end_record() {
+    return new Promise((resolve) => {
+        if (!mediaRecorder || mediaRecorder.state === "inactive") {
+            console.warn("No active recording session discovered.");
+            resolve(null);
+            return;
+        }
 
-    isRecording = false;
-    clearTimeout(recordInterval);
+        isRecording = false;
+        clearTimeout(recordInterval);
 
-    if (recordedFrames.length === 0) {
-        console.error("No frames were captured.");
-        return null;
-    }
+        mediaRecorder.onstop = () => {
+            // Keep container metadata explicitly WebM
+            const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
+            
+            const url = URL.createObjectURL(videoBlob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `bus_display_${Date.now()}.webm`; // Clean, uncorrupted extension
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
 
-    console.log(`Initializing FFmpeg... Preparing to process ${recordedFrames.length} frames.`);
+            console.log("Recording stopped and exported successfully.");
+            resolve(videoBlob);
+        };
 
-    const { createFFmpeg, fetchFile } = FFmpeg;
-    const ffmpeg = createFFmpeg({ log: true });
-    await ffmpeg.load();
-
-    // Write all captured PNG blobs into FFmpeg's virtual file system
-    for (let i = 0; i < recordedFrames.length; i++) {
-        const fileName = `frame_${String(i).padStart(5, '0')}.png`;
-        ffmpeg.FS('writeFile', fileName, await fetchFile(recordedFrames[i]));
-    }
-
-    console.log("Compiling true MP4 video via FFmpeg command layer...");
-
-    // Run standard FFmpeg command line parameters:
-    // -r 71.4: Translates your 14ms interval loop roughly into equivalent Frames Per Second (1000/14)
-    // -c:v libx264: Encodes with standard, globally accepted H.264
-    // -pix_fmt yuv420p: Mandatory compatibility format flag for standard OS media players
-    await ffmpeg.run(
-        '-r', '71.4', 
-        '-i', 'frame_%05d.png', 
-        '-c:v', 'libx264', 
-        '-pix_fmt', 'yuv420p', 
-        'output.mp4'
-    );
-
-    // Read generated output binary data matrix back from FFmpeg system
-    const data = ffmpeg.FS('readFile', 'output.mp4');
-
-    // Clean up temporary internal memory files
-    for (let i = 0; i < recordedFrames.length; i++) {
-        ffmpeg.FS('unlink', `frame_${String(i).padStart(5, '0')}.png`);
-    }
-    ffmpeg.FS('unlink', 'output.mp4');
-
-    // Trigger browser file download element pipeline
-    const videoBlob = new Blob([data.buffer], { type: 'video/mp4' });
-    const url = URL.createObjectURL(videoBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `recording_${Date.now()}.mp4`;
-    document.body.appendChild(a);
-    a.click();
-    
-    setTimeout(() => {
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }, 100);
-
-    console.log("True MP4 video compilation successfully finished.");
-    recordedFrames = []; // Clear RAM storage arrays
-    return videoBlob;
+        mediaRecorder.stop();
+    });
 }
     </script>
   </body>
