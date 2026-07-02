@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <div class="display" id="display"></div><br>
+    <div onclick="image_export(this);" class="display" id="display"></div><br>
     <select id="route" onchange="input_route_change()">
       <option selected="true" disabled="true">Select Route</option>
     </select>
@@ -390,6 +390,47 @@
           }
         }
         alert(font_test_message);
+      }
+      function image_export(elem) {
+        let height = 0;
+        let width = 0;
+        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+          if (dot.id.split('-')[0] == "0") {
+            width += 5 * 1.15;
+          }
+          if (dot.id.split('-')[1] == "0") {
+            height += 5 * 1.15;
+          }
+        });
+        const res = 5;
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = width * res;
+        canvas.height = height * res;
+        ctx.fillStyle = "#5C5C5C";
+        ctx.fillRect(0, 0, width * res, height * res);
+        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+          const position = dot.id.split('-');
+          const row = position[0];
+          const col = position[1];
+          const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
+          const x = 5 * 1.15 * col * res + 0.75;
+          const y = 5 * 1.15 * row * res + 0.75;
+          ctx.fillStyle = colour;
+          ctx.fillRect(x, y, 5 * res, 5 * res);
+        });
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+          }
+        }, 'image/png');
       }
     </script>
   </body>
