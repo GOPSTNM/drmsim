@@ -394,50 +394,46 @@
         }
         alert(font_test_message);
       }
-      function image_export(elem) {
-        let height = 0;
-        let width = 0;
-        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
-          if (dot.id.split('-')[0] == "0") {
-            width += 5 * 1.15;
-          }
-          if (dot.id.split('-')[1] == "0") {
-            height += 5 * 1.15;
-          }
-        });
-        const res = 5;
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = width * res;
-        canvas.height = height * res;
-        ctx.fillStyle = "#5C5C5C";
-        ctx.fillRect(0, 0, width * res, height * res);
-        Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
-          const position = dot.id.split('-');
-          const row = position[0];
-          const col = position[1];
-          const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
-          const x = 5 * 1.15 * col * res + 0.75;
-          const y = 5 * 1.15 * row * res + 0.75;
-          ctx.fillStyle = colour;
-          ctx.fillRect(x, y, 5 * res, 5 * res);
-        });
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            //link.target = "_blank";
-            document.body.appendChild(link);
-            //link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            return blob;
-          }
-        }, 'image/png');
+      // 1. Fixed image_export function returning a Promise wrapping the blob
+function image_export(elem) {
+  return new Promise((resolve) => {
+    let height = 0;
+    let width = 0;
+    Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+      if (dot.id.split('-')[0] == "0") {
+        width += 5 * 1.15;
       }
+      if (dot.id.split('-')[1] == "0") {
+        height += 5 * 1.15;
+      }
+    });
+    const res = 5;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = width * res;
+    canvas.height = height * res;
+    ctx.fillStyle = "#5C5C5C";
+    ctx.fillRect(0, 0, width * res, height * res);
+    
+    Array.from(elem.getElementsByClassName("dot")).forEach(dot => {
+      const position = dot.id.split('-');
+      const row = position[0];
+      const col = position[1];
+      const colour = dot.style.backgroundColor === "rgb(255, 188, 2)" ? "#FFBC02" : "#6E6E6E";
+      const x = 5 * 1.15 * col * res + 0.75;
+      const y = 5 * 1.15 * row * res + 0.75;
+      ctx.fillStyle = colour;
+      ctx.fillRect(x, y, 5 * res, 5 * res);
+    });
 
-      let recordInterval = null;
+    canvas.toBlob((blob) => {
+      resolve(blob); // Cleanly returns the blob out of the asynchronous function
+    }, 'image/png');
+  });
+}
+
+// 2. Updated and optimized Recording Mechanics
+let recordInterval = null;
 let mediaRecorder = null;
 let recordedChunks = [];
 let recordCanvas = null;
@@ -453,12 +449,16 @@ async function start_record() {
     }
 
     recordCanvas = document.createElement("canvas");
-    recordCanvas.width = targetElem.clientWidth || 640;
-    recordCanvas.height = targetElem.clientHeight || 480;
+    
+    // Set explicit size ahead of time to match image_export's expected output size
+    recordCanvas.width = 143 * 5 * 1.15 * 5; 
+    recordCanvas.height = 19 * 5 * 1.15 * 5;
     ctx = recordCanvas.getContext("2d", { alpha: false });
 
-    const stream = recordCanvas.captureStream(70);
+    // Requesting 60fps stream from the processing canvas
+    const stream = recordCanvas.captureStream(60);
     
+    // Fallbacks for webm/mp4 container validation across modern engines
     let selectedMimeType = 'video/webm; codecs=vp9';
     if (MediaRecorder.isTypeSupported('video/mp4; codecs=avc1.42E01E')) {
         selectedMimeType = 'video/mp4; codecs=avc1.42E01E';
@@ -484,11 +484,6 @@ async function start_record() {
             if (!pngBlob) return;
 
             const bitmap = await createImageBitmap(pngBlob);
-            
-            if (recordCanvas.width !== bitmap.width || recordCanvas.height !== bitmap.height) {
-                recordCanvas.width = bitmap.width;
-                recordCanvas.height = bitmap.height;
-            }
             
             ctx.drawImage(bitmap, 0, 0);
             bitmap.close(); 
