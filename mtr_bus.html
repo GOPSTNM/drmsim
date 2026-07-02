@@ -394,7 +394,13 @@
         }
         alert(font_test_message);
       }
-      // 1. Fixed image_export function returning a Promise wrapping the blob
+      let recordInterval = null;
+let mediaRecorder = null;
+let recordedChunks = [];
+let recordCanvas = null;
+let ctx = null;
+let isRecording = false;
+
 function image_export(elem) {
   return new Promise((resolve) => {
     let height = 0;
@@ -427,20 +433,14 @@ function image_export(elem) {
     });
 
     canvas.toBlob((blob) => {
-      resolve(blob); // Cleanly returns the blob out of the asynchronous function
+      resolve(blob);
     }, 'image/png');
   });
 }
 
-// 2. Updated and optimized Recording Mechanics
-let recordInterval = null;
-let mediaRecorder = null;
-let recordedChunks = [];
-let recordCanvas = null;
-let ctx = null;
-
 async function start_record() {
     recordedChunks = [];
+    isRecording = true;
     
     const targetElem = document.getElementById("display");
     if (!targetElem) {
@@ -449,16 +449,12 @@ async function start_record() {
     }
 
     recordCanvas = document.createElement("canvas");
-    
-    // Set explicit size ahead of time to match image_export's expected output size
     recordCanvas.width = 143 * 5 * 1.15 * 5; 
     recordCanvas.height = 19 * 5 * 1.15 * 5;
     ctx = recordCanvas.getContext("2d", { alpha: false });
 
-    // Requesting 60fps stream from the processing canvas
-    const stream = recordCanvas.captureStream(60);
+    const stream = recordCanvas.captureStream(30); 
     
-    // Fallbacks for webm/mp4 container validation across modern engines
     let selectedMimeType = 'video/webm; codecs=vp9';
     if (MediaRecorder.isTypeSupported('video/mp4; codecs=avc1.42E01E')) {
         selectedMimeType = 'video/mp4; codecs=avc1.42E01E';
@@ -478,20 +474,24 @@ async function start_record() {
 
     mediaRecorder.start();
 
-    recordInterval = setInterval(async () => {
+    async function captureFrameLoop() {
+        if (!isRecording) return;
+        
         try {
             const pngBlob = await image_export(targetElem);
-            if (!pngBlob) return;
-
-            const bitmap = await createImageBitmap(pngBlob);
-            
-            ctx.drawImage(bitmap, 0, 0);
-            bitmap.close(); 
+            if (pngBlob && isRecording) {
+                const bitmap = await createImageBitmap(pngBlob);
+                ctx.drawImage(bitmap, 0, 0);
+                bitmap.close();
+            }
         } catch (error) {
             console.error("Error processing PNG frame:", error);
         }
-    }, 14);
+        
+        recordInterval = setTimeout(captureFrameLoop, 14);
+    }
 
+    captureFrameLoop();
     console.log(`Recording started using format: ${selectedMimeType}`);
 }
 
@@ -503,7 +503,8 @@ function end_record() {
             return;
         }
 
-        clearInterval(recordInterval);
+        isRecording = false;
+        clearTimeout(recordInterval);
 
         mediaRecorder.onstop = () => {
             const currentMimeType = mediaRecorder.mimeType;
@@ -531,7 +532,6 @@ function end_record() {
         mediaRecorder.stop();
     });
 }
-
     </script>
   </body>
 </html>
