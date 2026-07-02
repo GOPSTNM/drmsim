@@ -443,22 +443,6 @@ let recordedChunks = [];
 let recordCanvas = null;
 let ctx = null;
 
-function blobToImage(blob) {
-    return new Promise((resolve, reject) => {
-        const url = URL.createObjectURL(blob);
-        const img = new Image();
-        img.onload = () => {
-            URL.revokeObjectURL(url);
-            resolve(img);
-        };
-        img.onerror = (err) => {
-            URL.revokeObjectURL(url);
-            reject(err);
-        };
-        img.src = url;
-    });
-}
-
 async function start_record() {
     recordedChunks = [];
     
@@ -471,11 +455,10 @@ async function start_record() {
     recordCanvas = document.createElement("canvas");
     recordCanvas.width = targetElem.clientWidth || 640;
     recordCanvas.height = targetElem.clientHeight || 480;
-    ctx = recordCanvas.getContext("2d");
+    ctx = recordCanvas.getContext("2d", { alpha: false });
 
     const stream = recordCanvas.captureStream(70);
     
-    // Determine the format the browser actually supports natively
     let selectedMimeType = 'video/webm; codecs=vp9';
     if (MediaRecorder.isTypeSupported('video/mp4; codecs=avc1.42E01E')) {
         selectedMimeType = 'video/mp4; codecs=avc1.42E01E';
@@ -497,19 +480,20 @@ async function start_record() {
 
     recordInterval = setInterval(async () => {
         try {
-            const blob = await image_export(targetElem);
-            if (!blob) return;
+            const pngBlob = await image_export(targetElem);
+            if (!pngBlob) return;
 
-            const img = await blobToImage(blob);
+            const bitmap = await createImageBitmap(pngBlob);
             
-            if (recordCanvas.width !== img.width || recordCanvas.height !== img.height) {
-                recordCanvas.width = img.width;
-                recordCanvas.height = img.height;
+            if (recordCanvas.width !== bitmap.width || recordCanvas.height !== bitmap.height) {
+                recordCanvas.width = bitmap.width;
+                recordCanvas.height = bitmap.height;
             }
             
-            ctx.drawImage(img, 0, 0);
+            ctx.drawImage(bitmap, 0, 0);
+            bitmap.close(); 
         } catch (error) {
-            console.error("Error capturing frame:", error);
+            console.error("Error processing PNG frame:", error);
         }
     }, 14);
 
