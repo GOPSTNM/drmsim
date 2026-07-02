@@ -394,13 +394,14 @@
         }
         alert(font_test_message);
       }
-      let recordInterval = null;
-let mediaRecorder = null;
-let recordedChunks = [];
-let recordCanvas = null;
-let ctx = null;
-let isRecording = false;
+      // Load FFmpeg UMD bundle dynamically from CDN
+if (!window.FFmpeg) {
+    const script = document.createElement('script');
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.12.15/umd/ffmpeg.min.js";
+    document.head.appendChild(script);
+}
 
+// 1. Existing image_export function (Fixed with Promise wrapping)
 function image_export(elem) {
   return new Promise((resolve) => {
     let height = 0;
@@ -438,41 +439,25 @@ function image_export(elem) {
   });
 }
 
+// 2. FFmpeg-powered sequential array recorder
+let recordInterval = null;
+let isRecording = false;
+let recordedFrames = []; // Temporarily store frame Blobs during recording
+
 async function start_record() {
-    recordedChunks = [];
-    isRecording = true;
-    
+    if (!window.FFmpeg) {
+        console.error("FFmpeg library is still loading from CDN. Please try again in a second.");
+        return;
+    }
+
     const targetElem = document.getElementById("display");
     if (!targetElem) {
         console.error("Element with id 'display' not found.");
         return;
     }
 
-    recordCanvas = document.createElement("canvas");
-    recordCanvas.width = 143 * 5 * 1.15 * 5; 
-    recordCanvas.height = 19 * 5 * 1.15 * 5;
-    ctx = recordCanvas.getContext("2d", { alpha: false });
-
-    const stream = recordCanvas.captureStream(30); 
-    
-    let selectedMimeType = 'video/webm; codecs=vp9';
-    if (MediaRecorder.isTypeSupported('video/mp4; codecs=avc1.42E01E')) {
-        selectedMimeType = 'video/mp4; codecs=avc1.42E01E';
-    } else if (MediaRecorder.isTypeSupported('video/mp4')) {
-        selectedMimeType = 'video/mp4';
-    } else if (!MediaRecorder.isTypeSupported(selectedMimeType)) {
-        selectedMimeType = 'video/webm';
-    }
-    
-    mediaRecorder = new MediaRecorder(stream, { mimeType: selectedMimeType });
-
-    mediaRecorder.ondataavailable = (event) => {
-        if (event.data && event.data.size > 0) {
-            recordedChunks.push(event.data);
-        }
-    };
-
-    mediaRecorder.start();
+    recordedFrames = [];
+    isRecording = true;
 
     async function captureFrameLoop() {
         if (!isRecording) return;
@@ -480,57 +465,86 @@ async function start_record() {
         try {
             const pngBlob = await image_export(targetElem);
             if (pngBlob && isRecording) {
-                const bitmap = await createImageBitmap(pngBlob);
-                ctx.drawImage(bitmap, 0, 0);
-                bitmap.close();
+                // Collect raw frames in memory to avoid real-time rendering overhead
+                recordedFrames.push(pngBlob);
             }
         } catch (error) {
-            console.error("Error processing PNG frame:", error);
+            console.error("Error collecting frame:", error);
         }
         
         recordInterval = setTimeout(captureFrameLoop, 14);
     }
 
     captureFrameLoop();
-    console.log(`Recording started using format: ${selectedMimeType}`);
+    console.log("Recording frames into memory array...");
 }
 
-function end_record() {
-    return new Promise((resolve) => {
-        if (!mediaRecorder || mediaRecorder.state === "inactive") {
-            console.warn("No active recording to stop.");
-            resolve(null);
-            return;
-        }
+async function end_record() {
+    if (!isRecording) {
+        console.warn("No active recording found.");
+        return null;
+    }
 
-        isRecording = false;
-        clearTimeout(recordInterval);
+    isRecording = false;
+    clearTimeout(recordInterval);
 
-        mediaRecorder.onstop = () => {
-            const currentMimeType = mediaRecorder.mimeType;
-            const isMp4 = currentMimeType.includes('mp4');
-            const fileExtension = isMp4 ? 'mp4' : 'webm';
-            
-            const videoBlob = new Blob(recordedChunks, { type: currentMimeType });
-            
-            const url = URL.createObjectURL(videoBlob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `recording_${Date.now()}.${fileExtension}`;
-            document.body.appendChild(a);
-            a.click();
-            
-            setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }, 100);
+    if (recordedFrames.length === 0) {
+        console.error("No frames were captured.");
+        return null;
+    }
 
-            console.log("Recording stopped and exported.");
-            resolve(videoBlob);
-        };
+    console.log(`Initializing FFmpeg... Preparing to process ${recordedFrames.length} frames.`);
 
-        mediaRecorder.stop();
-    });
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    const ffmpeg = createFFmpeg({ log: true });
+    await ffmpeg.load();
+
+    // Write all captured PNG blobs into FFmpeg's virtual file system
+    for (let i = 0; i < recordedFrames.length; i++) {
+        const fileName = `frame_${String(i).padStart(5, '0')}.png`;
+        ffmpeg.FS('writeFile', fileName, await fetchFile(recordedFrames[i]));
+    }
+
+    console.log("Compiling true MP4 video via FFmpeg command layer...");
+
+    // Run standard FFmpeg command line parameters:
+    // -r 71.4: Translates your 14ms interval loop roughly into equivalent Frames Per Second (1000/14)
+    // -c:v libx264: Encodes with standard, globally accepted H.264
+    // -pix_fmt yuv420p: Mandatory compatibility format flag for standard OS media players
+    await ffmpeg.run(
+        '-r', '71.4', 
+        '-i', 'frame_%05d.png', 
+        '-c:v', 'libx264', 
+        '-pix_fmt', 'yuv420p', 
+        'output.mp4'
+    );
+
+    // Read generated output binary data matrix back from FFmpeg system
+    const data = ffmpeg.FS('readFile', 'output.mp4');
+
+    // Clean up temporary internal memory files
+    for (let i = 0; i < recordedFrames.length; i++) {
+        ffmpeg.FS('unlink', `frame_${String(i).padStart(5, '0')}.png`);
+    }
+    ffmpeg.FS('unlink', 'output.mp4');
+
+    // Trigger browser file download element pipeline
+    const videoBlob = new Blob([data.buffer], { type: 'video/mp4' });
+    const url = URL.createObjectURL(videoBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `recording_${Date.now()}.mp4`;
+    document.body.appendChild(a);
+    a.click();
+    
+    setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }, 100);
+
+    console.log("True MP4 video compilation successfully finished.");
+    recordedFrames = []; // Clear RAM storage arrays
+    return videoBlob;
 }
     </script>
   </body>
