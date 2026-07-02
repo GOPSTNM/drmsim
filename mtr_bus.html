@@ -429,7 +429,7 @@
             link.href = url;
             //link.target = "_blank";
             document.body.appendChild(link);
-            link.click();
+            //link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
           }
@@ -475,12 +475,17 @@ async function start_record() {
 
     const stream = recordCanvas.captureStream(70);
     
-    let options = { mimeType: 'video/mp4; codecs=avc1.42E01E' };
-    if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-        options = { mimeType: 'video/mp4' };
+    // Determine the format the browser actually supports natively
+    let selectedMimeType = 'video/webm; codecs=vp9';
+    if (MediaRecorder.isTypeSupported('video/mp4; codecs=avc1.42E01E')) {
+        selectedMimeType = 'video/mp4; codecs=avc1.42E01E';
+    } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+        selectedMimeType = 'video/mp4';
+    } else if (!MediaRecorder.isTypeSupported(selectedMimeType)) {
+        selectedMimeType = 'video/webm';
     }
     
-    mediaRecorder = new MediaRecorder(stream, options);
+    mediaRecorder = new MediaRecorder(stream, { mimeType: selectedMimeType });
 
     mediaRecorder.ondataavailable = (event) => {
         if (event.data && event.data.size > 0) {
@@ -508,7 +513,7 @@ async function start_record() {
         }
     }, 14);
 
-    console.log("Recording started...");
+    console.log(`Recording started using format: ${selectedMimeType}`);
 }
 
 function end_record() {
@@ -522,12 +527,16 @@ function end_record() {
         clearInterval(recordInterval);
 
         mediaRecorder.onstop = () => {
-            const videoBlob = new Blob(recordedChunks, { type: 'video/mp4' });
+            const currentMimeType = mediaRecorder.mimeType;
+            const isMp4 = currentMimeType.includes('mp4');
+            const fileExtension = isMp4 ? 'mp4' : 'webm';
+            
+            const videoBlob = new Blob(recordedChunks, { type: currentMimeType });
             
             const url = URL.createObjectURL(videoBlob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `recording_${Date.now()}.mp4`;
+            a.download = `recording_${Date.now()}.${fileExtension}`;
             document.body.appendChild(a);
             a.click();
             
